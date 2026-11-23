@@ -1,0 +1,1320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tare. atelier</title>
+<meta name="description" content="tare. — satin scrunchies, hair bonnets and the Mama Mboga tee and tote, designed in Nairobi. Pick your colour, pick your size, order on WhatsApp.">
+<meta name="theme-color" content="#fbfbfd">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;500;600;700;800&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* brand */
+  --tangerine:#ff5a1f;          /* brand orange: used as a fill, with dark text on top (6:1) */
+  --tangerine-soft:#ffe6da;
+  --blush:#ffd6dc;
+  --butter:#fff1c9;
+  --lilac:#e7e0ff;
+  --link:#c2410c;               /* orange for text on white: 5.2:1 */
+  /* Apple-style neutrals */
+  --bg:#ffffff;
+  --bg-alt:#f5f5f7;
+  --bg-warm:#fff7f2;
+  --text:#1d1d1f;
+  --text-2:#6e6e73;             /* 4.7:1 on --bg-alt */
+  --hair:#d2d2d7;
+  --focus:#0071e3;
+  --fs:106.25%;                 /* 17px base, like Apple */
+  --sans:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+  --radius:28px;
+  --shadow:0 2px 6px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.06);
+}
+/* ---------- user accessibility modes (switched on from the Accessibility panel) ---------- */
+:root{ --on-accent:#1d1d1f; --seg:#e8e8ed; --seg-on:#fff; --nav-bg:rgba(251,251,253,.8); --sheet-bg:rgba(255,255,255,.96); --tile-p:#2c2c2e; }
+/* Dark theme */
+html.dark{ color-scheme:dark; --bg:#000; --bg-alt:#1c1c1e; --bg-warm:#1a1210; --text:#f5f5f7; --text-2:#a1a1a6; --hair:#3a3a3c; --link:#ff8a5c; --focus:#4da3ff;
+  --tangerine-soft:#3a2016; --blush:#3b2128; --butter:#38301a; --lilac:#29233f; --seg:#2c2c2e; --seg-on:#636366; --nav-bg:rgba(22,22,23,.82); --sheet-bg:rgba(28,28,30,.97); --tile-p:#e5e5ea; }
+/* Increase contrast (works in light and dark) */
+html.contrast{ --text:#000; --text-2:#1d1d1f; --hair:#000; --bg-alt:#fff; --bg-warm:#fff; --link:#7a2600; --tangerine-soft:#fff; --blush:#fff; --butter:#fff; --lilac:#fff; --tile-p:#000; }
+html.contrast.dark{ --bg:#000; --text:#fff; --text-2:#f0f0f0; --hair:#fff; --bg-alt:#000; --bg-warm:#000; --link:#ffb38f; --tangerine-soft:#000; --blush:#000; --butter:#000; --lilac:#000; --tile-p:#fff; --seg:#000; --seg-on:#3a3a3c; }
+html.contrast .tile, html.contrast .card, html.contrast .step, html.contrast .group, html.contrast .profile{ border:2px solid var(--text) !important; box-shadow:none !important; }
+/* Fonts & text */
+html.font-hyper{ --sans:"Atkinson Hyperlegible", system-ui, sans-serif; }
+html.font-lexend{ --sans:"Lexend", system-ui, sans-serif; }
+html.spacing body{ letter-spacing:.06em; word-spacing:.16em; line-height:1.9; }
+html.spacing h1, html.spacing h2, html.spacing h3, html.spacing h4{ letter-spacing:0; line-height:1.3; }
+html.left .center, html.left .section-head.center{ text-align:left; }
+html.left .center .btn-row{ justify-content:flex-start; }
+html.left .hero .sub, html.left .section-head.center .sub{ margin-inline:0; }
+html.links :is(main, footer) a:not(.btn){ text-decoration:underline !important; text-decoration-thickness:2px; text-underline-offset:3px; background:#fff3a0; color:#1d1d1f !important; border-radius:4px; box-shadow:0 0 0 2px #fff3a0; }
+html.links .channels a, html.links .jump a{ background:#fff3a0; }
+html.links .channels a span{ color:#1d1d1f; }
+/* Colour filters */
+html.lowsat :is(.nav, main, footer){ filter:saturate(.4); }
+html.mono :is(.nav, main, footer){ filter:grayscale(1); }
+/* Focus, cursor, targets, images */
+html.focus :focus-visible, html.focus :focus:not(main){ outline:4px solid #1d1d1f !important; outline-offset:2px !important; box-shadow:0 0 0 8px #ffd60a !important; }
+html.cursor, html.cursor *{ cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'%3E%3Cpath d='M4 2l15 11-6.5 1.2L16 21l-3 1.4-3.4-6.9L4 20z' fill='%23000' stroke='%23fff' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 8 4, auto !important; }
+html.big .btn{ min-height:60px; padding:16px 30px; font-size:1.12rem; }
+html.big .swatches{ gap:14px; }
+html.big .swatches label{ width:48px; height:48px; }
+html.big .sizes label{ padding:16px 4px; font-size:1.1rem; }
+html.big .nav ul a, html.big .nav ul button{ padding:14px 18px; }
+html.big .channels a{ min-height:130px; }
+html.big .stepper button{ width:56px; height:48px; }
+html.noimg .mosaic, html.noimg .card .photo, html.noimg .big-emoji, html.noimg .ring-box{ display:none !important; }
+/* Reading guide & mask */
+.rguide{ position:fixed; left:0; right:0; top:50%; height:16px; margin-top:-8px; background:rgba(255,90,31,.22); border-block:2px solid var(--tangerine); pointer-events:none; z-index:140; display:none; }
+html.guide .rguide{ display:block; }
+.rmask{ position:fixed; left:0; right:0; background:rgba(0,0,0,.62); pointer-events:none; z-index:139; display:none; }
+.rmask.top{ top:0; } .rmask.bot{ bottom:0; }
+html.mask .rmask{ display:block; }
+/* Text being read aloud */
+.speaking{ background:rgba(255,90,31,.18) !important; outline:3px solid var(--tangerine); outline-offset:4px; border-radius:6px; }
+/* Motion */
+html.still *, html.still *::before, html.still *::after{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{ animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+
+*{ box-sizing:border-box; }
+html{ font-size:var(--fs); scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body{ margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.47; letter-spacing:-.011em; -webkit-font-smoothing:antialiased; }
+img,svg{ display:block; max-width:100%; }
+a{ color:var(--link); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+h1,h2,h3,h4{ margin:0; letter-spacing:-.025em; line-height:1.07; font-weight:700; }
+p{ margin:0; }
+:focus-visible{ outline:3px solid var(--focus); outline-offset:3px; border-radius:10px; }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+.wrap{ width:min(1080px, 100% - 32px); margin-inline:auto; }
+section{ padding:clamp(72px,11vw,128px) 0; scroll-margin-top:56px; }
+.center{ text-align:center; }
+.eyebrow{ display:block; color:var(--link); font-weight:600; font-size:1.05rem; margin-bottom:10px; letter-spacing:-.01em; }
+.headline{ font-size:clamp(2.4rem, 6.4vw, 4rem); }
+.sub{ font-size:clamp(1.1rem, 2vw, 1.4rem); color:var(--text-2); font-weight:500; margin-top:14px; line-height:1.4; }
+.chev::after{ content:" ›"; }
+
+.skip{ position:absolute; left:16px; top:-80px; z-index:200; background:var(--text); color:#fff; padding:12px 18px; border-radius:12px; font-weight:600; }
+.skip:focus{ top:10px; }
+
+/* ---------- buttons ---------- */
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:12px 24px; border-radius:980px; font:600 1rem var(--sans); border:0; cursor:pointer; text-decoration:none !important; transition:transform .2s, background .2s; }
+.btn:active{ transform:scale(.97); }
+.btn-primary{ background:var(--tangerine); color:var(--on-accent); }
+.btn-primary:hover{ background:#ff7040; }
+.btn-dark{ background:var(--text); color:var(--bg); }
+.btn-dark:hover{ background:#3a3a3c; }
+.btn-soft{ background:var(--bg); color:var(--text); box-shadow:inset 0 0 0 1.5px var(--hair); }
+.btn-soft:hover{ box-shadow:inset 0 0 0 1.5px var(--text); }
+.btn-row{ display:flex; gap:14px 24px; flex-wrap:wrap; align-items:center; }
+.center .btn-row{ justify-content:center; }
+.link-lg{ font-size:1.1rem; font-weight:500; }
+
+/* ---------- nav ---------- */
+.nav{ position:sticky; top:0; z-index:100; background:var(--nav-bg); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid rgba(0,0,0,.08); }
+html.contrast .nav{ background:var(--bg); border-bottom:2px solid var(--text); }
+.nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:56px; }
+.logo{ display:inline-grid; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--tangerine); color:var(--on-accent); font:400 10px "Archivo Black", sans-serif; letter-spacing:-.02em; text-decoration:none !important; }
+.nav ul{ display:flex; gap:2px; list-style:none; margin:0; padding:0; }
+.nav ul a, .nav ul button{ display:block; padding:10px 14px; color:var(--text); font:500 .9rem var(--sans); border-radius:980px; background:none; border:0; cursor:pointer; }
+.nav ul a, .nav ul button{ white-space:nowrap; }
+.nav ul a:hover, .nav ul button:hover{ background:rgba(0,0,0,.05); text-decoration:none; }
+.nav .btn{ min-height:36px; padding:8px 16px; font-size:.88rem; }
+.menu-btn{ display:none; }
+@media (max-width:820px){
+  .menu-btn{ display:inline-flex; align-items:center; min-height:44px; padding:0 14px; border-radius:980px; background:var(--seg); border:0; font:600 .95rem var(--sans); color:var(--text); cursor:pointer; }
+  .nav ul{ display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; padding:8px 16px 20px; background:var(--bg); border-bottom:1px solid var(--hair); }
+  .nav ul.open{ display:flex; }
+  .nav ul a, .nav ul button{ font-size:1.3rem; font-weight:600; padding:14px 8px; text-align:left; width:100%; }
+  .nav .order-top{ display:none; }
+}
+
+/* language switch */
+.nav-right{ display:flex; align-items:center; gap:10px; }
+.lang{ display:flex; background:var(--seg); border-radius:980px; padding:2px; }
+.lang button{ border:0; background:transparent; color:var(--text); font:600 .78rem var(--sans); letter-spacing:.02em; min-width:40px; min-height:32px; padding:4px 10px; border-radius:980px; cursor:pointer; }
+.lang button[aria-pressed="true"]{ background:var(--seg-on); box-shadow:0 1px 3px rgba(0,0,0,.16); }
+html.contrast .lang button[aria-pressed="true"]{ background:var(--text); color:var(--bg); }
+html.big .lang button{ min-height:44px; min-width:52px; font-size:.95rem; }
+@media (max-width:820px){ .menu-btn{ order:3; } .nav-right{ margin-left:auto; } }
+html:is(.navcollapse,.navtight) .menu-btn{ order:3; }
+html:is(.navcollapse,.navtight) .nav-right{ margin-left:auto; }
+
+/* nav collapses into the Menu button whenever text is enlarged */
+html:is(.navcollapse,.navtight) .menu-btn{ display:inline-flex; align-items:center; min-height:44px; padding:0 14px; border-radius:980px; background:var(--seg); border:0; font:600 .95rem var(--sans); color:var(--text); cursor:pointer; }
+html:is(.navcollapse,.navtight) .nav ul{ display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; padding:8px 16px 20px; background:var(--bg); border-bottom:1px solid var(--hair); }
+html:is(.navcollapse,.navtight) .nav ul.open{ display:flex; }
+html:is(.navcollapse,.navtight) .nav ul a, html:is(.navcollapse,.navtight) .nav ul button{ font-size:1.3rem; font-weight:600; padding:14px 8px; text-align:left; width:100%; }
+html:is(.navcollapse,.navtight) .nav .order-top{ display:none; }
+.nav ul.open{ max-height:calc(100dvh - 64px); overflow:auto; }
+
+/* ---------- hero ---------- */
+.hero{ padding-top:clamp(48px,7vw,80px); padding-bottom:clamp(40px,6vw,64px); overflow:hidden; }
+.hero h1{ font-size:clamp(3rem, 9vw, 6rem); letter-spacing:-.04em; line-height:1; }
+.grad{ background:linear-gradient(100deg, #ff5a1f 10%, #ff3d7f 55%, #a35cff 95%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+html.contrast .grad{ background:none; color:var(--text); }
+.hero .sub{ max-width:36ch; margin-inline:auto; }
+.hero .btn-row{ margin-top:28px; }
+/* hero photo collage */
+.mosaic{ display:grid; grid-template-columns:1.15fr 1fr 1fr; grid-template-rows:repeat(2, clamp(170px, 22vw, 270px)); gap:12px; margin-top:48px; }
+.mosaic figure{ margin:0; border-radius:22px; overflow:hidden; background:var(--bg-warm); }
+.mosaic img{ width:100%; height:100%; object-fit:cover; }
+.mosaic .m1{ grid-row:1 / 3; }
+.mosaic .m1 img{ object-position:62% 50%; }
+.mosaic .m4{ grid-column:2 / 4; }
+@media (max-width:640px){
+  .mosaic{ grid-template-columns:1fr 1fr; grid-template-rows:auto; margin-top:36px; gap:10px; }
+  .mosaic .m1{ grid-row:auto; grid-column:1 / 3; aspect-ratio:4/3; }
+  .mosaic .m2, .mosaic .m3{ aspect-ratio:1; }
+  .mosaic .m4{ grid-column:1 / 3; aspect-ratio:16/9; }
+}
+
+/* ---------- collection ---------- */
+.section-head{ margin-bottom:44px; }
+.section-head .sub{ max-width:52ch; }
+.section-head.center .sub{ margin-inline:auto; }
+.cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; list-style:none; margin:0; padding:0; }
+.cards.two{ grid-template-columns:repeat(2,1fr); }
+@media (max-width:980px){ .cards{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .cards, .cards.two{ grid-template-columns:1fr; } }
+.card{ background:var(--bg-alt); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; }
+.warm .card{ background:var(--bg); }
+.card .photo{ aspect-ratio:1; overflow:hidden; background:var(--bg-warm); }
+.cards.two .card .photo{ aspect-ratio:4/5; }
+.card .photo img{ width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.2,.8,.2,1); }
+.card:hover .photo img{ transform:scale(1.03); }
+.card .photo.illus{ display:grid; place-items:center; }
+.card .photo.illus svg{ width:70%; height:auto; }
+.card .body{ padding:22px 24px 24px; display:flex; flex-direction:column; gap:14px; flex:1; }
+.card.wide{ grid-column:span 2; }
+.card.wide .photo{ aspect-ratio:16/9; }
+.card.full{ grid-column:1 / -1; flex-direction:row; }
+.card.full .photo{ flex:0 0 36%; aspect-ratio:auto; min-height:280px; }
+@media (max-width:980px){ .card.wide{ grid-column:1 / -1; } }
+@media (max-width:640px){ .card.wide, .card.full{ grid-column:auto; } .card.full{ flex-direction:column; } .card.full .photo{ aspect-ratio:16/10; min-height:0; } }
+.feats{ list-style:none; margin:0; padding:0; display:grid; gap:6px; font-size:.95rem; }
+.feats li{ display:flex; gap:10px; }
+.feats li::before{ content:"✓"; color:var(--link); font-weight:700; }
+.note-sm{ font-size:.85rem; color:var(--text-2); margin-top:-6px; }
+.amt.por{ font-size:1.05rem; }
+.sizes.finish label{ font-size:.82rem; line-height:1.2; padding:9px 4px; }
+.card .tagline{ color:var(--link); font-weight:600; font-size:.85rem; }
+.card h3{ font-size:1.5rem; }
+.card .desc{ color:var(--text-2); }
+fieldset{ border:0; margin:0; padding:0; min-width:0; }
+legend{ font-size:.85rem; font-weight:600; color:var(--text-2); margin-bottom:8px; padding:0; }
+legend .picked{ color:var(--text); font-weight:600; }
+.swatches{ display:flex; flex-wrap:wrap; gap:10px; }
+.swatches input, .sizes input{ position:absolute; opacity:0; width:1px; height:1px; }
+.swatches label{ display:block; width:32px; height:32px; border-radius:50%; cursor:pointer; box-shadow:inset 0 0 0 1px rgba(0,0,0,.15); position:relative; }
+.swatches label::after{ content:""; position:absolute; inset:-5px; border-radius:50%; box-shadow:0 0 0 2px transparent; transition:box-shadow .2s; }
+.swatches input:checked + label::after{ box-shadow:0 0 0 2px var(--text); }
+.swatches input:focus-visible + label{ outline:3px solid var(--focus); outline-offset:6px; }
+.sizes{ display:grid; grid-auto-flow:column; grid-auto-columns:1fr; background:var(--seg); padding:3px; border-radius:12px; }
+html.contrast .sizes{ background:var(--bg); border:2px solid var(--text); }
+.sizes label{ display:block; text-align:center; padding:9px 4px; border-radius:9px; font-weight:600; font-size:.95rem; cursor:pointer; color:var(--text); }
+.sizes input:checked + label{ background:var(--seg-on); box-shadow:0 1px 4px rgba(0,0,0,.14); }
+html.contrast .sizes input:checked + label{ background:var(--text); color:var(--bg); }
+.sizes input:focus-visible + label{ outline:3px solid var(--focus); outline-offset:1px; }
+.buy{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; padding-top:6px; }
+.price{ font-size:1.35rem; font-weight:700; letter-spacing:-.02em; }
+.price small{ display:block; font-size:.78rem; font-weight:500; color:var(--text-2); letter-spacing:0; }
+.fine{ color:var(--text-2); font-size:.9rem; margin-top:24px; }
+
+/* ---------- Atelier ---------- */
+.cards.atelier .card .photo{ aspect-ratio:3/4; }
+.alt .card{ background:var(--bg); }
+.card .photo.missing{ display:grid; place-items:center; text-align:center; padding:24px; color:var(--text-2); font-weight:600;
+  background:repeating-linear-gradient(135deg, var(--bg-warm) 0 14px, var(--bg-alt) 14px 28px); }
+.card .photo.missing img{ display:none; }
+
+/* ---------- Mama Mboga section ---------- */
+.warm{ background:var(--bg-warm); }
+.print-cta{ margin-top:20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px 32px; padding:clamp(24px,4vw,40px); border-radius:var(--radius); background:var(--tangerine); color:var(--on-accent); }
+.print-cta h3{ font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:8px; }
+.print-cta p{ max-width:52ch; }
+.print-cta .btn-dark, html.dark .print-cta .btn-dark{ background:#1d1d1f; color:#fff; }
+html.contrast .print-cta{ background:var(--bg); color:var(--text); border:2px solid var(--text); }
+
+/* ---------- sizes ---------- */
+.alt{ background:var(--bg-alt); }
+.size-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+@media (max-width:760px){ .size-grid{ grid-template-columns:1fr; } }
+.tile{ background:var(--bg); border-radius:var(--radius); padding:32px 28px; box-shadow:var(--shadow); }
+.size-tile{ text-align:center; }
+.ring-box{ height:128px; display:grid; place-items:center; margin-bottom:12px; }
+.ring{ border-radius:50%; border:solid var(--tangerine); }
+.size-tile:nth-child(1) .ring{ width:56px; height:56px; border-width:12px; }
+.size-tile:nth-child(2) .ring{ width:84px; height:84px; border-width:18px; }
+.size-tile:nth-child(3) .ring{ width:116px; height:116px; border-width:26px; }
+.size-tile .letter{ font-size:3rem; font-weight:800; letter-spacing:-.04em; line-height:1; }
+.size-tile h3{ font-size:1.2rem; margin:6px 0 10px; }
+.size-tile p{ color:var(--text-2); }
+
+/* ---------- bento ---------- */
+.bento{ display:grid; grid-template-columns:repeat(6,1fr); gap:20px; }
+.bento .tile{ box-shadow:none; display:flex; flex-direction:column; gap:10px; min-height:260px; }
+.bento .tile h3{ font-size:clamp(1.5rem,2.6vw,2rem); }
+.bento .tile p{ color:var(--text-2); font-size:1.05rem; }
+.b-wide{ grid-column:span 4; }
+.b-narrow{ grid-column:span 2; }
+.b-half{ grid-column:span 3; }
+@media (max-width:860px){ .b-wide,.b-narrow,.b-half{ grid-column:span 6; } .bento .tile{ min-height:0; } }
+.t-blush{ background:var(--blush); }
+.t-butter{ background:var(--butter); }
+.t-lilac{ background:var(--lilac); }
+.t-tang{ background:var(--tangerine); color:var(--on-accent); }
+.t-grey{ background:var(--bg-alt); }
+.t-blush p, .t-butter p, .t-lilac p{ color:var(--tile-p) !important; }
+.t-tang p{ color:var(--on-accent) !important; }
+.tile .big-emoji{ font-size:2.4rem; line-height:1; margin-bottom:auto; padding-bottom:24px; }
+.tile .stat{ font-size:clamp(3rem,7vw,4.5rem); font-weight:800; letter-spacing:-.05em; line-height:1; margin-bottom:auto; padding-bottom:24px; }
+html.contrast .bento .tile{ background:var(--bg); color:var(--text); }
+html.contrast .bento .tile p{ color:var(--text) !important; }
+
+/* ---------- order ---------- */
+.steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; list-style:none; margin:0 0 40px; padding:0; counter-reset:s; }
+@media (max-width:760px){ .steps{ grid-template-columns:1fr; } }
+.step{ counter-increment:s; background:var(--bg); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); }
+.step::before{ content:counter(s); display:grid; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--tangerine); color:var(--on-accent); font-weight:700; margin-bottom:16px; }
+.step h3{ font-size:1.25rem; margin-bottom:6px; }
+.step p{ color:var(--text-2); }
+.channels{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; list-style:none; padding:0; margin:0; }
+@media (max-width:760px){ .channels{ grid-template-columns:repeat(2,1fr); } }
+.channels a{ display:flex; flex-direction:column; gap:6px; align-items:flex-start; padding:20px; border-radius:20px; background:var(--bg); color:var(--text); box-shadow:var(--shadow); font-weight:600; min-height:110px; text-decoration:none !important; transition:transform .2s; }
+html.contrast .channels a{ border:2px solid var(--text); }
+.channels a:hover{ transform:translateY(-3px); }
+.channels svg{ width:28px; height:28px; color:var(--link); }
+.channels span{ color:var(--text-2); font-weight:500; font-size:.88rem; }
+
+/* ---------- accessibility note ---------- */
+.a11y-note{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+@media (max-width:760px){ .a11y-note{ grid-template-columns:1fr; } }
+.checks{ list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+.checks li{ display:flex; gap:12px; align-items:flex-start; }
+.checks li::before{ content:""; flex:0 0 22px; height:22px; margin-top:2px; border-radius:50%; background:var(--tangerine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d1d1f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat; }
+
+/* ---------- footer ---------- */
+footer{ background:var(--bg-alt); color:var(--text-2); font-size:.85rem; padding:40px 0 110px; }
+footer .wrap{ display:flex; flex-wrap:wrap; gap:16px 32px; justify-content:space-between; align-items:center; border-top:1px solid var(--hair); padding-top:24px; }
+footer ul{ display:flex; flex-wrap:wrap; gap:6px 20px; list-style:none; margin:0; padding:0; }
+footer a{ color:var(--text); }
+
+/* ---------- accessibility panel ---------- */
+.a11y-fab{ position:fixed; right:18px; bottom:18px; z-index:150; width:60px; height:60px; border-radius:50%; border:3px solid var(--bg); background:var(--text); color:var(--bg); display:grid; place-items:center; cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,.25); }
+.a11y-fab svg{ width:30px; height:30px; }
+dialog.sheet{ position:fixed; inset:0 0 0 auto; margin:0; width:min(430px,100vw); max-width:100vw; height:100dvh; max-height:100dvh; border:0; padding:0; border-radius:24px 0 0 24px; background:var(--sheet-bg); color:var(--text); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); box-shadow:-20px 0 60px rgba(0,0,0,.2); overflow:hidden; font-family:var(--sans); }
+dialog.sheet[open]{ display:flex; flex-direction:column; animation:sheet-in .28s cubic-bezier(.2,.8,.2,1); }
+dialog.sheet::backdrop{ background:rgba(0,0,0,.28); }
+@keyframes sheet-in{ from{ transform:translateX(40px); opacity:0; } }
+@keyframes sheet-up{ from{ transform:translateY(60px); opacity:0; } }
+@media (max-width:640px){ dialog.sheet{ inset:auto 0 0 0; width:100vw; height:92dvh; max-height:92dvh; border-radius:24px 24px 0 0; } dialog.sheet[open]{ animation-name:sheet-up; } }
+html.contrast dialog.sheet{ background:var(--bg); border:3px solid var(--text); }
+.sheet-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 20px 14px; border-bottom:1px solid var(--hair); }
+.sheet-head h2{ font-size:1.45rem; }
+.icon-btn{ flex:0 0 44px; width:44px; height:44px; border-radius:50%; border:0; background:var(--seg); color:var(--text); font:600 1.1rem var(--sans); cursor:pointer; display:grid; place-items:center; }
+.sheet-body{ overflow:auto; padding:14px 20px 32px; flex:1; overscroll-behavior:contain; }
+.sheet h3{ font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-2); font-weight:700; margin:24px 4px 8px; line-height:1.3; }
+.sheet .hint{ color:var(--text-2); font-size:.88rem; margin:0 4px; }
+.profiles{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.profile{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; text-align:left; padding:14px; border-radius:16px; border:2px solid transparent; background:var(--bg-alt); color:var(--text); font:600 .95rem/1.25 var(--sans); cursor:pointer; min-height:100px; }
+.profile:hover{ border-color:var(--hair); }
+.profile .ico{ font-size:1.5rem; line-height:1; margin-bottom:4px; }
+.profile small{ font-weight:500; color:var(--text-2); font-size:.8rem; line-height:1.3; }
+.profile[aria-pressed="true"]{ border-color:var(--tangerine); background:var(--tangerine-soft); }
+.profile[aria-pressed="true"] .ico::after{ content:" ✓"; font-size:1rem; color:var(--link); font-weight:700; }
+.group{ background:var(--bg-alt); border-radius:14px; overflow:hidden; margin:0; padding:0; list-style:none; }
+.row{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 14px; min-height:56px; }
+.row.stack{ flex-direction:column; align-items:stretch; gap:8px; padding:12px 14px; }
+.row + .row, .play-row + .row{ border-top:1px solid var(--hair); }
+.row .lbl{ font-weight:500; }
+.row .lbl small{ display:block; color:var(--text-2); font-size:.8rem; font-weight:400; line-height:1.3; margin-top:2px; }
+.stepper{ display:flex; align-items:center; gap:4px; background:var(--seg); border-radius:10px; padding:2px; flex:0 0 auto; }
+.stepper button{ width:44px; height:38px; border:0; border-radius:8px; background:transparent; font:600 1rem var(--sans); color:var(--text); cursor:pointer; }
+.stepper button:hover{ background:var(--seg-on); }
+.stepper output{ min-width:54px; text-align:center; font-weight:600; font-size:.9rem; }
+.seg{ display:grid; grid-auto-flow:column; grid-auto-columns:1fr; background:var(--seg); padding:2px; border-radius:10px; border:0; margin:0; }
+.seg input{ position:absolute; opacity:0; width:1px; height:1px; }
+.seg label{ padding:9px 6px; text-align:center; border-radius:8px; font-weight:600; font-size:.88rem; cursor:pointer; }
+.seg input:checked + label{ background:var(--seg-on); box-shadow:0 1px 3px rgba(0,0,0,.15); }
+html.contrast .seg input:checked + label{ background:var(--text); color:var(--bg); }
+.seg input:focus-visible + label{ outline:3px solid var(--focus); outline-offset:1px; }
+.switch{ position:relative; flex:0 0 51px; width:51px; height:31px; border-radius:31px; border:0; background:#8e8e93; cursor:pointer; transition:background .2s; padding:0; }
+.switch::after{ content:""; position:absolute; top:2px; left:2px; width:27px; height:27px; border-radius:50%; background:#fff; box-shadow:0 2px 4px rgba(0,0,0,.2); transition:transform .2s; }
+.switch[aria-checked="true"]{ background:#248a3d; }
+html.contrast .switch[aria-checked="true"]{ background:var(--text); }
+html.contrast .switch[aria-checked="true"]::after{ background:var(--bg); }
+.switch[aria-checked="true"]::after{ transform:translateX(20px); }
+.play-row{ display:flex; gap:8px; padding:12px 14px; }
+.play-row .btn{ flex:1; min-height:46px; padding:10px 14px; }
+.jump a{ display:flex; justify-content:space-between; align-items:center; padding:14px; min-height:52px; color:var(--text); font-weight:500; text-decoration:none !important; }
+.jump li + li a{ border-top:1px solid var(--hair); }
+.jump a::after{ content:"›"; color:var(--text-2); font-size:1.3rem; }
+.keys{ padding:10px 14px; display:grid; grid-template-columns:auto 1fr; gap:10px 14px; font-size:.9rem; align-items:center; }
+.keys dt{ white-space:nowrap; }
+.keys dd{ margin:0; color:var(--text-2); }
+kbd{ font:600 .78rem var(--sans); background:var(--bg); color:var(--text); border:1px solid var(--hair); border-bottom-width:2px; border-radius:6px; padding:2px 7px; white-space:nowrap; }
+.sheet .reset{ width:100%; margin-top:24px; }
+.sheet .note{ color:var(--text-2); font-size:.82rem; margin:14px 4px 0; line-height:1.45; }
+/* floating read-aloud controls */
+.reader{ position:fixed; left:16px; bottom:18px; z-index:145; display:flex; align-items:center; gap:8px; padding:8px 8px 8px 18px; border-radius:980px; background:var(--text); color:var(--bg); box-shadow:0 10px 30px rgba(0,0,0,.25); font-weight:600; font-size:.92rem; max-width:calc(100vw - 104px); }
+.reader[hidden]{ display:none; }
+.reader span{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.reader button{ min-height:44px; padding:0 16px; border-radius:980px; border:0; background:var(--tangerine); color:var(--on-accent); font:600 .9rem var(--sans); cursor:pointer; flex:0 0 auto; }
+.reader button.ghost{ background:transparent; color:inherit; box-shadow:inset 0 0 0 1.5px currentColor; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <nav class="wrap" aria-label="Main">
+    <a class="logo" href="#top" aria-label="tare. home">TARE.</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul id="menu">
+      <li><a href="#hair">Hair</a></li>
+      <li><a href="#mama-mboga">Mama Mboga</a></li>
+      <li><a href="#atelier">Atelier</a></li>
+      <li><a href="#sizes">Size guide</a></li>
+      <li><a href="#order">How to order</a></li>
+      <li><button type="button" data-open-a11y>Accessibility</button></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language · Lugha">
+        <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
+        <button type="button" data-lang="sw" lang="sw" aria-label="Kiswahili" aria-pressed="false">SW</button>
+      </div>
+      <a class="btn btn-primary order-top" href="https://wa.me/254793598988">Order</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+  <!-- HERO -->
+  <section class="hero center" id="top" aria-labelledby="hero-title">
+    <div class="wrap">
+      <span class="eyebrow">New from Nairobi 🎀</span>
+      <h1 id="hero-title">Everyday pieces.<br><span class="grad">Bold Nairobi stories.</span></h1>
+      <p class="sub">Satin scrunchies for soft hair days, plus the Mama Mboga tee and tote celebrating the city we love.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#hair">Shop hair accessories</a>
+        <a class="link-lg chev" href="#mama-mboga">Explore Mama Mboga</a>
+      </div>
+    </div>
+    <div class="wrap mosaic">
+      <figure class="m1"><img src="assets/mama-mboga-tote.webp" alt="A canvas tote bag with the Mama Mboga market illustration, hanging on a rattan chair" fetchpriority="high"></figure>
+      <figure class="m2"><img src="assets/plain-satin.jpg" alt="Black, cocoa, caramel and cream satin scrunchies"></figure>
+      <figure class="m3"><img src="assets/organza.jpg" alt="A sheer gold organza scrunchie on silver satin"></figure>
+      <figure class="m4"><img src="assets/zipped-burgundy.webp" alt="A burgundy zipped scrunchie with cowrie shells and beads, holding cash, lip gloss, earbuds and tare. keys"></figure>
+    </div>
+  </section>
+
+  <!-- HAIR ACCESSORIES -->
+  <section id="hair" aria-labelledby="hair-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Hair accessories</span>
+        <h2 class="headline" id="hair-title">Pick a colour.<br>Pick a size. Done.</h2>
+        <p class="sub">Every scrunchie comes in Small, Medium and Large. Tap through the options and we'll write your WhatsApp order for you.</p>
+      </div>
+      <ul class="cards" id="cards-hair"></ul>
+      <p class="fine">Colours shown are examples. Ask us what's in stock, or request a custom colour. Prices are in Kenyan shillings.</p>
+    </div>
+  </section>
+
+  <!-- SIZE GUIDE -->
+  <section id="sizes" class="alt" aria-labelledby="size-title">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Size guide</span>
+        <h2 class="headline" id="size-title">Which size is you?</h2>
+        <p class="sub">Not sure? Send us a pic of your hair and we'll help you choose.</p>
+      </div>
+      <div class="size-grid">
+        <div class="tile size-tile"><div class="ring-box" aria-hidden="true"><div class="ring"></div></div><p class="letter" aria-hidden="true">S</p><h3>Small</h3><p>Sleek ponytails, fine or shorter hair, and wearing on your wrist.</p></div>
+        <div class="tile size-tile"><div class="ring-box" aria-hidden="true"><div class="ring"></div></div><p class="letter" aria-hidden="true">M</p><h3>Medium</h3><p>The everyday one. Works for most hair types and a messy bun.</p></div>
+        <div class="tile size-tile"><div class="ring-box" aria-hidden="true"><div class="ring"></div></div><p class="letter" aria-hidden="true">L</p><h3>Large</h3><p>Thick, curly or natural hair, braids and big statement puffs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAMA MBOGA -->
+  <section id="mama-mboga" class="warm" aria-labelledby="mm-title">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">The Mama Mboga collection</span>
+        <h2 class="headline" id="mm-title">Celebrating everyday stories.</h2>
+        <p class="sub">Art inspired by Nairobi's markets, matatus and the everyday heroes who keep our city moving, printed on pieces you'll use every day.</p>
+      </div>
+      <ul class="cards two" id="cards-art"></ul>
+      <div class="print-cta">
+        <div><h3>Your design, printed.</h3><p>Custom printing is available on tees and totes: full-colour prints of your art, your words or your brand.</p></div>
+        <a class="btn btn-dark" id="custom-order" href="https://wa.me/254793598988">Start a custom order</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATELIER -->
+  <section id="atelier" class="alt" aria-labelledby="atelier-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The atelier</span>
+        <h2 class="headline" id="atelier-title">Heritage, re-tailored.</h2>
+        <p class="sub">Contemporary, gender-neutral design pieces that celebrate cultural identity, inclusivity and cross-cultural exchange.</p>
+      </div>
+      <ul class="cards two atelier" id="cards-atelier"></ul>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why tare.</span>
+        <h2 class="headline" id="why-title">Little things.<br>Big difference.</h2>
+      </div>
+      <div class="bento">
+        <article class="tile t-blush b-wide"><p class="big-emoji" aria-hidden="true">✨</p><h3>Satin that's kind to your hair.</h3><p>Smooth fabric means less tugging and less friction than a regular elastic, so your edges and curls stay happy.</p></article>
+        <article class="tile t-tang b-narrow"><p class="stat" aria-hidden="true">5</p><h3><span class="sr-only">5 </span>scrunchie styles to mix and match.</h3><p>From everyday satin to cowrie-shell statement pieces.</p></article>
+        <article class="tile t-lilac b-half"><p class="big-emoji" aria-hidden="true">🌙</p><h3>Wake up with your style intact.</h3><p>Our satin bonnets protect your hair overnight, so your silk press or braids last longer.</p></article>
+        <article class="tile t-butter b-half"><p class="big-emoji" aria-hidden="true">🔑</p><h3>A secret pocket.</h3><p>Zipped scrunchies carry cash, keys, lip gloss or earbuds. Hands free, all day.</p></article>
+        <article class="tile t-grey b-narrow"><p class="big-emoji" aria-hidden="true">📍</p><h3>Designed in Nairobi.</h3><p>Thoughtful ideas. Tangible forms.</p></article>
+        <article class="tile t-grey b-wide"><p class="big-emoji" aria-hidden="true">🐚</p><h3>Everyday Kenyan stories.</h3><p>From cowrie shells to Mama Mboga's market stall, our pieces celebrate the people and culture around us. <a href="https://instagram.com/tare.atelier">Follow us on Instagram</a> for new drops.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER -->
+  <section id="order" class="alt" aria-labelledby="order-title">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">How to order</span>
+        <h2 class="headline" id="order-title">Ordering takes a minute.</h2>
+        <p class="sub">Text, voice note or form, whichever is easiest for you.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><h3>Choose</h3><p>Pick your style, colour and size from the collection.</p></li>
+        <li class="step"><h3>Send</h3><p>Tap "Order" and your message is ready to go on WhatsApp. Or use the order form.</p></li>
+        <li class="step"><h3>Receive</h3><p>We'll confirm your total and sort out delivery or pick-up with you.</p></li>
+      </ol>
+      <ul class="channels" aria-label="Ways to reach us">
+        <li><a href="https://wa.me/254793598988"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8.4 19z"/></svg>WhatsApp<span>Fastest reply</span></a></li>
+        <li><a href="https://forms.gle/fYCyx9UUci1ub2QU7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>Order form<span>Google Forms</span></a></li>
+        <li><a href="https://instagram.com/tare.atelier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Instagram<span>@tare.atelier</span></a></li>
+        <li><a href="https://tiktok.com/@tare.atelier"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 3c.4 2.4 1.9 4 4.5 4.2v3.2c-1.6 0-3.1-.5-4.4-1.3v6.4A5.6 5.6 0 1 1 10.5 10v3.3a2.4 2.4 0 1 0 2.3 2.4V3H16z"/></svg>TikTok<span>@tare.atelier</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ACCESSIBILITY -->
+  <section id="accessibility" aria-labelledby="acc-title">
+    <div class="wrap a11y-note">
+      <div>
+        <span class="eyebrow">Accessibility</span>
+        <h2 class="headline" id="acc-title">A site for everyone.</h2>
+        <p class="sub">Make this page work the way you need it to. Your settings are saved on this device.</p>
+        <div class="btn-row" style="margin-top:24px"><button class="btn btn-dark" type="button" data-open-a11y>Open accessibility settings</button></div>
+      </div>
+      <ul class="checks">
+        <li>Read aloud: hear the whole page, or tap any text to hear it</li>
+        <li>One-tap profiles for low vision, screen reader users, dyslexia, motor needs, epilepsy, ADHD, older eyes and colour blindness</li>
+        <li>Works with VoiceOver, TalkBack, NVDA and JAWS</li>
+        <li>Text size up to 200%, readable fonts and extra spacing</li>
+        <li>Dark mode, increased contrast, soft colours and monochrome</li>
+        <li>Reading guide, reading mask, big cursor and bigger buttons</li>
+        <li>Fully usable by keyboard, with shortcuts and no flashing content</li>
+        <li>Spot a problem? <a href="https://wa.me/254793598988?text=Accessibility%20feedback%3A%20">Tell us on WhatsApp</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© <span id="yr">2026</span> tare. atelier · Designed in Nairobi, Kenya</p>
+    <ul aria-label="Social media">
+      <li><a href="https://instagram.com/tare.atelier">Instagram</a></li>
+      <li><a href="https://tiktok.com/@tare.atelier">TikTok</a></li>
+      <li><a href="https://wa.me/254793598988">WhatsApp</a></li>
+      <li><a href="https://forms.gle/fYCyx9UUci1ub2QU7">Order form</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Accessibility panel -->
+<button class="a11y-fab" id="a11y-fab" aria-expanded="false" aria-controls="a11y-sheet" aria-label="Accessibility settings (Alt + A)">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M4 7.5l8 1.5 8-1.5.4 2-6.4 1.4v3.6l2.4 7-1.9.7L12 16l-2.5 6.2-1.9-.7 2.4-7v-3.6L3.6 9.5z"/></svg>
+</button>
+
+<dialog class="sheet" id="a11y-sheet" aria-labelledby="sheet-title">
+  <div class="sheet-head">
+    <h2 id="sheet-title">Accessibility</h2>
+    <button type="button" class="icon-btn" id="a11y-close" aria-label="Close accessibility settings">✕</button>
+  </div>
+  <div class="sheet-body">
+    <p class="hint">Changes apply instantly and are saved on this device. Open this panel any time with <kbd>Alt</kbd> + <kbd>A</kbd>.</p>
+
+    <h3 id="h-prof">Quick profiles</h3>
+    <div class="profiles" id="profiles" role="group" aria-labelledby="h-prof"></div>
+
+    <h3 id="h-read">Read aloud</h3>
+    <div class="group" id="read-group" role="group" aria-labelledby="h-read">
+      <div class="play-row">
+        <button type="button" class="btn btn-primary" id="read-play">▶&nbsp;Read this page</button>
+        <button type="button" class="btn btn-soft" id="read-stop">Stop</button>
+      </div>
+      <div class="row"><span class="lbl" id="l-rate">Reading speed</span>
+        <div class="stepper" role="group" aria-labelledby="l-rate">
+          <button type="button" data-rate="-1" aria-label="Read slower">−</button>
+          <output id="rate-out" aria-live="polite">1×</output>
+          <button type="button" data-rate="1" aria-label="Read faster">+</button>
+        </div>
+      </div>
+      <div class="row"><span class="lbl"><span id="l-tapread">Read on tap &amp; focus</span><small id="d-tapread">Hear anything you tap, click or Tab to</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-tapread" aria-describedby="d-tapread" data-mode="tapread"></button></div>
+    </div>
+    <p class="hint" id="sw-voice-hint" lang="sw" hidden style="margin-top:8px">Kifaa hiki hakina sauti ya Kiswahili, kwa hivyo sauti iliyopo itatumika. Kwenye Android, unaweza kuongeza Kiswahili kwenye mipangilio ya "Text-to-speech".</p>
+    <p class="hint" id="read-unsupported" hidden>Read aloud isn't available in this browser. Try Chrome, Edge or Safari, or use your device's screen reader.</p>
+
+    <h3 id="h-text">Text</h3>
+    <div class="group" role="group" aria-labelledby="h-text">
+      <div class="row"><span class="lbl" id="ts-lbl">Text size</span>
+        <div class="stepper" role="group" aria-labelledby="ts-lbl">
+          <button type="button" data-size="-1" aria-label="Smaller text">A−</button>
+          <output id="size-out" aria-live="polite">100%</output>
+          <button type="button" data-size="1" aria-label="Larger text">A+</button>
+        </div>
+      </div>
+      <div class="row stack"><span class="lbl" id="l-font">Font</span>
+        <div class="seg" role="radiogroup" aria-labelledby="l-font">
+          <input type="radio" name="a-font" id="f-default" value="default"><label for="f-default">Standard</label>
+          <input type="radio" name="a-font" id="f-hyper" value="hyper"><label for="f-hyper">Easy-read</label>
+          <input type="radio" name="a-font" id="f-lexend" value="lexend"><label for="f-lexend">Dyslexia</label>
+        </div>
+      </div>
+      <div class="row"><span class="lbl"><span id="l-spacing">Text spacing</span><small id="d-spacing">More room between letters, words and lines</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-spacing" aria-describedby="d-spacing" data-mode="spacing"></button></div>
+      <div class="row"><span class="lbl"><span id="l-left">Align text left</span><small id="d-left">No centred paragraphs</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-left" aria-describedby="d-left" data-mode="left"></button></div>
+      <div class="row"><span class="lbl"><span id="l-links">Highlight links</span><small id="d-links">Underlined with a yellow background</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-links" aria-describedby="d-links" data-mode="links"></button></div>
+    </div>
+
+    <h3 id="h-colour">Colour &amp; contrast</h3>
+    <div class="group" role="group" aria-labelledby="h-colour">
+      <div class="row stack"><span class="lbl" id="l-theme">Appearance</span>
+        <div class="seg" role="radiogroup" aria-labelledby="l-theme">
+          <input type="radio" name="a-theme" id="t-light" value="light"><label for="t-light">☀︎ Light</label>
+          <input type="radio" name="a-theme" id="t-dark" value="dark"><label for="t-dark">☾ Dark</label>
+        </div>
+      </div>
+      <div class="row"><span class="lbl"><span id="l-contrast">Increase contrast</span><small id="d-contrast">Stronger text and outlines</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-contrast" aria-describedby="d-contrast" data-mode="contrast"></button></div>
+      <div class="row"><span class="lbl"><span id="l-lowsat">Soft colours</span><small id="d-lowsat">Turns down bright colours</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-lowsat" aria-describedby="d-lowsat" data-mode="lowsat"></button></div>
+      <div class="row"><span class="lbl"><span id="l-mono">Monochrome</span><small id="d-mono">Shows the page in black and white</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-mono" aria-describedby="d-mono" data-mode="mono"></button></div>
+    </div>
+
+    <h3 id="h-aids">Reading &amp; focus</h3>
+    <div class="group" role="group" aria-labelledby="h-aids">
+      <div class="row"><span class="lbl"><span id="l-guide">Reading guide</span><small id="d-guide">A line that follows your pointer</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-guide" aria-describedby="d-guide" data-mode="guide"></button></div>
+      <div class="row"><span class="lbl"><span id="l-mask">Reading mask</span><small id="d-mask">Dims everything except where you're reading</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-mask" aria-describedby="d-mask" data-mode="mask"></button></div>
+      <div class="row"><span class="lbl"><span id="l-noimg">Hide pictures</span><small id="d-noimg">Fewer distractions, faster on slow data</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-noimg" aria-describedby="d-noimg" data-mode="noimg"></button></div>
+      <div class="row"><span class="lbl"><span id="l-still">Stop animations</span><small id="d-still">Nothing moves or flashes</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-still" aria-describedby="d-still" data-mode="still"></button></div>
+    </div>
+
+    <h3 id="h-motor">Pointer &amp; keyboard</h3>
+    <div class="group" role="group" aria-labelledby="h-motor">
+      <div class="row"><span class="lbl" id="l-cursor">Big cursor</span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-cursor" data-mode="cursor"></button></div>
+      <div class="row"><span class="lbl"><span id="l-big">Bigger buttons</span><small id="d-big">Larger tap targets</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-big" aria-describedby="d-big" data-mode="big"></button></div>
+      <div class="row"><span class="lbl"><span id="l-focus">Strong focus outline</span><small id="d-focus">See exactly where you are when using Tab</small></span><button type="button" class="switch" role="switch" aria-checked="false" aria-labelledby="l-focus" aria-describedby="d-focus" data-mode="focus"></button></div>
+    </div>
+
+    <h3 id="h-jump">Jump to a section</h3>
+    <ul class="group jump" aria-labelledby="h-jump">
+      <li><a href="#hair">Hair accessories</a></li>
+      <li><a href="#sizes">Size guide</a></li>
+      <li><a href="#mama-mboga">The Mama Mboga collection</a></li>
+      <li><a href="#atelier">The atelier</a></li>
+      <li><a href="#why">Why tare.</a></li>
+      <li><a href="#order">How to order</a></li>
+      <li><a href="#accessibility">Accessibility</a></li>
+    </ul>
+
+    <h3 id="h-keys">Keyboard shortcuts</h3>
+    <dl class="group keys" aria-labelledby="h-keys">
+      <dt><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></dt><dd>Move forward / back</dd>
+      <dt><kbd>Enter</kbd> or <kbd>Space</kbd></dt><dd>Press a button or link</dd>
+      <dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Change colour or size</dd>
+      <dt><kbd>Alt</kbd>+<kbd>A</kbd></dt><dd>Open or close this panel</dd>
+      <dt><kbd>Alt</kbd>+<kbd>R</kbd></dt><dd>Read page aloud / pause</dd>
+      <dt><kbd>Alt</kbd>+<kbd>S</kbd></dt><dd>Stop reading</dd>
+      <dt><kbd>Esc</kbd></dt><dd>Close this panel</dd>
+    </dl>
+
+    <button type="button" class="btn btn-soft reset" id="a11y-reset">Reset all settings</button>
+    <p class="note">Already use a screen reader? This site is built to work with VoiceOver (iPhone, Mac), TalkBack (Android), NVDA and JAWS (Windows).</p>
+  </div>
+</dialog>
+
+<div class="rguide" aria-hidden="true"></div>
+<div class="rmask top" aria-hidden="true"></div>
+<div class="rmask bot" aria-hidden="true"></div>
+
+<div class="reader" id="reader" role="region" aria-label="Read aloud controls" hidden>
+  <span id="reader-status">Reading aloud</span>
+  <button type="button" id="reader-pause">Pause</button>
+  <button type="button" id="reader-stop" class="ghost">Stop</button>
+</div>
+
+<script>
+/* ================= LANGUAGE: English ⇄ Kiswahili =================
+   Keys are the English text exactly as it appears on the page. To fix a translation, edit the value. */
+const SW = {
+  // nav & hero
+  "Skip to main content":"Ruka hadi maudhui makuu",
+  "Collection":"Mkusanyiko", "Size guide":"Mwongozo wa saizi", "Why tare.":"Kwa nini tare.", "How to order":"Jinsi ya kuagiza",
+  "Accessibility":"Ufikivu", "Order":"Agiza", "Menu":"Menyu", "Close":"Funga",
+  "New from Nairobi 🎀":"Mpya kutoka Nairobi 🎀", "Soft hair days.":"Nywele laini kila siku.", "Bold colour ways.":"Rangi zinazong'aa.",
+  "Satin scrunchies and hair bonnets in colours you'll want to wear every single day.":"Scrunchies za satin na boneti za nywele, kwa rangi utakazotaka kuvaa kila siku.",
+  "Shop the collection":"Tazama mkusanyiko", "Order on WhatsApp":"Agiza kupitia WhatsApp",
+  "Illustration: scrunchies in tangerine, blush, lilac, champagne and cocoa, floating on a soft peach background":"Mchoro: scrunchies za rangi ya chungwa, waridi, zambarau, krimu na kahawia zikielea juu ya mandharinyuma laini ya rangi ya pichi",
+  // collection
+  "The collection":"Mkusanyiko", "Pick a colour.":"Chagua rangi.", "Pick a size. Done.":"Chagua saizi. Basi!",
+  "Every piece comes in Small, Medium and Large. Tap through the colours and sizes and we'll write your WhatsApp order for you.":"Kila bidhaa inapatikana kwa saizi Ndogo, Wastani na Kubwa. Gusa rangi na saizi, nasi tutakuandikia oda yako ya WhatsApp.",
+  "Colours shown are examples. Ask us what's in stock, or request a custom colour. Prices are in Kenyan shillings.":"Rangi zilizoonyeshwa ni mifano tu. Tuulize kilichopo, au omba rangi unayoipenda. Bei ziko kwa shilingi za Kenya.",
+  "Colour:":"Rangi:", "Size":"Saizi", "From":"Kuanzia", "on WhatsApp":"kupitia WhatsApp",
+  "Small":"Ndogo", "Medium":"Wastani", "Large":"Kubwa",
+  // products
+  "Plain Satin":"Satin ya Kawaida", "Organza":"Organza", "Double":"Double", "Double + Beads":"Double + Shanga", "Zipped":"Yenye Zipu", "Satin Bonnet":"Boneti ya Satin",
+  "Bestseller":"Inapendwa zaidi", "Light & airy":"Nyepesi na laini", "Two textures":"Vitambaa viwili", "Statement":"Ya kuvutia macho", "Secret pocket":"Mfuko wa siri", "Night routine":"Ya usiku",
+  "Smooth, soft and goes with everything.":"Laini, nyororo na inaendana na kila kitu.",
+  "Sheer and floaty, for a dreamy finish.":"Nyepesi na ya kupenya mwanga, kwa mwonekano wa ndoto.",
+  "Satin base wrapped in a layer of organza.":"Satin iliyofunikwa kwa tabaka la organza.",
+  "Our Double, finished with pearly beads.":"Double yetu, imepambwa kwa shanga za lulu.",
+  "A hidden zip pocket for the little things.":"Mfuko wa zipu uliofichwa kwa vitu vidogo.",
+  "Protects your hair while you sleep.":"Hulinda nywele zako unapolala.",
+  "Midnight":"Nyeusi", "Cocoa":"Kahawia", "Champagne":"Krimu", "Tangerine":"Chungwa", "Blush":"Waridi", "Lilac":"Zambarau", "Cloud":"Nyeupe", "Sky":"Samawati", "Butter":"Njano",
+  // size guide
+  "Which size is you?":"Saizi yako ni ipi?",
+  "Not sure? Send us a pic of your hair and we'll help you choose.":"Huna uhakika? Tutumie picha ya nywele zako tukusaidie kuchagua.",
+  "Sleek ponytails, fine or shorter hair, and wearing on your wrist.":"Ponytail laini, nywele nyembamba au fupi, na kuvaa mkononi.",
+  "The everyday one. Works for most hair types and a messy bun.":"Ya kila siku. Inafaa aina nyingi za nywele na bun ya haraka.",
+  "Thick, curly or natural hair, braids and big statement puffs.":"Nywele nene, za mawimbi au asili, misuko na puff kubwa.",
+  // why
+  "Little things.":"Vitu vidogo.", "Big difference.":"Tofauti kubwa.",
+  "Satin that's kind to your hair.":"Satin inayotunza nywele zako.",
+  "Smooth fabric means less tugging and less friction than a regular elastic, so your edges and curls stay happy.":"Kitambaa laini hakivuti wala kusugua nywele kama mpira wa kawaida, hivyo edges na curls zako zinabaki salama.",
+  "styles to mix and match.":"mitindo ya kuchanganya upendavyo.", "From plain satin to beaded doubles.":"Kutoka satin ya kawaida hadi Double zenye shanga.",
+  "Wake up with your style intact.":"Amka na mtindo wako ukiwa safi.",
+  "Our satin bonnets protect your hair overnight, so your silk press or braids last longer.":"Boneti zetu za satin hulinda nywele zako usiku kucha, hivyo silk press au misuko yako hudumu muda mrefu.",
+  "A secret pocket.":"Mfuko wa siri.",
+  "Zipped scrunchies hide a key, some cash or a lip balm. Hands free, night out.":"Scrunchies zenye zipu huficha ufunguo, pesa kidogo au lip balm. Mikono huru, usiku mzima.",
+  "Designed in Nairobi.":"Imebuniwa Nairobi.",
+  "Bags & apparel are coming soon.":"Mikoba na mavazi yanakuja hivi karibuni.",
+  "We're working on more.":"Tunaandaa mengi zaidi.", "Follow us on Instagram":"Tufuate Instagram", "to see it first.":"uwe wa kwanza kuona.",
+  // order
+  "Ordering takes a minute.":"Kuagiza ni dakika moja tu.",
+  "Text, voice note or form, whichever is easiest for you.":"Ujumbe, voice note au fomu: chochote kilicho rahisi kwako.",
+  "Choose":"Chagua", "Pick your style, colour and size from the collection.":"Chagua mtindo, rangi na saizi kutoka kwenye mkusanyiko.",
+  "Send":"Tuma", "Tap \"Order\" and your message is ready to go on WhatsApp. Or use the order form.":"Gusa \"Agiza\" na ujumbe wako uko tayari kutumwa WhatsApp. Au tumia fomu ya oda.",
+  "Receive":"Pokea", "We'll confirm your total and sort out delivery or pick-up with you.":"Tutathibitisha jumla ya bei na kupanga nawe usafirishaji au kuchukua mwenyewe.",
+  "Ways to reach us":"Njia za kuwasiliana nasi", "Fastest reply":"Jibu la haraka zaidi", "Order form":"Fomu ya oda",
+  // accessibility section
+  "A site for everyone.":"Tovuti ya kila mtu.",
+  "Make this page work the way you need it to. Your settings are saved on this device.":"Rekebisha ukurasa huu ufanye kazi unavyohitaji. Mipangilio yako huhifadhiwa kwenye kifaa hiki.",
+  "Open accessibility settings":"Fungua mipangilio ya ufikivu",
+  "Read aloud: hear the whole page, or tap any text to hear it":"Kusoma kwa sauti: sikiliza ukurasa mzima, au gusa maandishi yoyote uyasikie",
+  "One-tap profiles for low vision, screen reader users, dyslexia, motor needs, epilepsy, ADHD, older eyes and colour blindness":"Wasifu wa kugusa mara moja kwa uoni hafifu, watumiaji wa visoma skrini, dyslexia, mahitaji ya mwendo, kifafa, ADHD, macho ya wazee na upofu wa rangi",
+  "Works with VoiceOver, TalkBack, NVDA and JAWS":"Inafanya kazi na VoiceOver, TalkBack, NVDA na JAWS",
+  "Text size up to 200%, readable fonts and extra spacing":"Ukubwa wa maandishi hadi 200%, fonti zinazosomeka kwa urahisi na nafasi zaidi",
+  "Dark mode, increased contrast, soft colours and monochrome":"Hali ya giza, utofautishaji zaidi, rangi laini na nyeusi-na-nyeupe",
+  "Reading guide, reading mask, big cursor and bigger buttons":"Mstari wa kusomea, kifuniko cha kusomea, kishale kikubwa na vitufe vikubwa",
+  "Fully usable by keyboard, with shortcuts and no flashing content":"Inatumika kikamilifu kwa kibodi, ina njia za mkato na hakuna kinachomweka",
+  "Spot a problem?":"Umeona tatizo?", "Tell us on WhatsApp":"Tuambie kwa WhatsApp",
+  "tare. atelier · Designed in Nairobi, Kenya":"tare. atelier · Imebuniwa Nairobi, Kenya", "Social media":"Mitandao ya kijamii",
+  // accessibility panel
+  "Accessibility settings (Alt + A)":"Mipangilio ya ufikivu (Alt + A)", "Close accessibility settings":"Funga mipangilio ya ufikivu",
+  "Changes apply instantly and are saved on this device. Open this panel any time with":"Mabadiliko yanatumika papo hapo na kuhifadhiwa kwenye kifaa hiki. Fungua paneli hii wakati wowote kwa",
+  "Quick profiles":"Wasifu wa haraka", "Read aloud":"Kusoma kwa sauti", "▶ Read this page":"▶ Soma ukurasa huu", "Stop":"Simamisha",
+  "Reading speed":"Kasi ya kusoma", "Read slower":"Soma polepole", "Read faster":"Soma haraka",
+  "Read on tap & focus":"Soma ninapogusa au kuchagua", "Hear anything you tap, click or Tab to":"Sikia chochote unachogusa, kubofya au kufikia kwa Tab",
+  "Read aloud isn't available in this browser. Try Chrome, Edge or Safari, or use your device's screen reader.":"Kusoma kwa sauti hakupatikani kwenye kivinjari hiki. Jaribu Chrome, Edge au Safari, au tumia kisoma skrini cha kifaa chako.",
+  "Text":"Maandishi", "Text size":"Ukubwa wa maandishi", "Smaller text":"Maandishi madogo", "Larger text":"Maandishi makubwa",
+  "Font":"Fonti", "Standard":"Kawaida", "Easy-read":"Rahisi kusoma", "Dyslexia":"Dyslexia",
+  "Text spacing":"Nafasi ya maandishi", "More room between letters, words and lines":"Nafasi zaidi kati ya herufi, maneno na mistari",
+  "Align text left":"Panga maandishi kushoto", "No centred paragraphs":"Hakuna aya zilizo katikati",
+  "Highlight links":"Angazia viungo", "Underlined with a yellow background":"Vimepigiwa mstari na kuwekwa rangi ya njano",
+  "Colour & contrast":"Rangi na utofautishaji", "Appearance":"Mwonekano", "☀︎ Light":"☀︎ Mwanga", "☾ Dark":"☾ Giza",
+  "Increase contrast":"Ongeza utofautishaji", "Stronger text and outlines":"Maandishi na mipaka iliyokolea zaidi",
+  "Soft colours":"Rangi laini", "Turns down bright colours":"Hupunguza rangi kali",
+  "Monochrome":"Nyeusi na nyeupe", "Shows the page in black and white":"Huonyesha ukurasa kwa rangi nyeusi na nyeupe",
+  "Reading & focus":"Kusoma na umakini",
+  "Reading guide":"Mstari wa kusomea", "A line that follows your pointer":"Mstari unaofuata kishale chako",
+  "Reading mask":"Kifuniko cha kusomea", "Dims everything except where you're reading":"Hufifisha kila kitu isipokuwa unaposoma",
+  "Hide pictures":"Ficha picha", "Fewer distractions, faster on slow data":"Usumbufu mdogo, haraka zaidi kwenye data hafifu",
+  "Stop animations":"Simamisha uhuishaji", "Nothing moves or flashes":"Hakuna kinachosonga wala kumweka",
+  "Pointer & keyboard":"Kishale na kibodi", "Big cursor":"Kishale kikubwa",
+  "Bigger buttons":"Vitufe vikubwa", "Larger tap targets":"Sehemu kubwa zaidi za kugusa",
+  "Strong focus outline":"Mpaka wa umakini uliokolea", "See exactly where you are when using Tab":"Ona hasa ulipo unapotumia Tab",
+  "Jump to a section":"Ruka hadi sehemu", "Keyboard shortcuts":"Njia za mkato za kibodi",
+  "Move forward / back":"Songa mbele / nyuma", "or":"au", "Press a button or link":"Bonyeza kitufe au kiungo",
+  "Change colour or size":"Badilisha rangi au saizi", "Open or close this panel":"Fungua au funga paneli hii",
+  "Read page aloud / pause":"Soma ukurasa kwa sauti / sitisha", "Stop reading":"Acha kusoma", "Close this panel":"Funga paneli hii",
+  "Reset all settings":"Rejesha mipangilio yote",
+  "Already use a screen reader? This site is built to work with VoiceOver (iPhone, Mac), TalkBack (Android), NVDA and JAWS (Windows).":"Tayari unatumia kisoma skrini? Tovuti hii imejengwa kufanya kazi na VoiceOver (iPhone, Mac), TalkBack (Android), NVDA na JAWS (Windows).",
+  // profiles
+  "Low vision":"Uoni hafifu", "Bigger text, stronger contrast":"Maandishi makubwa, utofautishaji zaidi",
+  "Screen reader":"Kisoma skrini", "Reads aloud as you tap or Tab":"Husoma kwa sauti unapogusa au kutumia Tab",
+  "Readable font, more spacing":"Fonti rahisi, nafasi zaidi",
+  "Motor":"Mwendo", "Bigger buttons, clear focus":"Vitufe vikubwa, umakini wazi",
+  "Seizure safe":"Salama kwa kifafa", "No motion, softer colours":"Hakuna mwendo, rangi laini",
+  "ADHD & focus":"ADHD na umakini", "Fewer distractions":"Usumbufu mdogo",
+  "Older eyes":"Macho ya wazee", "Larger text and buttons":"Maandishi na vitufe vikubwa",
+  "Colour blind":"Upofu wa rangi", "Clear links, more contrast":"Viungo wazi, utofautishaji zaidi",
+  // ---- product range (photos, descriptions) ----
+  "Hair":"Nywele", "Hair accessories":"Mapambo ya nywele",
+  "Everyday pieces.":"Vitu vya kila siku.", "Bold Nairobi stories.":"Hadithi kali za Nairobi.",
+  "Satin scrunchies for soft hair days, plus the Mama Mboga tee and tote celebrating the city we love.":"Scrunchies za satin kwa nywele laini kila siku, pamoja na tee na tote ya Mama Mboga zinazosherehekea jiji tunalolipenda.",
+  "Shop hair accessories":"Nunua mapambo ya nywele", "Explore Mama Mboga":"Gundua Mama Mboga",
+  "Every scrunchie comes in Small, Medium and Large. Tap through the options and we'll write your WhatsApp order for you.":"Kila scrunchie inapatikana kwa saizi Ndogo, Wastani na Kubwa. Gusa chaguo zako, nasi tutakuandikia oda yako ya WhatsApp.",
+  "The Mama Mboga collection":"Mkusanyiko wa Mama Mboga", "Celebrating everyday stories.":"Tunasherehekea hadithi za kila siku.",
+  "Art inspired by Nairobi's markets, matatus and the everyday heroes who keep our city moving, printed on pieces you'll use every day.":"Sanaa iliyochochewa na masoko ya Nairobi, matatu na mashujaa wa kila siku wanaoendesha jiji letu, imechapishwa kwenye vitu utakavyotumia kila siku.",
+  "Your design, printed.":"Muundo wako, umechapishwa.",
+  "Custom printing is available on tees and totes: full-colour prints of your art, your words or your brand.":"Tunachapisha miundo maalum kwenye tee na tote: picha za rangi kamili za sanaa yako, maneno yako au chapa yako.",
+  "Start a custom order":"Anza oda maalum",
+  "scrunchie styles to mix and match.":"mitindo ya scrunchie ya kuchanganya upendavyo.",
+  "From everyday satin to cowrie-shell statement pieces.":"Kutoka satin ya kila siku hadi vipande vya kipekee vyenye kauri.",
+  "Zipped scrunchies carry cash, keys, lip gloss or earbuds. Hands free, all day.":"Scrunchies zenye zipu hubeba pesa, funguo, lip gloss au earbuds. Mikono huru, siku nzima.",
+  "Everyday Kenyan stories.":"Hadithi za kila siku za Kenya.",
+  "From cowrie shells to Mama Mboga's market stall, our pieces celebrate the people and culture around us.":"Kutoka kauri hadi kibanda cha Mama Mboga sokoni, vitu vyetu vinasherehekea watu na utamaduni unaotuzunguka.",
+  "for new drops.":"upate bidhaa mpya kwanza.",
+  // product names & taglines
+  "Satin + Organza":"Satin + Organza", "Statement Scrunchie":"Scrunchie ya Kipekee", "Zipped Scrunchie":"Scrunchie yenye Zipu",
+  "Mama Mboga Tee":"Tee ya Mama Mboga", "Mama Mboga Tote":"Tote ya Mama Mboga",
+  "Everyday essential":"Muhimu kila siku", "Light & playful":"Nyepesi na ya kuchangamsha", "Soft glam":"Urembo laini",
+  "Statement piece":"Ya kipekee", "Multifunctional":"Matumizi mengi", "Statement pieces":"Vipande vya kipekee", "Everyday tote":"Tote ya kila siku",
+  // product descriptions
+  "Smooth, soft and effortlessly stylish. Our classic satin scrunchies add a touch of elegance to your everyday hairstyles while keeping your hair looking beautifully put together. Simple, timeless and available in vibrant colours.":
+    "Laini, nyororo na maridadi bila juhudi. Scrunchies zetu za satin huongeza urembo kwenye mitindo yako ya kila siku huku nywele zako zikibaki nadhifu. Rahisi, hazipitwi na wakati, na zinapatikana kwa rangi angavu.",
+  "Light, airy and beautifully voluminous. The organza scrunchie adds a soft, dreamy touch to ponytails, buns and half-up hairstyles. For days when your hair deserves a little extra attention.":
+    "Nyepesi, yenye hewa na ujazo mzuri. Scrunchie ya organza huongeza mguso laini wa ndoto kwenye ponytail, bun na mitindo ya nusu-juu. Kwa siku ambazo nywele zako zinastahili kupendwa zaidi kidogo.",
+  "A little satin, a little sheer magic! This combination brings together the smooth finish of satin and the delicate beauty of organza for a voluminous, feminine statement. Perfect for elevating even the simplest outfit.":
+    "Satin kidogo, uchawi wa organza kidogo! Mchanganyiko huu unaleta pamoja ulaini wa satin na urembo mwororo wa organza kwa mwonekano wa kike uliojaa. Bora kwa kupandisha hadhi hata vazi rahisi zaidi.",
+  "For the girlies who love a little extra! Combining satin, organza and decorative beads or cowrie shells, this scrunchie is designed to stand out. A playful blend of texture, detail and personality.":
+    "Kwa wasichana wanaopenda kung'aa zaidi! Ikichanganya satin, organza na shanga za mapambo au kauri, scrunchie hii imebuniwa kujitokeza. Mchanganyiko wa kufurahisha wa umbile, urembo na haiba.",
+  "Who said a scrunchie is just for your hair? This clever accessory doubles as a mini storage pouch with a discreet zipper for carrying small essentials such as cash, keys, lip gloss and earbuds. Wear it in your hair or keep it handy for when you need it. Cute, convenient and functional!":
+    "Nani alisema scrunchie ni ya nywele tu? Pambo hili la kijanja pia ni kimfuko kidogo chenye zipu iliyofichwa, cha kubeba vitu vidogo muhimu kama pesa, funguo, lip gloss na earbuds. Ivae kwenye nywele au uiweke karibu kwa wakati utakapoihitaji. Nzuri, rahisi na yenye manufaa!",
+  "Satin bonnets that protect your hair while you sleep, so your style lasts longer.":"Boneti za satin zinazolinda nywele zako unapolala, ili mtindo wako udumu zaidi.",
+  "Inspired by Nairobi's vibrant streets, markets and everyday people, the Mama Mboga pieces bring Kenyan culture to fashion through a colourful illustrated graphic. It celebrates the people, hustle and beauty of ordinary everyday life.":
+    "Ikichochewa na mitaa yenye uhai ya Nairobi, masoko na watu wa kawaida, vipande vya Mama Mboga vinaleta utamaduni wa Kenya kwenye mitindo kupitia mchoro wa rangi. Vinasherehekea watu, hustle na uzuri wa maisha ya kila siku.",
+  "Inspired by the vibrant energy of Nairobi's local markets, the Mama Mboga tote captures everyday life through art: colourful fresh produce, familiar matatus, market vendors and busy streets. More than just a bag, it's a wearable celebration of Kenyan culture, creativity and the everyday heroes in our communities.":
+    "Ikichochewa na nguvu ya masoko ya Nairobi, tote ya Mama Mboga inanasa maisha ya kila siku kupitia sanaa: mboga mbichi za rangi, matatu tunazozijua, wauzaji sokoni na mitaa yenye shughuli. Zaidi ya mkoba tu, ni sherehe ya utamaduni wa Kenya, ubunifu na mashujaa wa kila siku katika jamii zetu.",
+  // features
+  "Premium cotton, soft and durable":"Pamba bora, laini na imara", "Relaxed, comfortable fit":"Inakaa vizuri na ni ya starehe",
+  "Minimalist front branding":"Nembo ndogo mbele", "Available in different colours and sizes":"Inapatikana kwa rangi na saizi tofauti",
+  "Artistic, full-colour DTF graphic":"Mchoro wa kisanii wa DTF wenye rangi kamili", "Spacious everyday tote design":"Muundo mpana wa kila siku",
+  "For shopping, campus, work and casual outings":"Kwa shopping, campus, kazini na matembezi", "Reusable and versatile":"Inatumika tena na tena, kwa njia nyingi",
+  // options
+  "Finish":"Mapambo", "Pearls & beads":"Lulu na shanga", "Cowrie shells":"Kauri", "Mix of both":"Mchanganyiko",
+  "Extra large":"Kubwa sana", "Extra extra large":"Kubwa sana zaidi",
+  "Price on request":"Bei: tuulize", "Ask about price":"Uliza bei",
+  "White shown. Ask us about other colours.":"Nyeupe imeonyeshwa. Tuulize kuhusu rangi nyingine.",
+  "Black":"Nyeusi", "Caramel":"Karameli", "Cream":"Krimu", "Gold":"Dhahabu", "Coral":"Matumbawe", "Silver":"Fedha", "Wine":"Divai",
+  "Emerald":"Zumaridi", "Burgundy":"Maruni", "White":"Nyeupe",
+  // photo descriptions (alt text)
+  "A canvas tote bag with the Mama Mboga market illustration, hanging on a rattan chair":"Mkoba wa turubai wenye mchoro wa soko la Mama Mboga, ukining'inia kwenye kiti cha rattan",
+  "Black, cocoa, caramel and cream satin scrunchies":"Scrunchies za satin rangi nyeusi, kahawia, karameli na krimu",
+  "A sheer gold organza scrunchie on silver satin":"Scrunchie ya organza ya dhahabu inayopenyeza mwanga, juu ya satin ya fedha",
+  "A burgundy zipped scrunchie with cowrie shells and beads, holding cash, lip gloss, earbuds and tare. keys":"Scrunchie ya maruni yenye zipu, kauri na shanga, ikiwa na pesa, lip gloss, earbuds na funguo za tare.",
+  "Four satin and organza scrunchies in coral, silver, wine and butter yellow":"Scrunchies nne za satin na organza: matumbawe, fedha, divai na njano",
+  "A black satin scrunchie decorated with cowrie shells, pearls and gold beads":"Scrunchie nyeusi ya satin iliyopambwa kwa kauri, lulu na shanga za dhahabu",
+  "An emerald satin scrunchie with its zip open, holding cash, lip gloss, keys and earbuds":"Scrunchie ya satin ya zumaridi, zipu ikiwa wazi, ikiwa na pesa, lip gloss, funguo na earbuds",
+  "A white t-shirt printed with a colourful illustration of a Nairobi market: a mama mboga stall, a matatu and shoppers":"Tisheti nyeupe yenye mchoro wa rangi wa soko la Nairobi: kibanda cha mama mboga, matatu na wanunuzi",
+  // ---- atelier ----
+  "Atelier":"Atelier", "The atelier":"Atelier yetu", "Heritage, re-tailored.":"Urithi, umeshonwa upya.",
+  "Contemporary, gender-neutral design pieces that celebrate cultural identity, inclusivity and cross-cultural exchange.":"Mavazi ya kisasa yasiyobagua jinsia, yanayosherehekea utambulisho wa kitamaduni, ujumuishi na mabadilishano ya tamaduni.",
+  "Enquire":"Uliza zaidi", "View":"Mwonekano", "Front":"Mbele", "Back":"Nyuma", "Photo coming soon":"Picha inakuja hivi karibuni",
+  "Kikoi Corset Look":"Mtindo wa Korseti ya Kikoi", "Kenya × Bavaria":"Kenya × Bavaria",
+  "A structured kikoi corset paired with a bishop-sleeve blouse and flowing linen trousers, blending Kenyan heritage with Bavarian-inspired craftsmanship. The look celebrates cultural identity, inclusivity and cross-cultural exchange through contemporary, gender-neutral tailoring.":
+    "Korseti ya kikoi iliyoundwa imara, ikiambatana na blauzi ya mikono mipana na suruali ya kitani inayopepea, ikichanganya urithi wa Kenya na ufundi uliochochewa na Bavaria. Mtindo huu unasherehekea utambulisho wa kitamaduni, ujumuishi na mabadilishano ya tamaduni kupitia ushonaji wa kisasa usiobagua jinsia.",
+  "Structured kikoi corset":"Korseti ya kikoi iliyoundwa imara", "Bishop-sleeve blouse":"Blauzi ya mikono mipana",
+  "Flowing linen trousers":"Suruali ya kitani inayopepea", "Gender-neutral tailoring":"Ushonaji usiobagua jinsia",
+  "A mannequin wearing a blue-striped kikoi corset over a white bishop-sleeve blouse, with wide cream linen trousers embroidered with deer":
+    "Sanamu ya maonyesho iliyovaa korseti ya kikoi yenye mistari ya bluu juu ya blauzi nyeupe ya mikono mipana, na suruali pana ya kitani ya krimu iliyonakshiwa kwa kulungu",
+  "Guardian Cloak":"Joho la Mlinzi", "Protection":"Ulinzi",
+  "A cropped cloak with a balaclava that signifies protection, finished with the symbol of the cherubim and seraphim on the chest.":
+    "Joho fupi lenye balaclava inayoashiria ulinzi, likiwa na alama ya makerubi na maserafi kifuani.",
+  "Cropped cloak":"Joho fupi", "Hooded balaclava":"Balaclava yenye kofia", "Cherubim and seraphim chest symbol":"Alama ya makerubi na maserafi kifuani",
+  "Illustration of a figure in an olive hooded balaclava and cropped cloak, with a gold wing symbol on the chest":
+    "Mchoro wa mtu aliyevaa balaclava yenye kofia ya rangi ya mzeituni na joho fupi, akiwa na alama ya bawa la dhahabu kifuani",
+  "Sherehe Look":"Mtindo wa Sherehe", "Festival & sherehe":"Tamasha na sherehe",
+  "Celebrates the joy of gathering during festivals and sherehe. It fuses modern Gen-Z tailoring with woven kikoi heritage, symbolising transformation, music and unity: a bold expression of culture meeting the future.":
+    "Unasherehekea furaha ya kukutana wakati wa matamasha na sherehe. Unachanganya ushonaji wa kisasa wa Gen-Z na urithi wa kikoi kilichofumwa, ukiashiria mabadiliko, muziki na umoja: usemi shupavu wa utamaduni ukikutana na siku zijazo.",
+  "Modern Gen-Z tailoring":"Ushonaji wa kisasa wa Gen-Z", "Printed short-sleeve shirt":"Shati yenye michoro, mikono mifupi",
+  "Wide-leg cream trousers":"Suruali pana ya krimu", "Woven kikoi pocket details":"Mifuko yenye vipande vya kikoi kilichofumwa",
+  "A model in a navy printed short-sleeve shirt and wide-leg cream trousers, seen from the front":"Mwanamitindo aliyevaa shati ya bluu iliyokolea yenye michoro na suruali pana ya krimu, akionekana kwa mbele",
+  "The Sherehe Look from the back, showing kikoi-print flaps on the trouser pockets":"Mtindo wa Sherehe kwa nyuma, ukionyesha vipande vya kikoi kwenye mifuko ya suruali",
+  "Shuka Apron Look":"Mtindo wa Aproni ya Shuka", "Maasai × Bavaria":"Maasai × Bavaria",
+  "A flowing Bavarian-inspired shirt with Maasai beadwork detailing, wide-leg shorts with Bavarian embroidery at the hem, and an apron vest made from Maasai shuka. Styled with a Maasai-beaded leather bag, beaded sandals and beaded bracelets from Maasai culture.":
+    "Shati inayopepea iliyochochewa na Bavaria yenye urembo wa shanga za Kimaasai, kaptura pana zenye nakshi za Bavaria pindoni, na vesti ya aproni iliyotengenezwa kwa shuka ya Kimaasai. Imeambatana na mkoba wa ngozi uliopambwa kwa shanga za Kimaasai, viatu vya shanga na bangili za shanga kutoka utamaduni wa Kimaasai.",
+  "Bavarian-inspired shirt with Maasai beadwork":"Shati ya mtindo wa Bavaria yenye shanga za Kimaasai",
+  "Wide-leg shorts with Bavarian hem embroidery":"Kaptura pana zenye nakshi za Bavaria pindoni",
+  "Maasai shuka apron vest":"Vesti ya aproni ya shuka ya Kimaasai",
+  "Beaded leather bag, sandals and bracelets":"Mkoba wa ngozi, viatu na bangili za shanga",
+  "A mannequin wearing a red and blue Maasai shuka apron vest over a cream balloon-sleeve shirt with beaded trim, embroidered cream shorts, a beaded belt, bracelets and beaded sandals":
+    "Sanamu ya maonyesho iliyovaa vesti ya aproni ya shuka nyekundu na bluu juu ya shati ya krimu yenye mikono mipana na urembo wa shanga, kaptura ya krimu yenye nakshi, mshipi wa shanga, bangili na viatu vya shanga",
+  // read-aloud player & spoken words
+  "Read aloud controls":"Vidhibiti vya kusoma kwa sauti", "Reading aloud":"Inasoma kwa sauti",
+  "Pause":"Sitisha", "Resume":"Endelea", "Paused":"Imesitishwa",
+  ", on":", imewashwa", ", off":", imezimwa", ", selected":", imechaguliwa", ", link":", kiungo", ", button":", kitufe",
+};
+let LANG="en";
+try{ LANG=localStorage.getItem("tare-lang")||(((navigator.language||"").toLowerCase().startsWith("sw"))?"sw":"en"); }catch(e){}
+const t=en=>(LANG==="sw" && SW[en]!==undefined)?SW[en]:en;
+
+/* Swaps every fixed piece of page text (and aria-label/title) between English and Kiswahili. */
+const ORIG=new WeakMap();
+function translateStatic(){
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{ acceptNode:n=>n.parentElement&&n.parentElement.closest("script,style,svg")?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT });
+  let n;
+  while((n=walker.nextNode())){
+    let en=ORIG.get(n);
+    if(en===undefined){ if(SW[n.nodeValue.trim()]===undefined) continue; en=n.nodeValue; ORIG.set(n,en); }
+    const lead=en.match(/^\s*/)[0], trail=en.match(/\s*$/)[0];
+    n.nodeValue=LANG==="sw"?lead+SW[en.trim()]+trail:en;
+  }
+  for(const a of ["aria-label","title","alt"]) document.querySelectorAll(`[${a}]`).forEach(el=>{
+    let en=el.getAttribute("data-en-"+a);
+    if(en===null){ const v=el.getAttribute(a); if(SW[v]===undefined) return; en=v; el.setAttribute("data-en-"+a,en); }
+    el.setAttribute(a,LANG==="sw"?SW[en]:en);
+  });
+}
+
+/* ================= PRODUCTS: edit names, photos, colours and prices here =================
+   prices: [Small, Medium, Large] in KES, price: one flat price for every size, or neither to show "Price on request". */
+const WA = "254793598988";
+const C = { black:["Black","#1d1d1f"], cocoa:["Cocoa","#6b3a1e"], caramel:["Caramel","#a8692b"], cream:["Cream","#f3ead8"], gold:["Gold","#e3cf8f"],
+            coral:["Coral","#e8545e"], silver:["Silver","#c8c8c4"], wine:["Wine","#5e1220"], butter:["Butter","#f6e58d"],
+            emerald:["Emerald","#0f6b5c"], burgundy:["Burgundy","#6e0f1d"], white:["White","#ffffff"], tangerine:["Tangerine","#ff5a1f"] };
+const HAIR = ["S","M","L"];
+const products = [
+  { id:"plain", group:"hair", name:"Plain Satin", tag:"Everyday essential", prices:[100,150,200], sizes:HAIR,
+    desc:"Smooth, soft and effortlessly stylish. Our classic satin scrunchies add a touch of elegance to your everyday hairstyles while keeping your hair looking beautifully put together. Simple, timeless and available in vibrant colours.",
+    colors:["black","cocoa","caramel","cream"], img:"assets/plain-satin.jpg", alt:"Black, cocoa, caramel and cream satin scrunchies" },
+  { id:"organza", group:"hair", name:"Organza", tag:"Light & playful", prices:[50,100,150], sizes:HAIR,
+    desc:"Light, airy and beautifully voluminous. The organza scrunchie adds a soft, dreamy touch to ponytails, buns and half-up hairstyles. For days when your hair deserves a little extra attention.",
+    colors:["gold"], img:"assets/organza.jpg", alt:"A sheer gold organza scrunchie on silver satin" },
+  { id:"double", group:"hair", name:"Satin + Organza", tag:"Soft glam", prices:[130,260,280], sizes:HAIR,
+    desc:"A little satin, a little sheer magic! This combination brings together the smooth finish of satin and the delicate beauty of organza for a voluminous, feminine statement. Perfect for elevating even the simplest outfit.",
+    colors:["coral","silver","wine","butter"], img:"assets/satin-organza.jpg", alt:"Four satin and organza scrunchies in coral, silver, wine and butter yellow" },
+  { id:"statement", group:"hair", name:"Statement Scrunchie", tag:"Statement piece", prices:[180,310,350], sizes:HAIR,
+    desc:"For the girlies who love a little extra! Combining satin, organza and decorative beads or cowrie shells, this scrunchie is designed to stand out. A playful blend of texture, detail and personality.",
+    colors:["black"], finish:["Pearls & beads","Cowrie shells","Mix of both"], img:"assets/statement.webp", alt:"A black satin scrunchie decorated with cowrie shells, pearls and gold beads" },
+  { id:"zipped", group:"hair", name:"Zipped Scrunchie", tag:"Multifunctional", prices:[120,320,360], sizes:HAIR, layout:"wide",
+    desc:"Who said a scrunchie is just for your hair? This clever accessory doubles as a mini storage pouch with a discreet zipper for carrying small essentials such as cash, keys, lip gloss and earbuds. Wear it in your hair or keep it handy for when you need it. Cute, convenient and functional!",
+    colors:["emerald","burgundy"],
+    imgs:{ emerald:"assets/zipped-emerald.webp", burgundy:"assets/zipped-burgundy.webp" },
+    alts:{ emerald:"An emerald satin scrunchie with its zip open, holding cash, lip gloss, keys and earbuds",
+           burgundy:"A burgundy zipped scrunchie with cowrie shells and beads, holding cash, lip gloss, earbuds and tare. keys" } },
+  { id:"bonnet", group:"hair", name:"Satin Bonnet", tag:"Night routine", prices:[450,600,800], sizes:HAIR, layout:"full",
+    desc:"Satin bonnets that protect your hair while you sleep, so your style lasts longer.",
+    colors:["tangerine","black","cocoa","cream"], kind:"bonnet", art:true },   // no photo yet: shows a drawing
+  { id:"tee", group:"art", name:"Mama Mboga Tee", tag:"Statement pieces", price:1200, sizes:["S","M","L","XL","XXL"],
+    desc:"Inspired by Nairobi's vibrant streets, markets and everyday people, the Mama Mboga pieces bring Kenyan culture to fashion through a colourful illustrated graphic. It celebrates the people, hustle and beauty of ordinary everyday life.",
+    features:["Premium cotton, soft and durable","Relaxed, comfortable fit","Minimalist front branding","Available in different colours and sizes"],
+    colors:["white"], colorNote:"White shown. Ask us about other colours.",
+    img:"assets/mama-mboga-tee.webp", imgStyle:"object-position:0 50%;transform:scale(1.2);transform-origin:0 50%",
+    alt:"A white t-shirt printed with a colourful illustration of a Nairobi market: a mama mboga stall, a matatu and shoppers" },
+  { id:"tote", group:"art", name:"Mama Mboga Tote", tag:"Everyday tote", price:800,
+    desc:"Inspired by the vibrant energy of Nairobi's local markets, the Mama Mboga tote captures everyday life through art: colourful fresh produce, familiar matatus, market vendors and busy streets. More than just a bag, it's a wearable celebration of Kenyan culture, creativity and the everyday heroes in our communities.",
+    features:["Artistic, full-colour DTF graphic","Spacious everyday tote design","For shopping, campus, work and casual outings","Reusable and versatile"],
+    img:"assets/mama-mboga-tote.webp", imgStyle:"object-position:60% 50%",
+    alt:"A canvas tote bag with the Mama Mboga market illustration, hanging on a rattan chair" },
+];
+/* Atelier design pieces: enquiry only. "views" adds a Front/Back photo switch. */
+products.push(
+  { id:"kikoi-corset", group:"atelier", name:"Kikoi Corset Look", tag:"Kenya × Bavaria", prices:null, enquire:true,
+    desc:"A structured kikoi corset paired with a bishop-sleeve blouse and flowing linen trousers, blending Kenyan heritage with Bavarian-inspired craftsmanship. The look celebrates cultural identity, inclusivity and cross-cultural exchange through contemporary, gender-neutral tailoring.",
+    features:["Structured kikoi corset","Bishop-sleeve blouse","Flowing linen trousers","Gender-neutral tailoring"],
+    img:"assets/kikoi-corset-look.jpg",
+    alt:"A mannequin wearing a blue-striped kikoi corset over a white bishop-sleeve blouse, with wide cream linen trousers embroidered with deer" },
+  { id:"guardian-cloak", group:"atelier", name:"Guardian Cloak", tag:"Protection", prices:null, enquire:true,
+    desc:"A cropped cloak with a balaclava that signifies protection, finished with the symbol of the cherubim and seraphim on the chest.",
+    features:["Cropped cloak","Hooded balaclava","Cherubim and seraphim chest symbol"],
+    img:"assets/guardian-cloak.jpg",
+    alt:"Illustration of a figure in an olive hooded balaclava and cropped cloak, with a gold wing symbol on the chest" },
+  { id:"sherehe", group:"atelier", name:"Sherehe Look", tag:"Festival & sherehe", prices:null, enquire:true,
+    desc:"Celebrates the joy of gathering during festivals and sherehe. It fuses modern Gen-Z tailoring with woven kikoi heritage, symbolising transformation, music and unity: a bold expression of culture meeting the future.",
+    features:["Modern Gen-Z tailoring","Printed short-sleeve shirt","Wide-leg cream trousers","Woven kikoi pocket details"],
+    views:[ { label:"Front", img:"assets/sherehe-front.jpg", alt:"A model in a navy printed short-sleeve shirt and wide-leg cream trousers, seen from the front" },
+            { label:"Back",  img:"assets/sherehe-back.jpg",  alt:"The Sherehe Look from the back, showing kikoi-print flaps on the trouser pockets" } ],
+    imgStyle:"object-fit:contain;background:linear-gradient(#7c7c7a,#757573 50%,#91918f)" },
+  { id:"shuka-apron", group:"atelier", name:"Shuka Apron Look", tag:"Maasai × Bavaria", prices:null, enquire:true,
+    desc:"A flowing Bavarian-inspired shirt with Maasai beadwork detailing, wide-leg shorts with Bavarian embroidery at the hem, and an apron vest made from Maasai shuka. Styled with a Maasai-beaded leather bag, beaded sandals and beaded bracelets from Maasai culture.",
+    features:["Bavarian-inspired shirt with Maasai beadwork","Wide-leg shorts with Bavarian hem embroidery","Maasai shuka apron vest","Beaded leather bag, sandals and bracelets"],
+    img:"assets/shuka-apron-look.webp",
+    alt:"A mannequin wearing a red and blue Maasai shuka apron vest over a cream balloon-sleeve shirt with beaded trim, embroidered cream shorts, a beaded belt, bracelets and beaded sandals" },
+);
+const SIZE_NAME = { S:"Small", M:"Medium", L:"Large", XL:"Extra large", XXL:"Extra extra large" };
+const ksh = n => "KES " + n.toLocaleString("en-KE");
+
+/* ================= Illustrations ================= */
+let gid = 0;
+function shade(hex, amt){ // amt -1..1 : darken / lighten
+  const n=parseInt(hex.slice(1),16); let r=n>>16, g=n>>8&255, b=n&255;
+  const t=amt<0?0:255, p=Math.abs(amt);
+  r=Math.round((t-r)*p+r); g=Math.round((t-g)*p+g); b=Math.round((t-b)*p+b);
+  return "#"+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
+}
+function ringPath(cx,cy,R,r,k,a){
+  const N=240, outer=[], inner=[];
+  for(let i=0;i<=N;i++){ const t=i/N*Math.PI*2;
+    const ro=R+a*Math.sin(k*t), ri=r+a*.55*Math.sin(k*t+Math.PI);
+    outer.push(`${(cx+ro*Math.cos(t)).toFixed(1)},${(cy+ro*Math.sin(t)).toFixed(1)}`);
+    inner.push(`${(cx+ri*Math.cos(-t)).toFixed(1)},${(cy+ri*Math.sin(-t)).toFixed(1)}`); }
+  return `M${outer.join("L")}Z M${inner.join("L")}Z`;
+}
+function scrunchie(cx,cy,R,color,{sheer=false,k=24}={}){
+  const id="g"+(++gid), r=R*.42, a=R*.045;
+  let s=`<defs><radialGradient id="${id}" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="${shade(color,.55)}"/><stop offset=".45" stop-color="${color}"/><stop offset="1" stop-color="${shade(color,-.35)}"/></radialGradient></defs>`;
+  s+=`<path d="${ringPath(cx,cy,R,r,k,a)}" fill="url(#${id})" fill-rule="evenodd" ${sheer?'opacity=".62"':''} stroke="${shade(color,-.2)}" stroke-opacity=".25"/>`;
+  for(let j=0;j<k;j++){ const t=(1.5*Math.PI+2*Math.PI*j)/k;
+    s+=`<path d="M${(cx+(r+a)*Math.cos(t)).toFixed(1)},${(cy+(r+a)*Math.sin(t)).toFixed(1)} L${(cx+(R-a*1.4)*Math.cos(t)).toFixed(1)},${(cy+(R-a*1.4)*Math.sin(t)).toFixed(1)}" stroke="${shade(color,-.45)}" stroke-opacity="${sheer?.18:.22}" stroke-width="${(R*.022).toFixed(1)}" stroke-linecap="round"/>`; }
+  return s;
+}
+function bonnet(cx,cy,w,color){
+  const id="g"+(++gid), h=w*.62, x=cx-w/2, y=cy-h/2, N=26;
+  let band="";
+  for(let i=0;i<=N;i++){ const px=x-w*.04+(w*1.08)*i/N, py=y+h*.86+(i%2?-h*.05:h*.05); band+=(i?"L":"M")+px.toFixed(1)+","+py.toFixed(1); }
+  return `<defs><radialGradient id="${id}" cx="35%" cy="25%" r="85%"><stop offset="0" stop-color="${shade(color,.5)}"/><stop offset=".5" stop-color="${color}"/><stop offset="1" stop-color="${shade(color,-.35)}"/></radialGradient></defs>
+  <path d="M${x},${y+h*.86} C${x},${y-h*.1} ${x+w},${y-h*.1} ${x+w},${y+h*.86} Z" fill="url(#${id})"/>
+  <path d="M${x+w*.2},${y+h*.35} Q${cx},${y+h*.05} ${x+w*.8},${y+h*.35}" stroke="${shade(color,.6)}" stroke-width="${w*.02}" fill="none" stroke-linecap="round" opacity=".7"/>
+  <path d="${band}" stroke="${shade(color,-.15)}" stroke-width="${h*.16}" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
+}
+function productArt(p,colorKey){
+  const col=C[colorKey][1]; let g="";
+  switch(p.kind){
+    case "satin":   g=scrunchie(100,80,62,col); break;
+    case "organza": g=scrunchie(100,80,62,col,{sheer:true,k:28}); break;
+    case "double":  g=scrunchie(100,80,56,col)+scrunchie(100,80,64,"#ffffff",{sheer:true,k:30}); break;
+    case "beads":   g=scrunchie(100,80,56,col)+scrunchie(100,80,64,"#ffffff",{sheer:true,k:30});
+                    for(let i=0;i<16;i++){ const t=i/16*Math.PI*2, bx=100+44*Math.cos(t), by=80+44*Math.sin(t);
+                      g+=`<circle cx="${bx.toFixed(1)}" cy="${by.toFixed(1)}" r="4.2" fill="#fffaf2" stroke="#d9c9b3" stroke-width="1"/><circle cx="${(bx-1.2).toFixed(1)}" cy="${(by-1.2).toFixed(1)}" r="1.3" fill="#fff"/>`; } break;
+    case "zip":     g=scrunchie(100,80,62,col)+`<g transform="rotate(-20 152 70)"><rect x="138" y="60" width="34" height="20" rx="6" fill="${shade(col,-.25)}"/><path d="M142 70h26" stroke="#d9d9de" stroke-width="3" stroke-dasharray="2 2"/><rect x="164" y="64" width="8" height="14" rx="3" fill="#c7c7cc"/></g>`; break;
+    case "bonnet":  g=bonnet(100,82,150,col); break;
+  }
+  return `<svg viewBox="0 0 200 160" aria-hidden="true">${g}</svg>`;
+}
+
+
+/* ================= Product cards ================= */
+const grids = { hair:document.getElementById("cards-hair"), art:document.getElementById("cards-art"), atelier:document.getElementById("cards-atelier") };
+function cardHTML(p, sel){
+  sel = sel || {};
+  const sc = sel.c || (p.colors ? p.colors[0] : null);
+  const ss = sel.s !== undefined ? +sel.s : 1;
+  const sf = sel.f !== undefined ? +sel.f : 0;
+  const sv = sel.v !== undefined ? +sel.v : 0;
+  const radios = (kind, items, checked, label) => items.map((it,i)=>`
+        <input type="radio" id="${p.id}-${kind}-${i}" name="${p.id}-${kind}" value="${i}" ${i===checked?"checked":""}>
+        <label for="${p.id}-${kind}-${i}">${label(it,i)}</label>`).join("");
+  return `
+  <li class="card ${p.layout||""}" data-id="${p.id}">
+    ${p.art ? `<div class="photo illus" aria-hidden="true"></div>`
+            : `<div class="photo" data-soon="${t("Photo coming soon")}"><img src="${p.views ? p.views[sv].img : (p.img || p.imgs[sc])}" alt="" loading="lazy" decoding="async" ${p.imgStyle?`style="${p.imgStyle}"`:""}></div>`}
+    <div class="body">
+      <p class="tagline">${t(p.tag)}</p>
+      <h3>${t(p.name)}</h3>
+      <p class="desc">${t(p.desc)}</p>
+      ${p.features ? `<ul class="feats">${p.features.map(f=>`<li>${t(f)}</li>`).join("")}</ul>` : ""}
+      ${p.colors ? `<fieldset>
+        <legend>${t("Colour:")} <span class="picked"></span></legend>
+        <div class="swatches">${p.colors.map(c=>`
+          <input type="radio" id="${p.id}-c-${c}" name="${p.id}-color" value="${c}" ${c===sc?"checked":""}>
+          <label for="${p.id}-c-${c}" style="background:${C[c][1]}" title="${t(C[c][0])}"><span class="sr-only">${t(C[c][0])}</span></label>`).join("")}
+        </div>
+      </fieldset>` : ""}
+      ${p.colorNote ? `<p class="note-sm">${t(p.colorNote)}</p>` : ""}
+      ${p.views ? `<fieldset><legend>${t("View")}</legend><div class="sizes">${radios("view", p.views, sv, v=>t(v.label))}</div></fieldset>` : ""}
+      ${p.finish ? `<fieldset><legend>${t("Finish")}</legend><div class="sizes finish">${radios("finish", p.finish, sf, f=>t(f))}</div></fieldset>` : ""}
+      ${p.sizes ? `<fieldset><legend>${t("Size")}</legend><div class="sizes">${radios("size", p.sizes, Math.min(ss,p.sizes.length-1),
+          (s,i)=>`<span aria-hidden="true">${s}</span><span class="sr-only">${t(SIZE_NAME[s])}${p.prices?", "+ksh(p.prices[i]):""}</span>`)}</div></fieldset>` : ""}
+      <div class="buy">
+        <p class="price" aria-live="polite"><span class="amt"></span>${p.prices?`<small>${t("From")} ${ksh(p.prices[0])}</small>`:""}</p>
+        <a class="btn btn-primary order" href="#">${p.enquire
+            ? `${t("Enquire")}<span class="sr-only">: ${t(p.name)}, ${t("on WhatsApp")}</span>`
+            : (p.prices || p.price)
+            ? `${t("Order")}<span class="sr-only"> ${t(p.name)} ${t("on WhatsApp")}</span>`
+            : `${t("Ask about price")}<span class="sr-only">: ${t(p.name)}, ${t("on WhatsApp")}</span>`}</a>
+      </div>
+    </div>
+  </li>`;
+}
+function renderCards(){
+  const sel = {};
+  document.querySelectorAll(".card[data-id]").forEach(c=>{
+    const id=c.dataset.id, q=n=>c.querySelector(`input[name="${id}-${n}"]:checked`);
+    sel[id]={ c:q("color")&&q("color").value, s:q("size")?q("size").value:undefined, f:q("finish")?q("finish").value:undefined, v:q("view")?q("view").value:undefined };
+  });
+  for(const g in grids) grids[g].innerHTML = products.filter(p=>p.group===g).map(p=>cardHTML(p,sel[p.id])).join("");
+  document.querySelectorAll(".card[data-id]").forEach(updateCard);
+}
+function updateCard(card){
+  const p = products.find(x=>x.id===card.dataset.id);
+  const q = n=>card.querySelector(`input[name="${p.id}-${n}"]:checked`);
+  const c = q("color") ? q("color").value : null;
+  const s = q("size") ? +q("size").value : null;
+  const f = q("finish") ? +q("finish").value : null;
+  if(p.art) card.querySelector(".photo").innerHTML = productArt(p,c);
+  else {
+    const img = card.querySelector(".photo img"), box = img.parentElement;
+    const v = q("view") ? +q("view").value : null;
+    const src = v!==null ? p.views[v].img : ((p.imgs && p.imgs[c]) || p.img);
+    if(img.getAttribute("src") !== src){ box.classList.remove("missing"); box.textContent=""; box.appendChild(img); img.setAttribute("src", src); }
+    img.alt = t(v!==null ? p.views[v].alt : ((p.alts && p.alts[c]) || p.alt));
+    img.onerror = () => { box.classList.add("missing"); if(!box.querySelector("span")){ const sp=document.createElement("span"); sp.textContent=box.dataset.soon; box.appendChild(sp); } };
+    if(img.complete && img.naturalWidth===0 && img.getAttribute("src")) img.onerror();
+  }
+  if(c) card.querySelector(".picked").textContent = t(C[c][0]);
+  const price = p.price ? ksh(p.price) : (p.prices && s!==null ? ksh(p.prices[s]) : null);
+  const amt = card.querySelector(".amt");
+  amt.textContent = price || t("Price on request");
+  amt.classList.toggle("por", !price);
+  const parts = [t(p.name)];
+  if(c) parts.push(t(C[c][0]));
+  if(f!==null) parts.push(t(p.finish[f]));
+  const size = s===null ? "" : (p.group==="hair" ? t(SIZE_NAME[p.sizes[s]]) : p.sizes[s]);
+  let msg;
+  if(p.enquire) msg = LANG==="sw"
+    ? `Habari tare.! 🎀 Ningependa kujua zaidi kuhusu ${t(p.name)}.`
+    : `Hi tare.! 🎀 I'd love to know more about the ${t(p.name)}.`;
+  else if(LANG==="sw") msg = price
+    ? `Habari tare.! 🎀 Ningependa kuagiza: ${parts.join(", ")}${size?`, saizi ${size}`:""} (${price}).`
+    : `Habari tare.! 🎀 Ninapenda ${parts.join(", ")}${size?`, saizi ${size}`:""}. Bei ni ngapi?`;
+  else msg = price
+    ? `Hi tare.! 🎀 I'd like to order: ${parts.join(", ")}${size?`, size ${size}`:""} (${price}).`
+    : `Hi tare.! 🎀 I'm interested in the ${parts.join(", ")}${size?`, size ${size}`:""}. How much is it?`;
+  card.querySelector(".order").href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+}
+renderCards();
+document.addEventListener("change",e=>{ const c=e.target.closest(".card[data-id]"); if(c) updateCard(c); });
+function updateCustomLink(){
+  const msg = LANG==="sw" ? "Habari tare.! 🎀 Ningependa kuchapishiwa muundo wangu maalum." : "Hi tare.! 🎀 I'd like a custom print.";
+  document.getElementById("custom-order").href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+}
+
+/* ================= Mobile menu ================= */
+const menuBtn=document.querySelector(".menu-btn"), menu=document.getElementById("menu");
+function closeMenu(){ menu.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); menuBtn.textContent=t("Menu"); }
+menuBtn.addEventListener("click",()=>{ const o=menu.classList.toggle("open"); menuBtn.setAttribute("aria-expanded",o); menuBtn.textContent=t(o?"Close":"Menu"); if(o) menu.querySelector("a").focus(); });
+menu.addEventListener("click",e=>{ if(e.target.closest("a,button")) closeMenu(); });
+
+/* ================= Accessibility settings ================= */
+const root=document.documentElement;
+const BOOL=["contrast","lowsat","mono","spacing","left","links","guide","mask","cursor","focus","big","noimg","still","tapread"];
+const DEFAULTS={ size:100, rate:1, font:"default", theme:"light", profile:null };
+BOOL.forEach(k=>DEFAULTS[k]=false);
+const PROFILES=[
+  { id:"lowvision", icon:"👁️", name:"Low vision",      desc:"Bigger text, stronger contrast",  set:{ size:150, contrast:true, links:true, focus:true, cursor:true } },
+  { id:"blind",     icon:"🔊", name:"Screen reader",   desc:"Reads aloud as you tap or Tab",   set:{ tapread:true, focus:true } },
+  { id:"dyslexia",  icon:"🔤", name:"Dyslexia",        desc:"Readable font, more spacing",     set:{ font:"lexend", spacing:true, left:true, guide:true } },
+  { id:"motor",     icon:"✋", name:"Motor",            desc:"Bigger buttons, clear focus",     set:{ big:true, focus:true, cursor:true } },
+  { id:"seizure",   icon:"⚡", name:"Seizure safe",    desc:"No motion, softer colours",       set:{ still:true, lowsat:true } },
+  { id:"adhd",      icon:"🎯", name:"ADHD & focus", desc:"Fewer distractions",              set:{ mask:true, still:true, noimg:true } },
+  { id:"elder",     icon:"🧓", name:"Older eyes",      desc:"Larger text and buttons",         set:{ size:130, big:true, links:true, font:"hyper" } },
+  { id:"colour",    icon:"🎨", name:"Colour blind",    desc:"Clear links, more contrast",      set:{ links:true, contrast:true } },
+];
+const store={ get(){ try{ return JSON.parse(localStorage.getItem("tare-a11y-v2"))||{}; }catch(e){ return {}; } },
+              set(v){ try{ localStorage.setItem("tare-a11y-v2",JSON.stringify(v)); }catch(e){} } };
+let prefs=Object.assign({},DEFAULTS);
+Object.entries(store.get()).forEach(([k,v])=>{ if(k in DEFAULTS) prefs[k]=v; });
+
+const $=id=>document.getElementById(id);
+const switches=document.querySelectorAll(".switch");
+const profBox=$("profiles");
+function renderProfiles(){
+  profBox.innerHTML=PROFILES.map(p=>`<button type="button" class="profile" data-profile="${p.id}" aria-pressed="${p.id===prefs.profile}"><span class="ico" aria-hidden="true">${p.icon}</span>${t(p.name).replace("&","&amp;")}<small>${t(p.desc)}</small></button>`).join("");
+}
+renderProfiles();
+
+function apply(){
+  root.style.setProperty("--fs",(106.25*prefs.size/100)+"%");
+  root.classList.toggle("navcollapse",prefs.size>=120);
+  $("size-out").textContent=prefs.size+"%";
+  $("rate-out").textContent=prefs.rate+"×";
+  BOOL.forEach(k=>{ if(k!=="tapread") root.classList.toggle(k,!!prefs[k]); });
+  switches.forEach(b=>b.setAttribute("aria-checked",!!prefs[b.dataset.mode]));
+  root.classList.toggle("font-hyper",prefs.font==="hyper");
+  root.classList.toggle("font-lexend",prefs.font==="lexend");
+  root.classList.toggle("dark",prefs.theme==="dark");
+  const f=document.querySelector(`input[name="a-font"][value="${prefs.font}"]`); if(f) f.checked=true;
+  const t=document.querySelector(`input[name="a-theme"][value="${prefs.theme}"]`); if(t) t.checked=true;
+  document.querySelector('meta[name="theme-color"]').content=prefs.theme==="dark"?"#000000":"#fbfbfd";
+  profBox.querySelectorAll(".profile").forEach(b=>b.setAttribute("aria-pressed",b.dataset.profile===prefs.profile));
+  placeAids();
+  fitNav();
+  store.set(prefs);
+}
+/* switch to the Menu button whenever the nav links don't fit on one line */
+function fitNav(){
+  root.classList.remove("navtight");
+  if(root.classList.contains("navcollapse")) return;
+  const w=document.querySelector(".nav .wrap");
+  if(w.scrollWidth>w.clientWidth+1) root.classList.add("navtight");
+}
+addEventListener("resize",()=>fitNav());
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>fitNav());
+function change(fn){ fn(); prefs.profile=null; apply(); }
+
+document.querySelectorAll("[data-size]").forEach(b=>b.addEventListener("click",()=>change(()=>{ prefs.size=Math.min(200,Math.max(90,prefs.size+(+b.dataset.size)*10)); })));
+document.querySelectorAll("[data-rate]").forEach(b=>b.addEventListener("click",()=>{ prefs.rate=Math.min(2,Math.max(.5,+(prefs.rate+(+b.dataset.rate)*.25).toFixed(2))); apply(); }));
+switches.forEach(b=>b.addEventListener("click",()=>change(()=>{ prefs[b.dataset.mode]=!prefs[b.dataset.mode]; })));
+document.querySelectorAll('input[name="a-font"]').forEach(r=>r.addEventListener("change",()=>change(()=>{ prefs.font=r.value; })));
+document.querySelectorAll('input[name="a-theme"]').forEach(r=>r.addEventListener("change",()=>{ prefs.theme=r.value; apply(); }));
+profBox.addEventListener("click",e=>{
+  const b=e.target.closest(".profile"); if(!b) return;
+  const p=PROFILES.find(x=>x.id===b.dataset.profile);
+  const keep={ rate:prefs.rate, theme:prefs.theme };
+  if(prefs.profile===p.id){ prefs=Object.assign({},DEFAULTS,keep); }
+  else { prefs=Object.assign({},DEFAULTS,keep,p.set,{ profile:p.id }); }
+  apply();
+  if(prefs.profile==="blind") say(LANG==="sw"?"Wasifu wa kisoma skrini umewashwa. Gusa, bofya au tumia Tab kwenye chochote ukisikie.":"Screen reader profile on. Tap, click or Tab to anything to hear it.");
+});
+$("a11y-reset").addEventListener("click",()=>{ stopReading(); prefs=Object.assign({},DEFAULTS); apply(); });
+
+/* ---------- reading guide & mask ---------- */
+const guide=document.querySelector(".rguide"), maskTop=document.querySelector(".rmask.top"), maskBot=document.querySelector(".rmask.bot");
+let guideY=innerHeight/2;
+function placeAids(){
+  if(!guide) return;
+  guide.style.top=guideY+"px";
+  maskTop.style.height=Math.max(0,guideY-70)+"px";
+  maskBot.style.height=Math.max(0,innerHeight-guideY-70)+"px";
+}
+addEventListener("pointermove",e=>{ if(prefs.guide||prefs.mask){ guideY=e.clientY; placeAids(); } },{ passive:true });
+addEventListener("resize",placeAids);
+document.addEventListener("focusin",e=>{ if((prefs.guide||prefs.mask) && !$("a11y-sheet").open){ const r=e.target.getBoundingClientRect(); if(r.height){ guideY=Math.min(innerHeight-20,Math.max(20,r.top+r.height/2)); placeAids(); } } });
+
+/* ---------- read aloud (uses the browser's built-in voice) ---------- */
+const synth=("speechSynthesis" in window)?window.speechSynthesis:null;
+let voice=null, swVoice=null;
+function pickVoice(){
+  const v=synth.getVoices();
+  voice=v.find(x=>/en[-_]KE/i.test(x.lang))||v.find(x=>/en[-_]GB/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||null;
+  swVoice=v.find(x=>/^sw/i.test(x.lang))||null;
+  $("sw-voice-hint").hidden=!(LANG==="sw" && !swVoice && v.length>0);
+}
+if(synth){ pickVoice(); synth.addEventListener?.("voiceschanged",pickVoice); }
+else { $("read-group").hidden=true; $("read-unsupported").hidden=false; }
+
+function say(text,onend){
+  if(!synth||!text) return;
+  synth.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  const v=LANG==="sw"?swVoice:voice;
+  if(v){ u.voice=v; u.lang=v.lang; } else u.lang=LANG==="sw"?"sw-KE":"en-GB";
+  u.rate=prefs.rate;
+  if(onend){ u.onend=onend; }
+  synth.speak(u);
+}
+function nameOf(el){
+  const tr=t;
+  let s=el.getAttribute("aria-label");
+  if(!s && el.getAttribute("aria-labelledby")) s=el.getAttribute("aria-labelledby").split(/\s+/).map(id=>{ const n=document.getElementById(id); return n?n.innerText:""; }).join(". ");
+  if(!s && el.labels && el.labels.length) s=el.labels[0].innerText;
+  if(!s) s=el.innerText||el.textContent||"";
+  const role=el.getAttribute("role");
+  if(role==="switch") s+=el.getAttribute("aria-checked")==="true"?tr(", on"):tr(", off");
+  else if(el.type==="radio") s+=el.checked?tr(", selected"):"";
+  else if(el.tagName==="A") s+=tr(", link");
+  else if(el.tagName==="BUTTON") s+=el.getAttribute("aria-pressed")==="true"?tr(", button")+tr(", selected"):tr(", button");
+  const d=el.getAttribute("aria-describedby"); if(d){ const n=document.getElementById(d); if(n) s+=". "+n.innerText; }
+  return s.replace(/\s+/g," ").trim();
+}
+
+const reader={ blocks:[], i:0, state:"idle", token:0 };
+const BLOCK="h1,h2,h3,h4,p,li,legend,dt,dd";
+const bar=$("reader"), barStatus=$("reader-status"), pauseBtn=$("reader-pause");
+function collect(){
+  return [...document.querySelectorAll("main :is("+BLOCK+"), footer p")].filter(el=>
+    !el.closest('[aria-hidden="true"]') && el.offsetParent!==null && !el.querySelector(BLOCK) && el.innerText.trim());
+}
+function unmark(){ document.querySelectorAll(".speaking").forEach(e=>e.classList.remove("speaking")); }
+function readFrom(i){
+  const tok=++reader.token; reader.i=i; unmark();
+  if(i>=reader.blocks.length){ stopReading(); return; }
+  const el=reader.blocks[i];
+  el.classList.add("speaking");
+  const calm=prefs.still||matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({ block:"center", behavior:calm?"auto":"smooth" });
+  barStatus.textContent=LANG==="sw"?`Inasoma ${i+1} kati ya ${reader.blocks.length}`:`Reading ${i+1} of ${reader.blocks.length}`;
+  say(el.innerText,()=>{ if(tok===reader.token && reader.state==="playing") readFrom(i+1); });
+}
+function startReading(){
+  if(!synth) return;
+  reader.blocks=collect(); reader.state="playing";
+  bar.hidden=false; pauseBtn.textContent=t("Pause");
+  readFrom(0);
+}
+function togglePause(){
+  if(reader.state==="playing"){ reader.token++; synth.cancel(); reader.state="paused"; pauseBtn.textContent=t("Resume"); barStatus.textContent=t("Paused"); }
+  else if(reader.state==="paused"){ reader.state="playing"; pauseBtn.textContent=t("Pause"); readFrom(reader.i); }
+  else startReading();
+}
+function stopReading(){ reader.token++; reader.state="idle"; if(synth) synth.cancel(); unmark(); bar.hidden=true; }
+
+$("read-play").addEventListener("click",()=>{ returnTo=null; closeSheet(); startReading(); pauseBtn.focus(); });
+$("read-stop").addEventListener("click",stopReading);
+pauseBtn.addEventListener("click",togglePause);
+$("reader-stop").addEventListener("click",()=>{ stopReading(); fab.focus(); });
+
+/* read on tap & focus */
+const TAPPABLE="a,button,label,input,[role=img],h1,h2,h3,h4,p,li,legend,dt,dd";
+document.addEventListener("click",e=>{
+  if(!prefs.tapread || reader.state==="playing") return;
+  const el=e.target.closest(TAPPABLE); if(!el) return;
+  setTimeout(()=>say(nameOf(el)),30);   // after the click has changed any state
+},true);
+document.addEventListener("focusin",e=>{
+  if(!prefs.tapread || reader.state==="playing" || e.target.id==="main") return;
+  say(nameOf(e.target));
+});
+
+/* ---------- open / close the panel ---------- */
+const fab=$("a11y-fab"), sheet=$("a11y-sheet");
+let returnTo=fab;
+function openSheet(from){ returnTo=from||fab; if(!sheet.open) sheet.showModal(); fab.setAttribute("aria-expanded","true"); }
+function closeSheet(){ if(sheet.open) sheet.close(); }
+sheet.addEventListener("close",()=>{ fab.setAttribute("aria-expanded","false"); if(returnTo) returnTo.focus(); returnTo=fab; });
+sheet.addEventListener("click",e=>{ if(e.target===sheet) closeSheet(); });
+$("a11y-close").addEventListener("click",closeSheet);
+fab.addEventListener("click",()=>sheet.open?closeSheet():openSheet(fab));
+document.querySelectorAll("[data-open-a11y]").forEach(b=>b.addEventListener("click",()=>openSheet(b.closest("#menu")?fab:b)));
+sheet.querySelectorAll(".jump a").forEach(a=>a.addEventListener("click",e=>{
+  e.preventDefault(); returnTo=null; closeSheet();
+  const sec=document.querySelector(a.getAttribute("href")), h=sec.querySelector("h2");
+  h.setAttribute("tabindex","-1"); sec.scrollIntoView(); h.focus({ preventScroll:true });
+}));
+document.addEventListener("keydown",e=>{
+  if(!e.altKey||e.ctrlKey||e.metaKey) return;
+  if(e.code==="KeyA"){ e.preventDefault(); sheet.open?closeSheet():openSheet(document.activeElement); }
+  if(e.code==="KeyR"){ e.preventDefault(); closeSheet(); togglePause(); }
+  if(e.code==="KeyS"){ e.preventDefault(); stopReading(); }
+});
+apply();
+
+function setLang(l){
+  LANG=l==="sw"?"sw":"en";
+  try{ localStorage.setItem("tare-lang",LANG); }catch(e){}
+  root.lang=LANG;
+  stopReading();
+  renderCards(); renderProfiles(); translateStatic(); updateCustomLink();
+  menuBtn.textContent=t(menu.classList.contains("open")?"Close":"Menu");
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===LANG));
+  if(synth) pickVoice();
+  apply();
+}
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+setLang(LANG);
+
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
