@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>tare. atelier</title>
-<meta name="description" content="tare. — satin scrunchies, hair bonnets and the Mama Mboga tee and tote, designed in Nairobi. Pick your colour, pick your size, order on WhatsApp.">
+<meta name="description" content="tare. — satin scrunchies, hair bonnets and the Mama Mboga tee and tote, designed in Nairobi. Pick your colour, pick your size, order with our online form.">
 <meta name="theme-color" content="#fbfbfd">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -281,8 +281,7 @@ html.contrast .bento .tile p{ color:var(--text) !important; }
 .step::before{ content:counter(s); display:grid; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--tangerine); color:var(--on-accent); font-weight:700; margin-bottom:16px; }
 .step h3{ font-size:1.25rem; margin-bottom:6px; }
 .step p{ color:var(--text-2); }
-.channels{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; list-style:none; padding:0; margin:0; }
-@media (max-width:760px){ .channels{ grid-template-columns:repeat(2,1fr); } }
+.channels{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; list-style:none; padding:0; margin:0; }
 .channels a{ display:flex; flex-direction:column; gap:6px; align-items:flex-start; padding:20px; border-radius:20px; background:var(--bg); color:var(--text); box-shadow:var(--shadow); font-weight:600; min-height:110px; text-decoration:none !important; transition:transform .2s; }
 html.contrast .channels a{ border:2px solid var(--text); }
 .channels a:hover{ transform:translateY(-3px); }
@@ -364,6 +363,146 @@ kbd{ font:600 .78rem var(--sans); background:var(--bg); color:var(--text); borde
 .reader span{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .reader button{ min-height:44px; padding:0 16px; border-radius:980px; border:0; background:var(--tangerine); color:var(--on-accent); font:600 .9rem var(--sans); cursor:pointer; flex:0 0 auto; }
 .reader button.ghost{ background:transparent; color:inherit; box-shadow:inset 0 0 0 1.5px currentColor; }
+/* ================= ORDER FORM ================= */
+body:has(dialog[open]){ overflow:hidden; }
+dialog.osheet{ margin:auto; padding:0; border:0; width:min(780px, calc(100vw - 24px)); max-width:100vw; height:min(88dvh, 820px); border-radius:28px; background:var(--bg); color:var(--text); font-family:var(--sans); box-shadow:0 30px 90px rgba(0,0,0,.35); overflow:hidden; overflow:clip; }
+dialog.osheet[open]{ display:flex; flex-direction:column; animation:o-in .28s cubic-bezier(.2,.8,.2,1); }
+dialog.osheet::backdrop{ background:rgba(20,10,5,.45); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+@keyframes o-in{ from{ transform:translateY(24px) scale(.98); opacity:0; } }
+html.contrast dialog.osheet{ border:3px solid var(--text); }
+@media (max-width:640px){
+  dialog.osheet{ inset:auto 0 0 0; margin:0; width:100vw; height:96dvh; max-height:96dvh; border-radius:24px 24px 0 0; }
+  dialog.osheet[open]{ animation-name:sheet-up; }
+}
+.o-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:20px 24px 12px; }
+.o-kicker{ font-size:.85rem; font-weight:600; color:var(--link); margin-bottom:2px; min-height:1.2em; }
+.o-head h2{ font-size:clamp(1.5rem,4vw,2rem); outline:none; }
+.o-tools{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+.o-tools .icon-btn svg{ width:22px; height:22px; }
+.o-steps{ display:flex; gap:6px; list-style:none; margin:0; padding:0 24px 14px; border-bottom:1px solid var(--hair); }
+.o-steps[hidden]{ display:none; }
+.o-steps li{ flex:1; display:flex; align-items:center; gap:8px; min-width:0; font-size:.8rem; font-weight:600; color:var(--text-2); }
+.o-steps li::after{ content:""; flex:1; height:3px; border-radius:3px; background:var(--hair); }
+.o-steps li:last-child::after{ display:none; }
+.o-steps li.done::after, .o-steps li.on::after{ background:var(--tangerine); }
+.o-steps li.on{ color:var(--text); }
+.o-dot{ flex:0 0 26px; height:26px; border-radius:50%; display:grid; place-items:center; background:var(--seg); color:var(--text); font-size:.78rem; font-weight:700; }
+.o-steps li.on .o-dot, .o-steps li.done .o-dot{ background:var(--tangerine); color:var(--on-accent); }
+.o-sl{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+@media (max-width:760px){ .o-steps li:not(.on) .o-sl{ display:none; } .o-steps li.on{ flex:2; } }
+.o-body{ flex:1; overflow:auto; padding:20px 24px 28px; overscroll-behavior:contain; }
+.o-foot{ display:flex; align-items:center; justify-content:space-between; gap:12px 16px; flex-wrap:wrap; padding:14px 24px calc(14px + env(safe-area-inset-bottom)); border-top:1px solid var(--hair); background:var(--bg); }
+.o-foot[hidden]{ display:none; }
+.o-total{ font-size:.95rem; }
+.o-total strong{ font-size:1.3rem; letter-spacing:-.02em; margin-left:6px; }
+.o-total small{ display:block; color:var(--text-2); font-size:.8rem; }
+.o-btns{ display:flex; gap:10px; margin-left:auto; }
+.o-btns .btn[hidden]{ display:none; }
+.o-lead{ color:var(--text-2); margin-bottom:18px; font-size:1.05rem; }
+.o-h3{ font-size:1.2rem; margin:22px 0 10px; }
+.o-h3:first-child{ margin-top:0; }
+.o-opt{ font-weight:500; color:var(--text-2); font-size:.82rem; margin-left:6px; }
+.o-hint{ color:var(--text-2); font-size:.88rem; margin-top:6px; }
+.o-set{ border:0; padding:0; margin:0 0 20px; min-width:0; }
+.o-set > legend{ font-weight:600; margin-bottom:10px; padding:0; }
+.osheet input[type=radio], .osheet input[type=checkbox]{ position:absolute; opacity:0; width:1px; height:1px; }
+.osheet input:focus-visible + label{ outline:3px solid var(--focus); outline-offset:3px; }
+.o-err{ background:#fde7e4; color:#8a1c12; border:2px solid #c0392b; border-radius:14px; padding:12px 16px; margin-bottom:18px; font-weight:600; outline:none; }
+.o-err a{ color:inherit; text-decoration:underline; }
+html.dark .o-err{ background:#3b1613; color:#ffb4a8; border-color:#e5655a; }
+html.contrast .o-err{ background:var(--bg); color:var(--text); border-color:var(--text); }
+
+/* choice cards */
+.o-cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+.o-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+@media (max-width:640px){ .o-grid{ grid-template-columns:1fr; } }
+.o-card{ position:relative; display:flex; align-items:center; gap:14px; min-height:64px; padding:14px 16px; border:2px solid var(--hair); border-radius:18px; background:var(--bg); cursor:pointer; transition:border-color .15s, background .15s, transform .15s; }
+.o-card:hover{ border-color:var(--text-2); }
+.o-card:active{ transform:scale(.99); }
+.o-ct{ display:flex; flex-direction:column; gap:2px; min-width:0; flex:1; }
+.o-ct strong{ font-size:1.02rem; letter-spacing:-.01em; }
+.o-ct small{ color:var(--text-2); font-size:.86rem; }
+.o-tick{ flex:0 0 24px; height:24px; border-radius:50%; border:2px solid var(--hair); }
+input:checked + .o-card{ border-color:var(--tangerine); background:var(--tangerine-soft); }
+input:checked + .o-card .o-tick{ border-color:var(--tangerine); background:var(--tangerine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d1d1f' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/16px no-repeat; }
+html.contrast .o-card{ border-color:var(--text); }
+html.contrast input:checked + .o-card{ background:var(--text); color:var(--bg); }
+html.contrast input:checked + .o-card small{ color:var(--bg); }
+.o-pcard{ min-height:76px; padding:10px 14px 10px 10px; }
+.o-pcard .o-tick{ display:none; }
+input:checked + .o-pcard{ box-shadow:0 0 0 1px var(--tangerine); }
+.o-thumb{ flex:0 0 56px; width:56px; height:56px; border-radius:14px; overflow:hidden; background:var(--bg-warm); display:grid; place-items:center; }
+.o-thumb img{ width:100%; height:100%; object-fit:cover; }
+.o-thumb svg{ width:88%; height:auto; }
+.o-t-ico{ font-size:1.4rem; color:var(--link); }
+html.noimg .o-thumb{ display:none; }
+
+/* chips */
+.o-chips{ display:flex; flex-wrap:wrap; gap:10px; }
+.o-chip, .o-qd{ display:inline-flex; align-items:center; min-height:48px; padding:10px 18px; border:2px solid var(--hair); border-radius:980px; background:var(--bg); font:600 .95rem var(--sans); color:var(--text); cursor:pointer; transition:border-color .15s, background .15s; }
+.o-chip:hover, .o-qd:hover{ border-color:var(--text-2); }
+input:checked + .o-chip{ border-color:var(--tangerine); background:var(--tangerine-soft); }
+input[type=checkbox]:checked + .o-chip::before{ content:"✓"; margin-right:8px; color:var(--link); font-weight:800; }
+html.contrast .o-chip, html.contrast .o-qd{ border-color:var(--text); }
+html.contrast input:checked + .o-chip{ background:var(--text); color:var(--bg); }
+html.big .o-chip, html.big .o-qd, html.big .o-card{ min-height:60px; }
+
+/* fields */
+.o-field{ margin-bottom:18px; }
+.o-field > label{ display:block; font-weight:600; margin-bottom:8px; }
+.o-field input[type=text], .o-field input[type=tel], .o-field input[type=date], .o-field textarea{ width:100%; font:inherit; color:var(--text); background:var(--bg); border:2px solid var(--hair); border-radius:14px; padding:13px 16px; min-height:52px; }
+.o-field textarea{ min-height:96px; resize:vertical; }
+.o-field input:focus, .o-field textarea:focus{ outline:3px solid var(--focus); outline-offset:2px; border-color:var(--focus); }
+.o-field [aria-invalid="true"]{ border-color:#c0392b; }
+html.contrast .o-field input, html.contrast .o-field textarea{ border-color:var(--text); }
+.o-field .o-chips{ margin-top:12px; }
+.o-hp{ position:absolute !important; left:-9999px; width:1px; height:1px; opacity:0; }
+
+/* basket */
+.o-lines{ list-style:none; margin:0 0 6px; padding:0; display:grid; gap:10px; }
+.o-line{ display:grid; grid-template-columns:56px 1fr auto; grid-template-areas:"t d p" "t q r"; align-items:center; gap:4px 14px; padding:12px; border-radius:18px; background:var(--bg-alt); }
+html.contrast .o-line{ border:2px solid var(--text); background:var(--bg); }
+.o-line .o-thumb{ grid-area:t; align-self:start; background:var(--bg); }
+.o-lt{ grid-area:d; display:flex; flex-direction:column; min-width:0; }
+.o-lt small{ color:var(--text-2); font-size:.86rem; }
+.o-lp{ grid-area:p; font-weight:700; text-align:right; white-space:nowrap; }
+.o-qty{ grid-area:q; display:inline-flex; align-items:center; gap:2px; background:var(--seg); border-radius:12px; padding:2px; justify-self:start; }
+.o-qty button{ width:44px; height:40px; border:0; border-radius:10px; background:transparent; font:700 1.2rem var(--sans); color:var(--text); cursor:pointer; }
+.o-qty button:hover{ background:var(--seg-on); }
+.o-qty output{ min-width:34px; text-align:center; font-weight:700; }
+.o-rm, .o-link{ grid-area:r; justify-self:end; background:none; border:0; padding:10px 6px; min-height:44px; font:600 .9rem var(--sans); color:var(--link); cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+.o-opts{ margin-top:6px; padding:18px; border-radius:22px; background:var(--bg-warm); border:2px solid var(--tangerine-soft); }
+html.contrast .o-opts{ background:var(--bg); border-color:var(--text); }
+.o-opts h4{ font-size:1.15rem; margin-bottom:14px; }
+.o-opts .o-set{ margin-bottom:16px; }
+.o-opts .btn{ width:100%; margin-top:6px; }
+.o-qrow{ display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+.o-qrow > span{ font-weight:600; }
+
+/* review */
+.o-sum{ margin:0 0 22px; border-radius:18px; background:var(--bg-alt); overflow:hidden; }
+html.contrast .o-sum{ border:2px solid var(--text); background:var(--bg); }
+.o-row{ display:grid; grid-template-columns:110px 1fr auto; gap:6px 14px; align-items:start; padding:14px 16px; }
+.o-row + .o-row{ border-top:1px solid var(--hair); }
+.o-row dt{ font-weight:600; color:var(--text-2); font-size:.9rem; padding-top:2px; }
+.o-row dd{ margin:0; }
+.o-row .o-link{ padding:2px 4px; min-height:36px; }
+.o-row ul{ margin:0; padding-left:1.1em; }
+@media (max-width:640px){ .o-row{ grid-template-columns:1fr auto; } .o-row dt{ grid-column:1 / -1; padding:0; } }
+.o-pay{ padding:16px 18px; border-radius:18px; background:var(--tangerine-soft); margin-bottom:16px; }
+html.contrast .o-pay{ background:var(--bg); border:2px solid var(--text); }
+.o-pay h3{ font-size:1.05rem; margin-bottom:8px; }
+.o-pay dl{ display:grid; grid-template-columns:auto 1fr auto; gap:8px 12px; align-items:center; margin:10px 0 0; }
+.o-pay dt{ font-weight:600; }
+.o-pay dd{ margin:0; font:700 1.15rem var(--sans); letter-spacing:.04em; }
+.o-copy{ min-height:40px; padding:6px 14px; border-radius:980px; border:2px solid var(--text); background:transparent; color:var(--text); font:600 .85rem var(--sans); cursor:pointer; }
+.o-note{ color:var(--text-2); font-size:.88rem; margin-top:10px; }
+.o-done{ text-align:center; padding:12px 0 6px; }
+.o-done .o-big{ width:84px; height:84px; margin:0 auto 18px; border-radius:50%; background:var(--tangerine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d1d1f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/44px no-repeat; }
+.o-done h3{ font-size:1.6rem; margin-bottom:8px; }
+.o-done p{ color:var(--text-2); max-width:44ch; margin:0 auto 10px; }
+.o-done .o-sum{ text-align:left; margin-top:20px; }
+.o-done .btn-row{ justify-content:center; margin-top:18px; }
 </style>
 </head>
 <body>
@@ -386,7 +525,7 @@ kbd{ font:600 .78rem var(--sans); background:var(--bg); color:var(--text); borde
         <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
         <button type="button" data-lang="sw" lang="sw" aria-label="Kiswahili" aria-pressed="false">SW</button>
       </div>
-      <a class="btn btn-primary order-top" href="https://wa.me/254793598988">Order</a>
+      <a class="btn btn-primary order-top" data-order href="https://forms.gle/fYCyx9UUci1ub2QU7" target="_blank" rel="noopener">Order<span class="sr-only"> (opens the order form)</span></a>
     </div>
   </nav>
 </header>
@@ -417,7 +556,7 @@ kbd{ font:600 .78rem var(--sans); background:var(--bg); color:var(--text); borde
       <div class="section-head">
         <span class="eyebrow">Hair accessories</span>
         <h2 class="headline" id="hair-title">Pick a colour.<br>Pick a size. Done.</h2>
-        <p class="sub">Every scrunchie comes in Small, Medium and Large. Tap through the options and we'll write your WhatsApp order for you.</p>
+        <p class="sub">Every scrunchie comes in Small, Medium and Large. Tap through the options, then fill in the order form with your choices ready.</p>
       </div>
       <ul class="cards" id="cards-hair"></ul>
       <p class="fine">Colours shown are examples. Ask us what's in stock, or request a custom colour. Prices are in Kenyan shillings.</p>
@@ -451,7 +590,7 @@ kbd{ font:600 .78rem var(--sans); background:var(--bg); color:var(--text); borde
       <ul class="cards two" id="cards-art"></ul>
       <div class="print-cta">
         <div><h3>Your design, printed.</h3><p>Custom printing is available on tees and totes: full-colour prints of your art, your words or your brand.</p></div>
-        <a class="btn btn-dark" id="custom-order" href="https://wa.me/254793598988">Start a custom order</a>
+        <a class="btn btn-dark" id="custom-order" data-order href="https://forms.gle/fYCyx9UUci1ub2QU7" target="_blank" rel="noopener">Start a custom order<span class="sr-only"> (opens the order form)</span></a>
       </div>
     </div>
   </section>
@@ -492,16 +631,15 @@ kbd{ font:600 .78rem var(--sans); background:var(--bg); color:var(--text); borde
       <div class="section-head center">
         <span class="eyebrow">How to order</span>
         <h2 class="headline" id="order-title">Ordering takes a minute.</h2>
-        <p class="sub">Text, voice note or form, whichever is easiest for you.</p>
+        <p class="sub">Order right away, or for later. The form has room for both.</p>
       </div>
       <ol class="steps">
         <li class="step"><h3>Choose</h3><p>Pick your style, colour and size from the collection.</p></li>
-        <li class="step"><h3>Send</h3><p>Tap "Order" and your message is ready to go on WhatsApp. Or use the order form.</p></li>
-        <li class="step"><h3>Receive</h3><p>We'll confirm your total and sort out delivery or pick-up with you.</p></li>
+        <li class="step"><h3>Order</h3><p>Tap "Order" and the order form opens with your choices already filled in. Add your name and phone number.</p></li>
+        <li class="step"><h3>Receive</h3><p>We'll confirm availability and delivery with you. Need it later? Choose "Later" on the item and we'll plan it with you.</p></li>
       </ol>
       <ul class="channels" aria-label="Ways to reach us">
-        <li><a href="https://wa.me/254793598988"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8.4 19z"/></svg>WhatsApp<span>Fastest reply</span></a></li>
-        <li><a href="https://forms.gle/fYCyx9UUci1ub2QU7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>Order form<span>Google Forms</span></a></li>
+        <li><a href="https://forms.gle/fYCyx9UUci1ub2QU7" data-order target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>Order form<span>Now or for later</span><span class="sr-only"> (opens the order form)</span></a></li>
         <li><a href="https://instagram.com/tare.atelier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Instagram<span>@tare.atelier</span></a></li>
         <li><a href="https://tiktok.com/@tare.atelier"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 3c.4 2.4 1.9 4 4.5 4.2v3.2c-1.6 0-3.1-.5-4.4-1.3v6.4A5.6 5.6 0 1 1 10.5 10v3.3a2.4 2.4 0 1 0 2.3 2.4V3H16z"/></svg>TikTok<span>@tare.atelier</span></a></li>
       </ul>
@@ -525,7 +663,7 @@ kbd{ font:600 .78rem var(--sans); background:var(--bg); color:var(--text); borde
         <li>Dark mode, increased contrast, soft colours and monochrome</li>
         <li>Reading guide, reading mask, big cursor and bigger buttons</li>
         <li>Fully usable by keyboard, with shortcuts and no flashing content</li>
-        <li>Spot a problem? <a href="https://wa.me/254793598988?text=Accessibility%20feedback%3A%20">Tell us on WhatsApp</a></li>
+        <li>Spot a problem? <a href="https://instagram.com/tare.atelier">Tell us on Instagram</a></li>
       </ul>
     </div>
   </section>
@@ -537,8 +675,7 @@ kbd{ font:600 .78rem var(--sans); background:var(--bg); color:var(--text); borde
     <ul aria-label="Social media">
       <li><a href="https://instagram.com/tare.atelier">Instagram</a></li>
       <li><a href="https://tiktok.com/@tare.atelier">TikTok</a></li>
-      <li><a href="https://wa.me/254793598988">WhatsApp</a></li>
-      <li><a href="https://forms.gle/fYCyx9UUci1ub2QU7">Order form</a></li>
+      <li><a href="https://forms.gle/fYCyx9UUci1ub2QU7" data-order>Order form</a></li>
     </ul>
   </div>
 </footer>
@@ -653,6 +790,33 @@ kbd{ font:600 .78rem var(--sans); background:var(--bg); color:var(--text); borde
   </div>
 </dialog>
 
+<!-- Order form (opens from every Order button; sends the answers into the Google Form) -->
+<dialog class="osheet" id="order-sheet" aria-labelledby="o-title">
+  <div class="o-head">
+    <div class="o-ht"><p class="o-kicker" id="o-kicker"></p><h2 id="o-title" tabindex="-1">Place your order</h2></div>
+    <div class="o-tools">
+      <div class="lang" role="group" aria-label="Language · Lugha">
+        <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
+        <button type="button" data-lang="sw" lang="sw" aria-label="Kiswahili" aria-pressed="false">SW</button>
+      </div>
+      <button type="button" class="icon-btn" id="o-a11y" aria-label="Accessibility settings (Alt + A)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M4 7.5l8 1.5 8-1.5.4 2-6.4 1.4v3.6l2.4 7-1.9.7L12 16l-2.5 6.2-1.9-.7 2.4-7v-3.6L3.6 9.5z"/></svg>
+      </button>
+      <button type="button" class="icon-btn" id="o-close" aria-label="Close order form">✕</button>
+    </div>
+  </div>
+  <ol class="o-steps" id="o-steps" aria-label="Order steps"></ol>
+  <div class="o-body" id="o-body"></div>
+  <div class="o-foot" id="o-foot">
+    <div class="o-total" id="o-total" aria-live="polite"></div>
+    <div class="o-btns">
+      <button type="button" class="btn btn-soft" id="o-back">Back</button>
+      <button type="button" class="btn btn-primary" id="o-next">Next</button>
+    </div>
+  </div>
+  <p class="sr-only" id="o-live" role="status"></p>
+</dialog>
+
 <div class="rguide" aria-hidden="true"></div>
 <div class="rmask top" aria-hidden="true"></div>
 <div class="rmask bot" aria-hidden="true"></div>
@@ -673,13 +837,13 @@ const SW = {
   "Accessibility":"Ufikivu", "Order":"Agiza", "Menu":"Menyu", "Close":"Funga",
   "New from Nairobi 🎀":"Mpya kutoka Nairobi 🎀", "Soft hair days.":"Nywele laini kila siku.", "Bold colour ways.":"Rangi zinazong'aa.",
   "Satin scrunchies and hair bonnets in colours you'll want to wear every single day.":"Scrunchies za satin na boneti za nywele, kwa rangi utakazotaka kuvaa kila siku.",
-  "Shop the collection":"Tazama mkusanyiko", "Order on WhatsApp":"Agiza kupitia WhatsApp",
+  "Shop the collection":"Tazama mkusanyiko", "When do you need it?":"Unaihitaji lini?",
   "Illustration: scrunchies in tangerine, blush, lilac, champagne and cocoa, floating on a soft peach background":"Mchoro: scrunchies za rangi ya chungwa, waridi, zambarau, krimu na kahawia zikielea juu ya mandharinyuma laini ya rangi ya pichi",
   // collection
   "The collection":"Mkusanyiko", "Pick a colour.":"Chagua rangi.", "Pick a size. Done.":"Chagua saizi. Basi!",
-  "Every piece comes in Small, Medium and Large. Tap through the colours and sizes and we'll write your WhatsApp order for you.":"Kila bidhaa inapatikana kwa saizi Ndogo, Wastani na Kubwa. Gusa rangi na saizi, nasi tutakuandikia oda yako ya WhatsApp.",
+  "Right now":"Sasa hivi",
   "Colours shown are examples. Ask us what's in stock, or request a custom colour. Prices are in Kenyan shillings.":"Rangi zilizoonyeshwa ni mifano tu. Tuulize kilichopo, au omba rangi unayoipenda. Bei ziko kwa shilingi za Kenya.",
-  "Colour:":"Rangi:", "Size":"Saizi", "From":"Kuanzia", "on WhatsApp":"kupitia WhatsApp",
+  "Colour:":"Rangi:", "Size":"Saizi", "From":"Kuanzia", "(opens the order form)":"(inafungua fomu ya oda)",
   "Small":"Ndogo", "Medium":"Wastani", "Large":"Kubwa",
   // products
   "Plain Satin":"Satin ya Kawaida", "Organza":"Organza", "Double":"Double", "Double + Beads":"Double + Shanga", "Zipped":"Yenye Zipu", "Satin Bonnet":"Boneti ya Satin",
@@ -711,11 +875,11 @@ const SW = {
   "We're working on more.":"Tunaandaa mengi zaidi.", "Follow us on Instagram":"Tufuate Instagram", "to see it first.":"uwe wa kwanza kuona.",
   // order
   "Ordering takes a minute.":"Kuagiza ni dakika moja tu.",
-  "Text, voice note or form, whichever is easiest for you.":"Ujumbe, voice note au fomu: chochote kilicho rahisi kwako.",
+  "Order right away, or for later. The form has room for both.":"Agiza sasa hivi, au kwa baadaye. Fomu ina nafasi ya yote mawili.",
   "Choose":"Chagua", "Pick your style, colour and size from the collection.":"Chagua mtindo, rangi na saizi kutoka kwenye mkusanyiko.",
-  "Send":"Tuma", "Tap \"Order\" and your message is ready to go on WhatsApp. Or use the order form.":"Gusa \"Agiza\" na ujumbe wako uko tayari kutumwa WhatsApp. Au tumia fomu ya oda.",
-  "Receive":"Pokea", "We'll confirm your total and sort out delivery or pick-up with you.":"Tutathibitisha jumla ya bei na kupanga nawe usafirishaji au kuchukua mwenyewe.",
-  "Ways to reach us":"Njia za kuwasiliana nasi", "Fastest reply":"Jibu la haraka zaidi", "Order form":"Fomu ya oda",
+  "Later":"Baadaye", "Tap \"Order\" and the order form opens with your choices already filled in. Add your name and phone number.":"Gusa \"Agiza\" na fomu ya oda inafunguka ikiwa na chaguo zako tayari. Weka jina na namba yako ya simu.",
+  "Receive":"Pokea", "We'll confirm availability and delivery with you. Need it later? Choose \"Later\" on the item and we'll plan it with you.":"Tutathibitisha upatikanaji na usafirishaji nawe. Unaihitaji baadaye? Chagua \"Baadaye\" kwenye bidhaa nasi tutapanga nawe.",
+  "Ways to reach us":"Njia za kuwasiliana nasi", "Now or for later":"Sasa au kwa baadaye", "Order form":"Fomu ya oda",
   // accessibility section
   "A site for everyone.":"Tovuti ya kila mtu.",
   "Make this page work the way you need it to. Your settings are saved on this device.":"Rekebisha ukurasa huu ufanye kazi unavyohitaji. Mipangilio yako huhifadhiwa kwenye kifaa hiki.",
@@ -727,7 +891,7 @@ const SW = {
   "Dark mode, increased contrast, soft colours and monochrome":"Hali ya giza, utofautishaji zaidi, rangi laini na nyeusi-na-nyeupe",
   "Reading guide, reading mask, big cursor and bigger buttons":"Mstari wa kusomea, kifuniko cha kusomea, kishale kikubwa na vitufe vikubwa",
   "Fully usable by keyboard, with shortcuts and no flashing content":"Inatumika kikamilifu kwa kibodi, ina njia za mkato na hakuna kinachomweka",
-  "Spot a problem?":"Umeona tatizo?", "Tell us on WhatsApp":"Tuambie kwa WhatsApp",
+  "Spot a problem?":"Umeona tatizo?", "Tell us on Instagram":"Tuambie kwa Instagram",
   "tare. atelier · Designed in Nairobi, Kenya":"tare. atelier · Imebuniwa Nairobi, Kenya", "Social media":"Mitandao ya kijamii",
   // accessibility panel
   "Accessibility settings (Alt + A)":"Mipangilio ya ufikivu (Alt + A)", "Close accessibility settings":"Funga mipangilio ya ufikivu",
@@ -773,7 +937,7 @@ const SW = {
   "Everyday pieces.":"Vitu vya kila siku.", "Bold Nairobi stories.":"Hadithi kali za Nairobi.",
   "Satin scrunchies for soft hair days, plus the Mama Mboga tee and tote celebrating the city we love.":"Scrunchies za satin kwa nywele laini kila siku, pamoja na tee na tote ya Mama Mboga zinazosherehekea jiji tunalolipenda.",
   "Shop hair accessories":"Nunua mapambo ya nywele", "Explore Mama Mboga":"Gundua Mama Mboga",
-  "Every scrunchie comes in Small, Medium and Large. Tap through the options and we'll write your WhatsApp order for you.":"Kila scrunchie inapatikana kwa saizi Ndogo, Wastani na Kubwa. Gusa chaguo zako, nasi tutakuandikia oda yako ya WhatsApp.",
+  "Every scrunchie comes in Small, Medium and Large. Tap through the options, then fill in the order form with your choices ready.":"Kila scrunchie inapatikana kwa saizi Ndogo, Wastani na Kubwa. Gusa chaguo zako, kisha jaza fomu ya oda ikiwa na chaguo zako tayari.",
   "The Mama Mboga collection":"Mkusanyiko wa Mama Mboga", "Celebrating everyday stories.":"Tunasherehekea hadithi za kila siku.",
   "Art inspired by Nairobi's markets, matatus and the everyday heroes who keep our city moving, printed on pieces you'll use every day.":"Sanaa iliyochochewa na masoko ya Nairobi, matatu na mashujaa wa kila siku wanaoendesha jiji letu, imechapishwa kwenye vitu utakavyotumia kila siku.",
   "Your design, printed.":"Muundo wako, umechapishwa.",
@@ -889,40 +1053,51 @@ function translateStatic(){
 
 /* ================= PRODUCTS: edit names, photos, colours and prices here =================
    prices: [Small, Medium, Large] in KES, price: one flat price for every size, or neither to show "Price on request". */
-const WA = "254793598988";
+/* Orders go through the Google Form. Field IDs come from the form itself; "formLink" opens it with answers pre-filled. */
+const FORM = { url:"https://docs.google.com/forms/d/e/1FAIpQLScIYwSqTee85oQ7FMz17Zqthyc5KeZYn4sTgPOkYg9357_Z9Q/viewform",
+               item:"entry.1000027", colour:"entry.967112212", size:"entry.2055232012", notes:"entry.1000023" };
+function formLink({ item, other, colour, size, notes }){
+  const q = new URLSearchParams({ usp:"pp_url" });
+  if(other){ q.set(FORM.item,"__other_option__"); q.set(FORM.item+".other_option_response",other); }
+  else if(item) q.set(FORM.item,item);
+  if(colour) q.set(FORM.colour,colour);
+  if(size) q.set(FORM.size,size);
+  if(notes) q.set(FORM.notes,notes);
+  return FORM.url+"?"+q.toString();
+}
 const C = { black:["Black","#1d1d1f"], cocoa:["Cocoa","#6b3a1e"], caramel:["Caramel","#a8692b"], cream:["Cream","#f3ead8"], gold:["Gold","#e3cf8f"],
             coral:["Coral","#e8545e"], silver:["Silver","#c8c8c4"], wine:["Wine","#5e1220"], butter:["Butter","#f6e58d"],
             emerald:["Emerald","#0f6b5c"], burgundy:["Burgundy","#6e0f1d"], white:["White","#ffffff"], tangerine:["Tangerine","#ff5a1f"] };
 const HAIR = ["S","M","L"];
 const products = [
-  { id:"plain", group:"hair", name:"Plain Satin", tag:"Everyday essential", prices:[100,150,200], sizes:HAIR,
+  { id:"plain", group:"hair", form:"Plain Satin scrunchies", name:"Plain Satin", tag:"Everyday essential", prices:[100,150,200], sizes:HAIR,
     desc:"Smooth, soft and effortlessly stylish. Our classic satin scrunchies add a touch of elegance to your everyday hairstyles while keeping your hair looking beautifully put together. Simple, timeless and available in vibrant colours.",
     colors:["black","cocoa","caramel","cream"], img:"assets/plain-satin.jpg", alt:"Black, cocoa, caramel and cream satin scrunchies" },
-  { id:"organza", group:"hair", name:"Organza", tag:"Light & playful", prices:[50,100,150], sizes:HAIR,
+  { id:"organza", group:"hair", form:"organza scrunchies", name:"Organza", tag:"Light & playful", prices:[50,100,150], sizes:HAIR,
     desc:"Light, airy and beautifully voluminous. The organza scrunchie adds a soft, dreamy touch to ponytails, buns and half-up hairstyles. For days when your hair deserves a little extra attention.",
     colors:["gold"], img:"assets/organza.jpg", alt:"A sheer gold organza scrunchie on silver satin" },
-  { id:"double", group:"hair", name:"Satin + Organza", tag:"Soft glam", prices:[130,260,280], sizes:HAIR,
+  { id:"double", group:"hair", form:"Double scrunchies(satin+organza)", name:"Satin + Organza", tag:"Soft glam", prices:[130,260,280], sizes:HAIR,
     desc:"A little satin, a little sheer magic! This combination brings together the smooth finish of satin and the delicate beauty of organza for a voluminous, feminine statement. Perfect for elevating even the simplest outfit.",
     colors:["coral","silver","wine","butter"], img:"assets/satin-organza.jpg", alt:"Four satin and organza scrunchies in coral, silver, wine and butter yellow" },
-  { id:"statement", group:"hair", name:"Statement Scrunchie", tag:"Statement piece", prices:[180,310,350], sizes:HAIR,
+  { id:"statement", group:"hair", form:"Double scrunchies+ beads/cowrie beads", name:"Statement Scrunchie", tag:"Statement piece", prices:[180,310,350], sizes:HAIR,
     desc:"For the girlies who love a little extra! Combining satin, organza and decorative beads or cowrie shells, this scrunchie is designed to stand out. A playful blend of texture, detail and personality.",
     colors:["black"], finish:["Pearls & beads","Cowrie shells","Mix of both"], img:"assets/statement.webp", alt:"A black satin scrunchie decorated with cowrie shells, pearls and gold beads" },
-  { id:"zipped", group:"hair", name:"Zipped Scrunchie", tag:"Multifunctional", prices:[120,320,360], sizes:HAIR, layout:"wide",
+  { id:"zipped", group:"hair", form:"Zipped scrunchies", name:"Zipped Scrunchie", tag:"Multifunctional", prices:[120,320,360], sizes:HAIR, layout:"wide",
     desc:"Who said a scrunchie is just for your hair? This clever accessory doubles as a mini storage pouch with a discreet zipper for carrying small essentials such as cash, keys, lip gloss and earbuds. Wear it in your hair or keep it handy for when you need it. Cute, convenient and functional!",
     colors:["emerald","burgundy"],
     imgs:{ emerald:"assets/zipped-emerald.webp", burgundy:"assets/zipped-burgundy.webp" },
     alts:{ emerald:"An emerald satin scrunchie with its zip open, holding cash, lip gloss, keys and earbuds",
            burgundy:"A burgundy zipped scrunchie with cowrie shells and beads, holding cash, lip gloss, earbuds and tare. keys" } },
-  { id:"bonnet", group:"hair", name:"Satin Bonnet", tag:"Night routine", prices:[450,600,800], sizes:HAIR, layout:"full",
+  { id:"bonnet", group:"hair", form:"Bonnet", name:"Satin Bonnet", tag:"Night routine", prices:[450,600,800], sizes:HAIR, layout:"full",
     desc:"Satin bonnets that protect your hair while you sleep, so your style lasts longer.",
     colors:["tangerine","black","cocoa","cream"], kind:"bonnet", art:true },   // no photo yet: shows a drawing
-  { id:"tee", group:"art", name:"Mama Mboga Tee", tag:"Statement pieces", price:1200, sizes:["S","M","L","XL","XXL"],
+  { id:"tee", group:"art", formOther:"Mama Mboga T-shirt", name:"Mama Mboga Tee", tag:"Statement pieces", price:1200, sizes:["S","M","L","XL","XXL"],
     desc:"Inspired by Nairobi's vibrant streets, markets and everyday people, the Mama Mboga pieces bring Kenyan culture to fashion through a colourful illustrated graphic. It celebrates the people, hustle and beauty of ordinary everyday life.",
     features:["Premium cotton, soft and durable","Relaxed, comfortable fit","Minimalist front branding","Available in different colours and sizes"],
     colors:["white"], colorNote:"White shown. Ask us about other colours.",
     img:"assets/mama-mboga-tee.webp", imgStyle:"object-position:0 50%;transform:scale(1.2);transform-origin:0 50%",
     alt:"A white t-shirt printed with a colourful illustration of a Nairobi market: a mama mboga stall, a matatu and shoppers" },
-  { id:"tote", group:"art", name:"Mama Mboga Tote", tag:"Everyday tote", price:800,
+  { id:"tote", group:"art", form:"Tote bags", name:"Mama Mboga Tote", tag:"Everyday tote", price:800,
     desc:"Inspired by the vibrant energy of Nairobi's local markets, the Mama Mboga tote captures everyday life through art: colourful fresh produce, familiar matatus, market vendors and busy streets. More than just a bag, it's a wearable celebration of Kenyan culture, creativity and the everyday heroes in our communities.",
     features:["Artistic, full-colour DTF graphic","Spacious everyday tote design","For shopping, campus, work and casual outings","Reusable and versatile"],
     img:"assets/mama-mboga-tote.webp", imgStyle:"object-position:60% 50%",
@@ -930,23 +1105,23 @@ const products = [
 ];
 /* Atelier design pieces: enquiry only. "views" adds a Front/Back photo switch. */
 products.push(
-  { id:"kikoi-corset", group:"atelier", name:"Kikoi Corset Look", tag:"Kenya × Bavaria", prices:null, enquire:true,
+  { id:"kikoi-corset", group:"atelier", form:"Designs", name:"Kikoi Corset Look", tag:"Kenya × Bavaria", prices:null, enquire:true,
     desc:"A structured kikoi corset paired with a bishop-sleeve blouse and flowing linen trousers, blending Kenyan heritage with Bavarian-inspired craftsmanship. The look celebrates cultural identity, inclusivity and cross-cultural exchange through contemporary, gender-neutral tailoring.",
     features:["Structured kikoi corset","Bishop-sleeve blouse","Flowing linen trousers","Gender-neutral tailoring"],
     img:"assets/kikoi-corset-look.jpg",
     alt:"A mannequin wearing a blue-striped kikoi corset over a white bishop-sleeve blouse, with wide cream linen trousers embroidered with deer" },
-  { id:"guardian-cloak", group:"atelier", name:"Guardian Cloak", tag:"Protection", prices:null, enquire:true,
+  { id:"guardian-cloak", group:"atelier", form:"Designs", name:"Guardian Cloak", tag:"Protection", prices:null, enquire:true,
     desc:"A cropped cloak with a balaclava that signifies protection, finished with the symbol of the cherubim and seraphim on the chest.",
     features:["Cropped cloak","Hooded balaclava","Cherubim and seraphim chest symbol"],
     img:"assets/guardian-cloak.jpg",
     alt:"Illustration of a figure in an olive hooded balaclava and cropped cloak, with a gold wing symbol on the chest" },
-  { id:"sherehe", group:"atelier", name:"Sherehe Look", tag:"Festival & sherehe", prices:null, enquire:true,
+  { id:"sherehe", group:"atelier", form:"Designs", name:"Sherehe Look", tag:"Festival & sherehe", prices:null, enquire:true,
     desc:"Celebrates the joy of gathering during festivals and sherehe. It fuses modern Gen-Z tailoring with woven kikoi heritage, symbolising transformation, music and unity: a bold expression of culture meeting the future.",
     features:["Modern Gen-Z tailoring","Printed short-sleeve shirt","Wide-leg cream trousers","Woven kikoi pocket details"],
     views:[ { label:"Front", img:"assets/sherehe-front.jpg", alt:"A model in a navy printed short-sleeve shirt and wide-leg cream trousers, seen from the front" },
             { label:"Back",  img:"assets/sherehe-back.jpg",  alt:"The Sherehe Look from the back, showing kikoi-print flaps on the trouser pockets" } ],
     imgStyle:"object-fit:contain;background:linear-gradient(#7c7c7a,#757573 50%,#91918f)" },
-  { id:"shuka-apron", group:"atelier", name:"Shuka Apron Look", tag:"Maasai × Bavaria", prices:null, enquire:true,
+  { id:"shuka-apron", group:"atelier", form:"Designs", name:"Shuka Apron Look", tag:"Maasai × Bavaria", prices:null, enquire:true,
     desc:"A flowing Bavarian-inspired shirt with Maasai beadwork detailing, wide-leg shorts with Bavarian embroidery at the hem, and an apron vest made from Maasai shuka. Styled with a Maasai-beaded leather bag, beaded sandals and beaded bracelets from Maasai culture.",
     features:["Bavarian-inspired shirt with Maasai beadwork","Wide-leg shorts with Bavarian hem embroidery","Maasai shuka apron vest","Beaded leather bag, sandals and bracelets"],
     img:"assets/shuka-apron-look.webp",
@@ -1012,6 +1187,7 @@ function cardHTML(p, sel){
   const ss = sel.s !== undefined ? +sel.s : 1;
   const sf = sel.f !== undefined ? +sel.f : 0;
   const sv = sel.v !== undefined ? +sel.v : 0;
+  const sw = sel.w !== undefined ? +sel.w : 0;
   const radios = (kind, items, checked, label) => items.map((it,i)=>`
         <input type="radio" id="${p.id}-${kind}-${i}" name="${p.id}-${kind}" value="${i}" ${i===checked?"checked":""}>
         <label for="${p.id}-${kind}-${i}">${label(it,i)}</label>`).join("");
@@ -1036,13 +1212,14 @@ function cardHTML(p, sel){
       ${p.finish ? `<fieldset><legend>${t("Finish")}</legend><div class="sizes finish">${radios("finish", p.finish, sf, f=>t(f))}</div></fieldset>` : ""}
       ${p.sizes ? `<fieldset><legend>${t("Size")}</legend><div class="sizes">${radios("size", p.sizes, Math.min(ss,p.sizes.length-1),
           (s,i)=>`<span aria-hidden="true">${s}</span><span class="sr-only">${t(SIZE_NAME[s])}${p.prices?", "+ksh(p.prices[i]):""}</span>`)}</div></fieldset>` : ""}
+      ${!p.enquire ? `<fieldset><legend>${t("When do you need it?")}</legend><div class="sizes">${radios("when", [t("Right now"), t("Later")], sw, w=>w)}</div></fieldset>` : ""}
       <div class="buy">
         <p class="price" aria-live="polite"><span class="amt"></span>${p.prices?`<small>${t("From")} ${ksh(p.prices[0])}</small>`:""}</p>
-        <a class="btn btn-primary order" href="#">${p.enquire
-            ? `${t("Enquire")}<span class="sr-only">: ${t(p.name)}, ${t("on WhatsApp")}</span>`
+        <a class="btn btn-primary order" data-order href="#" target="_blank" rel="noopener">${p.enquire
+            ? `${t("Enquire")}<span class="sr-only">: ${t(p.name)}, ${t("(opens the order form)")}</span>`
             : (p.prices || p.price)
-            ? `${t("Order")}<span class="sr-only"> ${t(p.name)} ${t("on WhatsApp")}</span>`
-            : `${t("Ask about price")}<span class="sr-only">: ${t(p.name)}, ${t("on WhatsApp")}</span>`}</a>
+            ? `${t("Order")}<span class="sr-only"> ${t(p.name)} ${t("(opens the order form)")}</span>`
+            : `${t("Ask about price")}<span class="sr-only">: ${t(p.name)}, ${t("(opens the order form)")}</span>`}</a>
       </div>
     </div>
   </li>`;
@@ -1051,7 +1228,7 @@ function renderCards(){
   const sel = {};
   document.querySelectorAll(".card[data-id]").forEach(c=>{
     const id=c.dataset.id, q=n=>c.querySelector(`input[name="${id}-${n}"]:checked`);
-    sel[id]={ c:q("color")&&q("color").value, s:q("size")?q("size").value:undefined, f:q("finish")?q("finish").value:undefined, v:q("view")?q("view").value:undefined };
+    sel[id]={ c:q("color")&&q("color").value, s:q("size")?q("size").value:undefined, f:q("finish")?q("finish").value:undefined, v:q("view")?q("view").value:undefined, w:q("when")?q("when").value:undefined };
   });
   for(const g in grids) grids[g].innerHTML = products.filter(p=>p.group===g).map(p=>cardHTML(p,sel[p.id])).join("");
   document.querySelectorAll(".card[data-id]").forEach(updateCard);
@@ -1077,27 +1254,20 @@ function updateCard(card){
   const amt = card.querySelector(".amt");
   amt.textContent = price || t("Price on request");
   amt.classList.toggle("por", !price);
-  const parts = [t(p.name)];
-  if(c) parts.push(t(C[c][0]));
-  if(f!==null) parts.push(t(p.finish[f]));
-  const size = s===null ? "" : (p.group==="hair" ? t(SIZE_NAME[p.sizes[s]]) : p.sizes[s]);
-  let msg;
-  if(p.enquire) msg = LANG==="sw"
-    ? `Habari tare.! 🎀 Ningependa kujua zaidi kuhusu ${t(p.name)}.`
-    : `Hi tare.! 🎀 I'd love to know more about the ${t(p.name)}.`;
-  else if(LANG==="sw") msg = price
-    ? `Habari tare.! 🎀 Ningependa kuagiza: ${parts.join(", ")}${size?`, saizi ${size}`:""} (${price}).`
-    : `Habari tare.! 🎀 Ninapenda ${parts.join(", ")}${size?`, saizi ${size}`:""}. Bei ni ngapi?`;
-  else msg = price
-    ? `Hi tare.! 🎀 I'd like to order: ${parts.join(", ")}${size?`, size ${size}`:""} (${price}).`
-    : `Hi tare.! 🎀 I'm interested in the ${parts.join(", ")}${size?`, size ${size}`:""}. How much is it?`;
-  card.querySelector(".order").href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  const when = q("when") ? +q("when").value : null;
+  const sizeTxt = s===null ? "" : p.sizes[s];
+  const colourTxt = [c ? C[c][0] : "", f!==null ? p.finish[f] : ""].filter(Boolean).join(", ");
+  // what the form receives is always written in English so the answers are easy to read
+  const notes = p.enquire
+    ? `I'd like to know more about the ${p.name}.`
+    : [p.name, colourTxt, sizeTxt ? "size "+sizeTxt : ""].filter(Boolean).join(", ") + (price ? ` (${price})` : "") + ". "
+      + (when===1 ? "I'd like it later (pre-order). Preferred date: " : "I'd like it right away.");
+  card.querySelector(".order").href = formLink({ item:p.form, other:p.formOther, colour:colourTxt, size:sizeTxt, notes });
 }
 renderCards();
 document.addEventListener("change",e=>{ const c=e.target.closest(".card[data-id]"); if(c) updateCard(c); });
 function updateCustomLink(){
-  const msg = LANG==="sw" ? "Habari tare.! 🎀 Ningependa kuchapishiwa muundo wangu maalum." : "Hi tare.! 🎀 I'd like a custom print.";
-  document.getElementById("custom-order").href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  document.getElementById("custom-order").href = formLink({ item:"Designs", notes:"I'd like a custom print. Details: " });
 }
 
 /* ================= Mobile menu ================= */
@@ -1306,6 +1476,7 @@ function setLang(l){
   root.lang=LANG;
   stopReading();
   renderCards(); renderProfiles(); translateStatic(); updateCustomLink();
+  if(typeof oRender==="function") oRender();
   menuBtn.textContent=t(menu.classList.contains("open")?"Close":"Menu");
   document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===LANG));
   if(synth) pickVoice();
@@ -1315,6 +1486,392 @@ document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",(
 setLang(LANG);
 
 document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+<script>
+/* ================= ORDER FORM =================
+   Every "Order" button opens this step-by-step form. Answers are sent into your Google Form,
+   so responses still arrive in the same place (Google Forms > Responses).
+   Edit the payment details, delivery areas and "what helps you" options just below. */
+Object.assign(FORM, { name:"entry.1000020", phone:"entry.1000022", pay:"entry.1000025", cust:"entry.1000057" });
+const O_PAY = { paybill:"880100", account:"1005184108" };
+const O_AREAS = ["CBD","Westlands","Parklands","Kilimani","Kileleshwa","Lavington","Karen","Langata","Ngong Road","South B","South C","Eastleigh","Donholm","Embakasi","Kasarani","Roysambu","Ruaka","Thika Road","Rongai","Kitengela"];
+const O_ACCESS = [
+  ["call","Please call me instead of texting"],
+  ["text","Text messages only, please"],
+  ["voice","Voice notes work best for me"],
+  ["simple","Please use short, simple messages"],
+  ["time","Please give me extra time to reply"],
+  ["help","I'd like help placing this order"],
+  ["behalf","I'm ordering for someone else"],
+];
+const O_CONTACT = [["none","No preference"],["call","Call me"],["sms","Text me (SMS)"],["wa","WhatsApp message"]];
+const O_STEPS = ["Your items","When","Delivery","About you","Review & send"];
+const O_CUSTOM = { id:"custom", group:"art", name:"Custom print", form:"Designs", needsDetails:true };
+
+Object.assign(SW, {
+  "Place your order":"Weka oda yako", "Your items":"Bidhaa zako", "When":"Lini", "Delivery":"Usafirishaji", "About you":"Kukuhusu", "Review & send":"Kagua na utume",
+  "Close order form":"Funga fomu ya oda", "Order steps":"Hatua za oda", "Back":"Rudi", "Next":"Endelea", "Send my order":"Tuma oda yangu", "Sending…":"Inatuma…",
+  "What would you like?":"Ungependa nini?", "Add another item":"Ongeza bidhaa nyingine", "Your order":"Oda yako", "Custom print":"Chapa maalum",
+  "Add to order":"Ongeza kwenye oda", "Remove":"Ondoa", "Removed":"Imeondolewa", "Added":"Imeongezwa", "Quantity":"Idadi", "Increase quantity":"Ongeza idadi", "Decrease quantity":"Punguza idadi",
+  "Tell us about your design":"Tuambie kuhusu muundo wako", "A name, a logo or a picture you'd like printed, and what to print it on":"Jina, nembo au picha unayotaka ichapishwe, na ichapishwe kwenye nini",
+  "Please describe the design you'd like.":"Tafadhali eleza muundo unaoutaka.",
+  "Total":"Jumla", "plus items priced on request":"pamoja na bidhaa zenye bei kwa ombi",
+  "I'd like to order today.":"Ningependa kuagiza leo.", "I'd like it for a future date.":"Ningependa iwe tayari tarehe ya baadaye.",
+  "Preferred date":"Tarehe unayopendelea", "Optional":"Si lazima", "Not sure yet? Leave it blank and we'll ask you.":"Huna uhakika bado? Iache wazi nasi tutakuuliza.",
+  "Quick dates":"Tarehe za haraka", "In a week":"Baada ya wiki", "In 2 weeks":"Baada ya wiki 2", "In a month":"Baada ya mwezi",
+  "How would you like to get it?":"Ungependa kuipokeaje?", "We bring it to you.":"Tunakuletea.", "Pick-up":"Kuchukua mwenyewe", "You collect it.":"Unaichukua mwenyewe.",
+  "Not sure yet":"Bado sijui", "Let's talk it through.":"Tuzungumze kuhusu hilo.", "Your area or estate":"Eneo lako au mtaa", "Choose from the list or type your own. We'll confirm the rest with you.":"Chagua kwenye orodha au andika yako. Tutathibitisha mengine nawe.",
+  "Please choose how you'd like to get it.":"Tafadhali chagua jinsi ungependa kuipokea.",
+  "So we can confirm your order.":"Ili tuthibitishe oda yako.", "Your name":"Jina lako", "Phone number":"Namba ya simu", "We'll only use it to confirm your order.":"Tutaitumia kuthibitisha oda yako tu.",
+  "Have you ordered from us before?":"Umewahi kuagiza kwetu?", "I'm new here":"Mimi ni mgeni", "I've ordered before":"Nimewahi kuagiza",
+  "How should we reach you?":"Tukufikie vipi?", "No preference":"Sina upendeleo", "Call me":"Nipigie simu", "Text me (SMS)":"Nitumie SMS", "WhatsApp message":"Ujumbe wa WhatsApp",
+  "Language":"Lugha", "Which language should we use with you?":"Tutumie lugha gani nawe?",
+  "Anything that makes this easier for you?":"Kuna jambo litakalokurahisishia?", "Choose any that help. Only we will see your answers.":"Chagua yoyote inayosaidia. Ni sisi tu tutakayeona majibu yako.",
+  "Please call me instead of texting":"Tafadhali nipigie badala ya kutuma ujumbe", "Text messages only, please":"Ujumbe mfupi tu, tafadhali", "Voice notes work best for me":"Ujumbe wa sauti ndio unanifaa zaidi",
+  "Please use short, simple messages":"Tafadhali tumia ujumbe mfupi na rahisi", "Please give me extra time to reply":"Tafadhali nipe muda zaidi kujibu",
+  "I'd like help placing this order":"Ningependa msaada wa kuweka oda hii", "I'm ordering for someone else":"Naagiza kwa niaba ya mtu mwingine",
+  "Anything else we should know?":"Kuna jambo lingine tunalopaswa kujua?",
+  "Please tell us your name.":"Tafadhali tuambie jina lako.", "Please enter a phone number we can reach you on, for example 0712 345 678.":"Tafadhali weka namba ya simu tunayoweza kukupigia, mfano 0712 345 678.",
+  "Add at least one item to continue.":"Ongeza angalau bidhaa moja ili kuendelea.",
+  "Check your order":"Kagua oda yako", "Items":"Bidhaa", "How you'll get it":"Utakavyoipokea", "Contact":"Mawasiliano", "Edit":"Hariri",
+  "Right now":"Sasa hivi", "Later, date to be confirmed":"Baadaye, tarehe itathibitishwa", "Later, around":"Baadaye, karibu",
+  "Pay by M-Pesa":"Lipa kwa M-Pesa", "Paybill":"Paybill", "Account":"Akaunti", "Copy":"Nakili", "Copied":"Imenakiliwa",
+  "Paste the M-Pesa message":"Bandika ujumbe wa M-Pesa", "Paid already? Paste the confirmation message. Ordering for later? Skip this and pay when we confirm.":"Umelipa tayari? Bandika ujumbe wa uthibitisho. Unaagiza kwa baadaye? Ruka hatua hii na ulipe tutakapothibitisha.",
+  "Your details are only used to process your order.":"Maelezo yako yanatumika kuchakata oda yako tu.",
+  "Sorry, we couldn't send your order. Please check your connection and try again, or use the original form.":"Samahani, hatukuweza kutuma oda yako. Tafadhali angalia mtandao wako ujaribu tena, au tumia fomu ya awali.",
+  "Use the original form":"Tumia fomu ya awali",
+  "Thank you!":"Asante!", "Your order has been sent.":"Oda yako imetumwa.", "We'll contact you to confirm availability and delivery.":"Tutawasiliana nawe kuthibitisha upatikanaji na usafirishaji.",
+  "Place another order":"Weka oda nyingine",
+});
+
+/* ---------- state ---------- */
+const O_KEEP = ["step","lines","when","date","receive","area","name","phone","cust","contact","lang","access","notes","pay"];
+const oFresh = () => ({ step:0, lines:[], pick:null, when:"now", date:"", receive:"", area:"", name:"", phone:"", cust:"", contact:"none", lang:null, access:[], notes:"", pay:"",
+                        done:false, sending:false, err:"", errField:"", showFallback:false });
+let order = oFresh();
+try{ const sv = JSON.parse(sessionStorage.getItem("tare-order-v1")); if(sv && Array.isArray(sv.lines)) O_KEEP.forEach(k=>{ if(k in sv) order[k]=sv[k]; }); }catch(e){}
+const oSave = () => { try{ const o={}; O_KEEP.forEach(k=>o[k]=order[k]); sessionStorage.setItem("tare-order-v1",JSON.stringify(o)); }catch(e){} };
+
+const oSheet=$("order-sheet"), oBody=$("o-body"), oTitle=$("o-title"), oKick=$("o-kicker"), oStepsEl=$("o-steps"),
+      oTotal=$("o-total"), oBack=$("o-back"), oNext=$("o-next"), oLive=$("o-live"), oFoot=$("o-foot");
+let oOpener=null, oLastStep=-1, oFocusKey=null, oScrollOpts=false;
+
+/* ---------- helpers ---------- */
+const oEsc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const oAll = () => products.concat([O_CUSTOM]);
+const oP = id => oAll().find(p=>p.id===id);
+const oUnit = l => { const p=oP(l.id); return p.price || (p.prices && l.s!=null ? p.prices[l.s] : null); };
+const oLineTotal = l => { const u=oUnit(l); return u==null ? null : u*l.qty; };
+function oTotals(){ let sum=0, req=false; order.lines.forEach(l=>{ const x=oLineTotal(l); if(x==null) req=true; else sum+=x; }); return { sum, req }; }
+const oSizeLabel = (p,l) => l.s==null ? "" : (p.group==="hair" ? t(SIZE_NAME[p.sizes[l.s]]) : p.sizes[l.s]);
+const oLineDesc = l => { const p=oP(l.id); return [l.c?t(C[l.c][0]):"", (l.f!=null&&p.finish)?t(p.finish[l.f]):"", oSizeLabel(p,l)].filter(Boolean).join(" · "); };
+const oThumb = (p,c) => {
+  if(p.art) return productArt(p, c || p.colors[0]);
+  const src = p.views ? p.views[0].img : (p.img || (p.imgs && p.imgs[c || p.colors[0]]));
+  return src ? `<img src="${src}" alt="" loading="lazy" ${p.imgStyle?`style="${oEsc(p.imgStyle)}"`:""}>` : `<span class="o-t-ico" aria-hidden="true">✦</span>`;
+};
+const oIso = days => { const d=new Date(); d.setDate(d.getDate()+days); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+const oDate = (iso, lang) => new Date(iso+"T00:00:00").toLocaleDateString(lang||(LANG==="sw"?"sw-KE":"en-GB"),{ weekday:"short", day:"numeric", month:"short", year:"numeric" });
+const oStepLabel = n => LANG==="sw" ? `Hatua ${n} kati ya ${O_STEPS.length}` : `Step ${n} of ${O_STEPS.length}`;
+const oAnnounce = m => { oLive.textContent=""; setTimeout(()=>{ oLive.textContent=m; },60); };
+const oNewPick = id => { const p=oP(id); return { id, c:p.colors?p.colors[0]:null, s:p.sizes?Math.min(1,p.sizes.length-1):null, f:p.finish?0:null, qty:1, details:"" }; };
+function oAddLine(line){
+  const same = order.lines.find(l=>l.id===line.id && l.c===line.c && l.s===line.s && l.f===line.f && !l.details && !line.details);
+  if(same) same.qty = Math.min(20, same.qty + line.qty); else order.lines.push(line);
+}
+
+const oChip = (name,value,checked,label) => { const id=`o-${name}-${value}`; return `<input type="radio" id="${id}" name="o-${name}" value="${oEsc(value)}" ${checked?"checked":""} data-fk="${id}"><label for="${id}" class="o-chip">${label}</label>`; };
+const oCard = (name,value,checked,title,desc) => { const id=`o-${name}-${value}`; return `<input type="radio" id="${id}" name="o-${name}" value="${oEsc(value)}" ${checked?"checked":""} data-fk="${id}"><label for="${id}" class="o-card"><span class="o-ct"><strong>${title}</strong>${desc?`<small>${desc}</small>`:""}</span><span class="o-tick" aria-hidden="true"></span></label>`; };
+const oBad = k => order.errField===k ? ' aria-invalid="true" aria-describedby="o-err"' : "";
+
+/* ---------- steps ---------- */
+function oStepItems(){
+  let h = "";
+  if(order.lines.length){
+    h += `<h3 class="o-h3" id="o-bh">${t("Your order")}</h3><ul class="o-lines" aria-labelledby="o-bh">` + order.lines.map((l,i)=>{
+      const p=oP(l.id), lt=oLineTotal(l), nm=oEsc(t(p.name));
+      const sub=[oLineDesc(l), l.details?`“${oEsc(l.details)}”`:""].filter(Boolean).join(" · ");
+      return `<li class="o-line"><span class="o-thumb">${oThumb(p,l.c)}</span>
+        <span class="o-lt"><strong>${nm}</strong>${sub?`<small>${sub}</small>`:""}</span>
+        <span class="o-lp">${lt==null ? oEsc(t("Price on request")) : ksh(lt)}</span>
+        ${p.enquire ? "" : `<span class="o-qty" role="group" aria-label="${oEsc(t("Quantity"))}: ${nm}">
+          <button type="button" data-act="dec" data-i="${i}" data-fk="dec${i}" aria-label="${oEsc(t("Decrease quantity"))}: ${nm}">−</button>
+          <output>${l.qty}</output>
+          <button type="button" data-act="inc" data-i="${i}" data-fk="inc${i}" aria-label="${oEsc(t("Increase quantity"))}: ${nm}">+</button></span>`}
+        <button type="button" class="o-rm" data-act="rm" data-i="${i}" data-fk="rm${i}" aria-label="${oEsc(t("Remove"))}: ${nm}">${t("Remove")}</button></li>`;
+    }).join("") + `</ul>`;
+  }
+  h += `<h3 class="o-h3" id="o-ph">${order.lines.length ? t("Add another item") : t("What would you like?")}</h3>`;
+  [["hair","Hair accessories"],["art","The Mama Mboga collection"],["atelier","The atelier"]].forEach(([g,title])=>{
+    h += `<fieldset class="o-set"><legend>${t(title)}</legend><div class="o-grid">` + oAll().filter(p=>p.group===g).map(p=>{
+      const id=`o-pick-${p.id}`;
+      const price = p.price ? ksh(p.price) : (p.prices ? `${t("From")} ${ksh(p.prices[0])}` : t("Price on request"));
+      return `<input type="radio" id="${id}" name="o-pick" value="${p.id}" ${order.pick&&order.pick.id===p.id?"checked":""} data-fk="${id}"><label for="${id}" class="o-card o-pcard"><span class="o-thumb">${oThumb(p)}</span><span class="o-ct"><strong>${oEsc(t(p.name))}</strong><small>${price}</small></span></label>`;
+    }).join("") + `</div></fieldset>`;
+  });
+  if(order.pick){
+    const pk=order.pick, p=oP(pk.id);
+    h += `<div class="o-opts" id="o-opts" role="group" aria-label="${oEsc(t(p.name))}"><h4>${oEsc(t(p.name))}</h4>`;
+    if(p.colors) h += `<fieldset class="o-set"><legend>${t("Colour:")} <span class="picked">${t(C[pk.c][0])}</span></legend><div class="swatches">` +
+      p.colors.map(c=>`<input type="radio" id="o-c-${c}" name="o-c" value="${c}" ${c===pk.c?"checked":""} data-fk="o-c-${c}"><label for="o-c-${c}" style="background:${C[c][1]}" title="${oEsc(t(C[c][0]))}"><span class="sr-only">${t(C[c][0])}</span></label>`).join("") + `</div></fieldset>`;
+    if(p.finish) h += `<fieldset class="o-set"><legend>${t("Finish")}</legend><div class="sizes finish">` +
+      p.finish.map((f,i)=>`<input type="radio" id="o-f-${i}" name="o-f" value="${i}" ${i===pk.f?"checked":""} data-fk="o-f-${i}"><label for="o-f-${i}">${t(f)}</label>`).join("") + `</div></fieldset>`;
+    if(p.sizes) h += `<fieldset class="o-set"><legend>${t("Size")}</legend><div class="sizes">` +
+      p.sizes.map((s,i)=>`<input type="radio" id="o-s-${i}" name="o-s" value="${i}" ${i===pk.s?"checked":""} data-fk="o-s-${i}"><label for="o-s-${i}"><span aria-hidden="true">${s}</span><span class="sr-only">${t(SIZE_NAME[s])}${p.prices?", "+ksh(p.prices[i]):(p.price?", "+ksh(p.price):"")}</span></label>`).join("") + `</div></fieldset>`;
+    if(p.needsDetails) h += `<div class="o-field"><label for="o-details">${t("Tell us about your design")}</label><textarea id="o-details" data-bind="details" data-fk="o-details">${oEsc(pk.details)}</textarea><p class="o-hint">${t("A name, a logo or a picture you'd like printed, and what to print it on")}</p></div>`;
+    if(!p.enquire) h += `<div class="o-qrow"><span id="o-qh">${t("Quantity")}</span><span class="o-qty" role="group" aria-labelledby="o-qh">
+      <button type="button" data-act="pdec" data-fk="pdec" aria-label="${oEsc(t("Decrease quantity"))}">−</button><output>${pk.qty}</output>
+      <button type="button" data-act="pinc" data-fk="pinc" aria-label="${oEsc(t("Increase quantity"))}">+</button></span></div>`;
+    h += `<button type="button" class="btn btn-dark" data-act="add" data-fk="add">${t("Add to order")}</button></div>`;
+  }
+  return h;
+}
+function oStepWhen(){
+  let h = `<fieldset class="o-set"><legend class="sr-only">${t("When do you need it?")}</legend><div class="o-cards">` +
+    oCard("when","now",order.when==="now",t("Right now"),t("I'd like to order today.")) +
+    oCard("when","later",order.when==="later",t("Later"),t("I'd like it for a future date.")) + `</div></fieldset>`;
+  if(order.when==="later"){
+    h += `<div class="o-field"><label for="o-date">${t("Preferred date")} <span class="o-opt">${t("Optional")}</span></label>
+      <input type="date" id="o-date" min="${oIso(1)}" value="${oEsc(order.date)}" data-fk="o-date">
+      <div class="o-chips" role="group" aria-label="${oEsc(t("Quick dates"))}">
+        <button type="button" class="o-qd" data-act="qd" data-days="7" data-fk="qd7">${t("In a week")}</button>
+        <button type="button" class="o-qd" data-act="qd" data-days="14" data-fk="qd14">${t("In 2 weeks")}</button>
+        <button type="button" class="o-qd" data-act="qd" data-days="30" data-fk="qd30">${t("In a month")}</button></div>
+      <p class="o-hint">${t("Not sure yet? Leave it blank and we'll ask you.")}</p></div>`;
+  }
+  return h;
+}
+function oStepReceive(){
+  let h = `<fieldset class="o-set"><legend class="sr-only">${t("How would you like to get it?")}</legend><div class="o-cards">` +
+    oCard("receive","delivery",order.receive==="delivery",t("Delivery"),t("We bring it to you.")) +
+    oCard("receive","pickup",order.receive==="pickup",t("Pick-up"),t("You collect it.")) +
+    oCard("receive","unsure",order.receive==="unsure",t("Not sure yet"),t("Let's talk it through.")) + `</div></fieldset>`;
+  if(order.receive==="delivery"){
+    h += `<div class="o-field"><label for="o-area">${t("Your area or estate")} <span class="o-opt">${t("Optional")}</span></label>
+      <input type="text" id="o-area" list="o-areas" data-bind="area" data-fk="o-area" autocomplete="off" value="${oEsc(order.area)}">
+      <datalist id="o-areas">${O_AREAS.map(a=>`<option value="${oEsc(a)}">`).join("")}</datalist>
+      <p class="o-hint">${t("Choose from the list or type your own. We'll confirm the rest with you.")}</p></div>`;
+  }
+  return h;
+}
+function oStepYou(){
+  return `<p class="o-lead">${t("So we can confirm your order.")}</p>
+  <div class="o-field"><label for="o-name">${t("Your name")}</label><input id="o-name" type="text" data-bind="name" data-fk="o-name" autocomplete="name" value="${oEsc(order.name)}"${oBad("o-name")}></div>
+  <div class="o-field"><label for="o-phone">${t("Phone number")}</label><input id="o-phone" type="tel" inputmode="tel" data-bind="phone" data-fk="o-phone" autocomplete="tel" placeholder="0712 345 678" value="${oEsc(order.phone)}"${oBad("o-phone")}><p class="o-hint">${t("We'll only use it to confirm your order.")}</p></div>
+  <fieldset class="o-set"><legend>${t("Have you ordered from us before?")} <span class="o-opt">${t("Optional")}</span></legend><div class="o-chips">${oChip("cust","new",order.cust==="new",t("I'm new here"))}${oChip("cust","old",order.cust==="old",t("I've ordered before"))}</div></fieldset>
+  <fieldset class="o-set"><legend>${t("How should we reach you?")}</legend><div class="o-chips">${O_CONTACT.map(([k,l])=>oChip("contact",k,order.contact===k,t(l))).join("")}</div></fieldset>
+  <fieldset class="o-set"><legend>${t("Which language should we use with you?")}</legend><div class="o-chips">${oChip("lang","en",order.lang==="en","English")}${oChip("lang","sw",order.lang==="sw","Kiswahili")}</div></fieldset>
+  <fieldset class="o-set"><legend>${t("Anything that makes this easier for you?")} <span class="o-opt">${t("Optional")}</span></legend><p class="o-hint" style="margin:-4px 0 10px">${t("Choose any that help. Only we will see your answers.")}</p><div class="o-chips">${O_ACCESS.map(([k,l])=>`<input type="checkbox" id="o-acc-${k}" data-acc="${k}" ${order.access.includes(k)?"checked":""} data-fk="o-acc-${k}"><label for="o-acc-${k}" class="o-chip">${t(l)}</label>`).join("")}</div></fieldset>
+  <div class="o-field"><label for="o-notes">${t("Anything else we should know?")} <span class="o-opt">${t("Optional")}</span></label><textarea id="o-notes" data-bind="notes" data-fk="o-notes">${oEsc(order.notes)}</textarea></div>`;
+}
+function oWhenText(lang){
+  if(order.when==="now") return lang==="en" ? "Right now" : t("Right now");
+  if(lang==="en") return "Later (pre-order)" + (order.date ? ", preferred date: "+oDate(order.date,"en-GB") : ", date to be confirmed");
+  return order.date ? `${t("Later, around")} ${oDate(order.date)}` : t("Later, date to be confirmed");
+}
+function oStepReview(){
+  const tot=oTotals();
+  const row=(label,val,step)=>`<div class="o-row"><dt>${label}</dt><dd>${val}</dd><dd><button type="button" class="o-link" data-act="edit" data-step="${step}" data-fk="edit${step}">${t("Edit")}<span class="sr-only"> ${label}</span></button></dd></div>`;
+  const items = `<ul>` + order.lines.map(l=>{ const p=oP(l.id), lt=oLineTotal(l); return `<li>${oEsc(t(p.name))}${oLineDesc(l)?`, ${oEsc(oLineDesc(l))}`:""} × ${l.qty} <strong>${lt==null?oEsc(t("Price on request")):ksh(lt)}</strong></li>`; }).join("") + `</ul>`;
+  const recv = { delivery:t("Delivery"), pickup:t("Pick-up"), unsure:t("Not sure yet") }[order.receive] || "";
+  const contact = (O_CONTACT.find(c=>c[0]===order.contact)||[])[1];
+  return `<dl class="o-sum">
+    ${row(t("Items"), items, 0)}
+    ${row(t("When"), oEsc(oWhenText()), 1)}
+    ${row(t("How you'll get it"), oEsc(recv + (order.receive==="delivery"&&order.area ? " · "+order.area : "")), 2)}
+    ${row(t("Contact"), `${oEsc(order.name)}<br>${oEsc(order.phone)}${contact?`<br><small>${oEsc(t(contact))}</small>`:""}`, 3)}
+  </dl>
+  <div class="o-pay"><h3>${t("Pay by M-Pesa")}</h3>
+    <dl><dt>${t("Paybill")}</dt><dd>${O_PAY.paybill}</dd><dd><button type="button" class="o-copy" data-act="copy" data-v="${O_PAY.paybill}" data-fk="cp1">${t("Copy")}</button></dd>
+        <dt>${t("Account")}</dt><dd>${O_PAY.account}</dd><dd><button type="button" class="o-copy" data-act="copy" data-v="${O_PAY.account}" data-fk="cp2">${t("Copy")}</button></dd></dl>
+    <p class="o-note">${t("Paid already? Paste the confirmation message. Ordering for later? Skip this and pay when we confirm.")}</p></div>
+  <div class="o-field"><label for="o-pay">${t("Paste the M-Pesa message")} <span class="o-opt">${t("Optional")}</span></label><textarea id="o-pay" data-bind="pay" data-fk="o-pay">${oEsc(order.pay)}</textarea></div>
+  <input type="text" id="o-hp" class="o-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <p class="o-note">${t("Your details are only used to process your order.")}</p>`;
+}
+function oStepDone(){
+  const contact = (O_CONTACT.find(c=>c[0]===order.contact)||[])[1];
+  return `<div class="o-done"><div class="o-big" aria-hidden="true"></div><h3>${t("Your order has been sent.")}</h3>
+    <p>${t("We'll contact you to confirm availability and delivery.")}</p>
+    <dl class="o-sum">
+      <div class="o-row" style="grid-template-columns:110px 1fr"><dt>${t("Items")}</dt><dd><ul>${order.lines.map(l=>`<li>${oEsc(t(oP(l.id).name))} × ${l.qty}</li>`).join("")}</ul></dd></div>
+      <div class="o-row" style="grid-template-columns:110px 1fr"><dt>${t("When")}</dt><dd>${oEsc(oWhenText())}</dd></div>
+      <div class="o-row" style="grid-template-columns:110px 1fr"><dt>${t("Contact")}</dt><dd>${oEsc(order.name)}${contact&&order.contact!=="none"?` · ${oEsc(t(contact))}`:""}</dd></div>
+    </dl>
+    <div class="btn-row"><button type="button" class="btn btn-primary" data-act="again" data-fk="again">${t("Place another order")}</button><button type="button" class="btn btn-soft" data-act="close" data-fk="closeb">${t("Close")}</button></div></div>`;
+}
+
+/* ---------- render ---------- */
+function oRender(){
+  const active=document.activeElement, fk=(active && oSheet.contains(active)) ? active.dataset.fk : null;
+  const stepChanged = oLastStep!==order.step; oLastStep=order.step;
+  const tot=oTotals();
+  oKick.textContent = order.done ? "" : oStepLabel(order.step+1);
+  oTitle.textContent = order.done ? t("Thank you!") : t(O_STEPS[order.step]);
+  oStepsEl.hidden = order.done;
+  oStepsEl.innerHTML = O_STEPS.map((n,i)=>`<li class="${i<order.step?"done":""}${i===order.step?" on":""}" ${i===order.step?'aria-current="step"':""}><span class="o-dot" aria-hidden="true">${i<order.step?"✓":i+1}</span><span class="o-sl">${t(n)}</span></li>`).join("");
+  const err = order.err ? `<div class="o-err" role="alert" id="o-err" tabindex="-1">${oEsc(order.err)}${order.showFallback?` <a href="${oEsc(oFallbackLink())}" target="_blank" rel="noopener">${t("Use the original form")}</a>`:""}</div>` : "";
+  oBody.innerHTML = err + (order.done ? oStepDone() : [oStepItems,oStepWhen,oStepReceive,oStepYou,oStepReview][order.step]());
+  oFoot.hidden = order.done;
+  oTotal.innerHTML = order.lines.length ? `${t("Total")}<strong>${tot.sum ? ksh(tot.sum) : t("Price on request")}</strong>${tot.sum&&tot.req?`<small>${t("plus items priced on request")}</small>`:""}` : "";
+  oBack.hidden = order.step===0; oBack.textContent = t("Back");
+  const last = order.step===O_STEPS.length-1;
+  oNext.textContent = order.sending ? t("Sending…") : (last ? t("Send my order") : t("Next")); oNext.disabled = order.sending;
+  if(!oSheet.open) return;
+  if(stepChanged || order.done){ oTitle.focus({ preventScroll:true }); oBody.scrollTop=0; oAnnounce(order.done ? t("Your order has been sent.") : `${oStepLabel(order.step+1)}: ${t(O_STEPS[order.step])}`); }
+  else if(order.err){ const f = (order.errField && $(order.errField)) || $("o-err"); f.focus({ preventScroll:true }); oBody.scrollTop = Math.max(0, oBody.scrollTop + f.getBoundingClientRect().top - oBody.getBoundingClientRect().top - 80); }
+  else if(fk){ const el = oSheet.querySelector(`[data-fk="${fk}"]`); if(el) el.focus({ preventScroll:true }); }
+  if(oScrollOpts){ oScrollOpts=false; const o=$("o-opts"); if(o) oBody.scrollTo({ top:oBody.scrollTop + o.getBoundingClientRect().top - oBody.getBoundingClientRect().top - 12, behavior:(prefs&&prefs.still)?"auto":"smooth" }); }
+}
+
+/* ---------- validation ---------- */
+function oValidate(step){
+  order.err=""; order.errField="";
+  if(step===0 && !order.lines.length){ order.err=t("Add at least one item to continue."); return false; }
+  if(step===2 && !order.receive){ order.err=t("Please choose how you'd like to get it."); order.errField="o-receive-delivery"; return false; }
+  if(step===3){
+    if(!order.name.trim()){ order.err=t("Please tell us your name."); order.errField="o-name"; return false; }
+    const digits=order.phone.replace(/\D/g,"");
+    if(!/^[+\d\s()-]+$/.test(order.phone.trim()) || digits.length<9 || digits.length>13){ order.err=t("Please enter a phone number we can reach you on, for example 0712 345 678."); order.errField="o-phone"; return false; }
+  }
+  return true;
+}
+
+/* ---------- what gets sent to the Google Form ---------- */
+function oFields(){
+  const L=order.lines.map(l=>({ l, p:oP(l.id) }));
+  const forms=[...new Set(L.map(({p})=>p.formOther ? "other:"+p.formOther : "item:"+p.form))];
+  let item="", other="";
+  if(forms.length===1){ if(forms[0].startsWith("other:")) other=forms[0].slice(6); else item=forms[0].slice(5); } else other="Multiple items (see comments)";
+  const colour=L.map(({l,p})=>{ const x=[l.c?C[l.c][0]:"", (l.f!=null&&p.finish)?p.finish[l.f]:""].filter(Boolean).join(", "); return x ? x+(l.qty>1?` x${l.qty}`:"") : ""; }).filter(Boolean).join("; ");
+  const sizes=[...new Set(L.map(({l,p})=>l.s!=null ? p.sizes[l.s] : null).filter(Boolean))];
+  const tot=oTotals();
+  const lines=L.map(({l,p},i)=>{ const u=oUnit(l);
+    const bits=[p.name, l.c?C[l.c][0]:"", (l.f!=null&&p.finish)?p.finish[l.f]:"", l.s!=null?"size "+p.sizes[l.s]:""].filter(Boolean).join(" | ");
+    return `${i+1}. ${bits} x${l.qty} ${u!=null?`(KES ${(u*l.qty).toLocaleString("en-KE")})`:"(price on request)"}${l.details?` | Details: ${l.details}`:""}`; });
+  const recv={ delivery:"Delivery", pickup:"Pick-up", unsure:"Not sure yet (please discuss)" }[order.receive]||"";
+  const contact=(O_CONTACT.find(c=>c[0]===order.contact)||[])[1]||"No preference";
+  const access=order.access.map(k=>(O_ACCESS.find(a=>a[0]===k)||[])[1]).filter(Boolean);
+  const notes=["ORDER FROM THE WEBSITE","","ITEMS:",...lines,
+    `TOTAL: KES ${tot.sum.toLocaleString("en-KE")}${tot.req?" + items priced on request":""}`,"",
+    `WHEN: ${oWhenText("en")}`,
+    `RECEIVE: ${recv}${order.receive==="delivery"&&order.area?" - "+order.area:""}`,
+    `CONTACT BY: ${contact}`,
+    `LANGUAGE: ${order.lang==="sw"?"Kiswahili":"English"}`,
+    ...(access.length?[`WHAT HELPS: ${access.join("; ")}`]:[]),
+    ...(order.notes.trim()?[`NOTES: ${order.notes.trim()}`]:[])].join("\n");
+  return { item, other, colour, sizes, notes };
+}
+function oBuildBody(){
+  const f=oFields(), b=new URLSearchParams();
+  b.set("fvv","1"); b.set("pageHistory","0");
+  if(f.other){ b.set(FORM.item,"__other_option__"); b.set(FORM.item+".other_option_response",f.other); } else b.set(FORM.item,f.item);
+  if(f.colour) b.set(FORM.colour,f.colour);
+  f.sizes.forEach(s=>b.append(FORM.size,s));
+  b.set(FORM.name,order.name.trim()); b.set(FORM.phone,order.phone.trim());
+  if(order.pay.trim()) b.set(FORM.pay,order.pay.trim());
+  if(order.cust) b.set(FORM.cust, order.cust==="new" ? "I am a new customer" : "I am an existing customer");
+  b.set(FORM.notes,f.notes);
+  return b;
+}
+function oFallbackLink(){ const f=oFields(); return formLink({ item:f.item, other:f.other, colour:f.colour, size:f.sizes[0], notes:f.notes }); }
+async function oSubmit(){
+  if(order.sending) return;
+  const hp=$("o-hp"); if(hp && hp.value){ order.done=true; oRender(); return; }          // a bot filled the hidden field
+  order.sending=true; order.err=""; order.showFallback=false; oRender();
+  try{
+    await fetch(FORM.url.replace("/viewform","/formResponse"), { method:"POST", mode:"no-cors", body:oBuildBody() });
+    order.done=true; try{ sessionStorage.removeItem("tare-order-v1"); }catch(e){}
+  }catch(e){
+    order.err=t("Sorry, we couldn't send your order. Please check your connection and try again, or use the original form."); order.showFallback=true;
+  }
+  order.sending=false; oRender();
+}
+
+/* ---------- open / close ---------- */
+function openOrder(opts, opener){
+  opts = opts || {};
+  oOpener = opener || document.activeElement;
+  if(order.done) order = oFresh();
+  if(!order.lang) order.lang = LANG;
+  if(opts.card){
+    const c=opts.card, id=c.dataset.id, q=n=>c.querySelector(`input[name="${id}-${n}"]:checked`);
+    oAddLine({ id, c:q("color")?q("color").value:null, s:q("size")?+q("size").value:null, f:q("finish")?+q("finish").value:null, qty:1, details:"" });
+    const w=q("when"); if(w) order.when = +w.value===1 ? "later" : "now";
+    order.step=0; order.pick=null;
+  }
+  if(opts.custom){ order.pick=oNewPick("custom"); order.step=0; oScrollOpts=true; }
+  order.err=""; order.errField=""; oLastStep=-1;
+  oRender();
+  if(!oSheet.open) oSheet.showModal();
+  oRender();
+}
+oSheet.addEventListener("close",()=>{ oSave(); if(oOpener && oOpener.focus && document.contains(oOpener)) oOpener.focus(); });
+$("o-close").addEventListener("click",()=>oSheet.close());
+$("o-a11y").addEventListener("click",e=>openSheet(e.currentTarget));
+oBack.addEventListener("click",()=>{ if(order.step>0){ order.err=""; order.errField=""; order.step--; oSave(); oRender(); } });
+oNext.addEventListener("click",()=>{
+  if(order.step < O_STEPS.length-1){ if(!oValidate(order.step)){ oRender(); return; } order.step++; oSave(); oRender(); }
+  else {
+    if(!oValidate(0)){ order.step=0; oRender(); return; }
+    if(!oValidate(3)){ order.step=3; oRender(); return; }
+    oSubmit();
+  }
+});
+
+/* ---------- interactions ---------- */
+oSheet.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]"); if(!b) return;
+  const act=b.dataset.act, i=+b.dataset.i;
+  if(act==="inc"||act==="dec"){ const l=order.lines[i]; l.qty=Math.max(1,Math.min(20,l.qty+(act==="inc"?1:-1))); }
+  else if(act==="rm"){ const p=oP(order.lines[i].id); order.lines.splice(i,1); oAnnounce(`${t("Removed")}: ${t(p.name)}`); oFocusKey=null; }
+  else if(act==="pinc"||act==="pdec"){ order.pick.qty=Math.max(1,Math.min(20,order.pick.qty+(act==="pinc"?1:-1))); }
+  else if(act==="add"){
+    const pk=order.pick, p=oP(pk.id);
+    if(p.needsDetails && !pk.details.trim()){ order.err=t("Please describe the design you'd like."); order.errField="o-details"; oRender(); return; }
+    order.err=""; order.errField="";
+    oAddLine({ id:pk.id, c:pk.c, s:pk.s, f:pk.f, qty:p.enquire?1:pk.qty, details:pk.details.trim() });
+    oAnnounce(`${t("Added")}: ${t(p.name)}`); order.pick=null; oBody.scrollTop=0;
+  }
+  else if(act==="qd"){ order.date=oIso(+b.dataset.days); }
+  else if(act==="edit"){ order.step=+b.dataset.step; }
+  else if(act==="copy"){ try{ navigator.clipboard.writeText(b.dataset.v); }catch(e){} b.textContent=t("Copied"); oAnnounce(t("Copied")); setTimeout(()=>{ b.textContent=t("Copy"); },1800); return; }
+  else if(act==="again"){ const lang=order.lang; order=oFresh(); order.lang=lang; }
+  else if(act==="close"){ oSheet.close(); return; }
+  oSave(); oRender();
+});
+oSheet.addEventListener("change",e=>{
+  const el=e.target, n=el.name;
+  if(n==="o-pick"){ order.pick=oNewPick(el.value); oScrollOpts=true; }
+  else if(n==="o-c") order.pick.c=el.value;
+  else if(n==="o-f") order.pick.f=+el.value;
+  else if(n==="o-s") order.pick.s=+el.value;
+  else if(n==="o-when") order.when=el.value;
+  else if(n==="o-receive") order.receive=el.value;
+  else if(n==="o-cust") order.cust=el.value;
+  else if(n==="o-contact") order.contact=el.value;
+  else if(n==="o-lang") order.lang=el.value;
+  else if(el.dataset.acc){ order.access = el.checked ? [...new Set([...order.access, el.dataset.acc])] : order.access.filter(x=>x!==el.dataset.acc); }
+  else if(el.id==="o-date"){ order.date=el.value; oSave(); return; }
+  else return;
+  order.err=""; order.errField="";
+  oSave(); oRender();
+});
+oSheet.addEventListener("input",e=>{
+  const k=e.target.dataset.bind; if(!k) return;
+  if(k==="details"){ if(order.pick) order.pick.details=e.target.value; } else order[k]=e.target.value;
+  oSave();
+});
+
+/* every Order / Enquire button opens the form (ctrl/cmd-click still opens the plain Google Form in a new tab) */
+document.addEventListener("click",e=>{
+  const a=e.target.closest("[data-order]"); if(!a) return;
+  if(e.metaKey||e.ctrlKey||e.shiftKey||e.button===1) return;
+  e.preventDefault();
+  openOrder(a.closest(".card[data-id]") ? { card:a.closest(".card[data-id]") } : { custom:a.id==="custom-order" }, a);
+});
+
+oRender();
 </script>
 </body>
 </html>
