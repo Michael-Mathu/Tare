@@ -854,7 +854,12 @@ const SW = {
   "Our Double, finished with pearly beads.":"Double yetu, imepambwa kwa shanga za lulu.",
   "A hidden zip pocket for the little things.":"Mfuko wa zipu uliofichwa kwa vitu vidogo.",
   "Protects your hair while you sleep.":"Hulinda nywele zako unapolala.",
-  "Midnight":"Nyeusi", "Cocoa":"Kahawia", "Champagne":"Krimu", "Tangerine":"Chungwa", "Blush":"Waridi", "Lilac":"Zambarau", "Cloud":"Nyeupe", "Sky":"Samawati", "Butter":"Njano",
+  "Midnight":"Nyeusi", "Pink":"Waridi", "Brown":"Kahawia", "Pepper":"Kijivu iliyokolea", "Sandstone":"Rangi ya mchanga", "Dyed black":"Nyeusi iliyotiwa rangi", "Cinnamon brown":"Kahawia ya mdalasini", "Pistachio green":"Kijani cha pistachio", "Off white":"Nyeupe hafifu",
+  "Photo shows an example. Your tee will be made in the colour you choose.":"Picha inaonyesha mfano. Tee yako itatengenezwa kwa rangi utakayochagua.",
+  "Photo shows an example. Your tote will be made in the colour you choose.":"Picha inaonyesha mfano. Tote yako itatengenezwa kwa rangi utakayochagua.", "Blackcurrant":"Zambarau nyeusi", "Chocolate brown":"Kahawia ya chokoleti", "Red wine":"Nyekundu ya divai", "Teal":"Kijani-samawati",
+  "Photo shows an example. Your scrunchie will be made in the colour you choose.":"Picha inaonyesha mfano. Scrunchie yako itatengenezwa kwa rangi utakayochagua.",
+  "Teal shown. Ask us about other colours.":"Kijani-samawati kimeonyeshwa. Tuulize kuhusu rangi nyingine.",
+  "A teal satin bonnet with a light blue lining and tie strings, laid flat":"Boneti ya satin ya kijani-samawati yenye bitana ya samawati hafifu na kamba za kufunga, imetandazwa", "Cocoa":"Kahawia", "Champagne":"Krimu", "Tangerine":"Chungwa", "Blush":"Waridi", "Lilac":"Zambarau", "Cloud":"Nyeupe", "Sky":"Samawati", "Butter":"Njano",
   // size guide
   "Which size is you?":"Saizi yako ni ipi?",
   "Not sure? Send us a pic of your hair and we'll help you choose.":"Huna uhakika? Tutumie picha ya nywele zako tukusaidie kuchagua.",
@@ -1067,39 +1072,46 @@ function formLink({ item, other, colour, size, notes }){
 }
 const C = { black:["Black","#1d1d1f"], cocoa:["Cocoa","#6b3a1e"], caramel:["Caramel","#a8692b"], cream:["Cream","#f3ead8"], gold:["Gold","#e3cf8f"],
             coral:["Coral","#e8545e"], silver:["Silver","#c8c8c4"], wine:["Wine","#5e1220"], butter:["Butter","#f6e58d"],
-            emerald:["Emerald","#0f6b5c"], burgundy:["Burgundy","#6e0f1d"], white:["White","#ffffff"], tangerine:["Tangerine","#ff5a1f"] };
+            emerald:["Emerald","#0f6b5c"], burgundy:["Burgundy","#6e0f1d"], white:["White","#ffffff"], tangerine:["Tangerine","#ff5a1f"],
+            pink:["Pink","#f29bbd"], blackcurrant:["Blackcurrant","#3b1d4a"], chocolate:["Chocolate brown","#4a2918"], redwine:["Red wine","#6e1424"], teal:["Teal","#1f6272"],
+            brown:["Brown","#6a4128"], pepper:["Pepper","#4b4c50"], sandstone:["Sandstone","#cdbb9f"],
+            dyedblack:["Dyed black","#232323"], cinnamon:["Cinnamon brown","#9a5a34"], pistachio:["Pistachio green","#a9c98b"], offwhite:["Off white","#f1ece0"] };
+/* the colours every scrunchie comes in (zipped is listed with red wine first because its photo is red wine) */
+const SCR = ["pink","black","blackcurrant","chocolate","redwine"];
+const ZIP_COLORS = ["redwine","pink","black","blackcurrant","chocolate"];
+const SCR_NOTE = "Photo shows an example. Your scrunchie will be made in the colour you choose.";
 const HAIR = ["S","M","L"];
 const products = [
   { id:"plain", group:"hair", form:"Plain Satin scrunchies", name:"Plain Satin", tag:"Everyday essential", prices:[100,150,200], sizes:HAIR,
     desc:"Smooth, soft and effortlessly stylish. Our classic satin scrunchies add a touch of elegance to your everyday hairstyles while keeping your hair looking beautifully put together. Simple, timeless and available in vibrant colours.",
-    colors:["black","cocoa","caramel","cream"], img:"assets/plain-satin.jpg", alt:"Black, cocoa, caramel and cream satin scrunchies" },
+    colors:SCR, colorNote:SCR_NOTE, img:"assets/plain-satin.jpg", alt:"Black, cocoa, caramel and cream satin scrunchies" },
   { id:"organza", group:"hair", form:"organza scrunchies", name:"Organza", tag:"Light & playful", prices:[50,100,150], sizes:HAIR,
     desc:"Light, airy and beautifully voluminous. The organza scrunchie adds a soft, dreamy touch to ponytails, buns and half-up hairstyles. For days when your hair deserves a little extra attention.",
-    colors:["gold"], img:"assets/organza.jpg", alt:"A sheer gold organza scrunchie on silver satin" },
+    colors:SCR, colorNote:SCR_NOTE, img:"assets/organza.jpg", alt:"A sheer gold organza scrunchie on silver satin" },
   { id:"double", group:"hair", form:"Double scrunchies(satin+organza)", name:"Satin + Organza", tag:"Soft glam", prices:[130,260,280], sizes:HAIR,
     desc:"A little satin, a little sheer magic! This combination brings together the smooth finish of satin and the delicate beauty of organza for a voluminous, feminine statement. Perfect for elevating even the simplest outfit.",
-    colors:["coral","silver","wine","butter"], img:"assets/satin-organza.jpg", alt:"Four satin and organza scrunchies in coral, silver, wine and butter yellow" },
+    colors:SCR, colorNote:SCR_NOTE, img:"assets/satin-organza.jpg", alt:"Four satin and organza scrunchies in coral, silver, wine and butter yellow" },
   { id:"statement", group:"hair", form:"Double scrunchies+ beads/cowrie beads", name:"Statement Scrunchie", tag:"Statement piece", prices:[180,310,350], sizes:HAIR,
     desc:"For the girlies who love a little extra! Combining satin, organza and decorative beads or cowrie shells, this scrunchie is designed to stand out. A playful blend of texture, detail and personality.",
-    colors:["black"], finish:["Pearls & beads","Cowrie shells","Mix of both"], img:"assets/statement.webp", alt:"A black satin scrunchie decorated with cowrie shells, pearls and gold beads" },
+    colors:SCR, colorNote:SCR_NOTE, finish:["Pearls & beads","Cowrie shells","Mix of both"], img:"assets/statement.webp", alt:"A black satin scrunchie decorated with cowrie shells, pearls and gold beads" },
   { id:"zipped", group:"hair", form:"Zipped scrunchies", name:"Zipped Scrunchie", tag:"Multifunctional", prices:[120,320,360], sizes:HAIR, layout:"wide",
     desc:"Who said a scrunchie is just for your hair? This clever accessory doubles as a mini storage pouch with a discreet zipper for carrying small essentials such as cash, keys, lip gloss and earbuds. Wear it in your hair or keep it handy for when you need it. Cute, convenient and functional!",
-    colors:["emerald","burgundy"],
-    imgs:{ emerald:"assets/zipped-emerald.webp", burgundy:"assets/zipped-burgundy.webp" },
-    alts:{ emerald:"An emerald satin scrunchie with its zip open, holding cash, lip gloss, keys and earbuds",
-           burgundy:"A burgundy zipped scrunchie with cowrie shells and beads, holding cash, lip gloss, earbuds and tare. keys" } },
+    colors:ZIP_COLORS, colorNote:SCR_NOTE, img:"assets/zipped-burgundy.webp",
+    alt:"A burgundy zipped scrunchie with cowrie shells and beads, holding cash, lip gloss, earbuds and tare. keys" },
   { id:"bonnet", group:"hair", form:"Bonnet", name:"Satin Bonnet", tag:"Night routine", prices:[450,600,800], sizes:HAIR, layout:"full",
     desc:"Satin bonnets that protect your hair while you sleep, so your style lasts longer.",
-    colors:["tangerine","black","cocoa","cream"], kind:"bonnet", art:true },   // no photo yet: shows a drawing
+    colors:["teal"], colorNote:"Teal shown. Ask us about other colours.", img:"assets/satin-bonnet.jpg",
+    alt:"A teal satin bonnet with a light blue lining and tie strings, laid flat" },
   { id:"tee", group:"art", formOther:"Mama Mboga T-shirt", name:"Mama Mboga Tee", tag:"Statement pieces", price:1200, sizes:["S","M","L","XL","XXL"],
     desc:"Inspired by Nairobi's vibrant streets, markets and everyday people, the Mama Mboga pieces bring Kenyan culture to fashion through a colourful illustrated graphic. It celebrates the people, hustle and beauty of ordinary everyday life.",
     features:["Premium cotton, soft and durable","Relaxed, comfortable fit","Minimalist front branding","Available in different colours and sizes"],
-    colors:["white"], colorNote:"White shown. Ask us about other colours.",
+    colors:["brown","black","pepper","sandstone","butter"], colorNote:"Photo shows an example. Your tee will be made in the colour you choose.",
     img:"assets/mama-mboga-tee.webp", imgStyle:"object-position:0 50%;transform:scale(1.2);transform-origin:0 50%",
     alt:"A white t-shirt printed with a colourful illustration of a Nairobi market: a mama mboga stall, a matatu and shoppers" },
   { id:"tote", group:"art", form:"Tote bags", name:"Mama Mboga Tote", tag:"Everyday tote", price:800,
     desc:"Inspired by the vibrant energy of Nairobi's local markets, the Mama Mboga tote captures everyday life through art: colourful fresh produce, familiar matatus, market vendors and busy streets. More than just a bag, it's a wearable celebration of Kenyan culture, creativity and the everyday heroes in our communities.",
     features:["Artistic, full-colour DTF graphic","Spacious everyday tote design","For shopping, campus, work and casual outings","Reusable and versatile"],
+    colors:["dyedblack","cinnamon","pistachio","offwhite"], colorNote:"Photo shows an example. Your tote will be made in the colour you choose.",
     img:"assets/mama-mboga-tote.webp", imgStyle:"object-position:60% 50%",
     alt:"A canvas tote bag with the Mama Mboga market illustration, hanging on a rattan chair" },
 ];
